@@ -1,8 +1,12 @@
+<!-- Isabel Graciano Vasquez -->
+
 @extends('layouts.master')
+@section("title", $data["title"])
 
 @section('content')
+
 <!-- Portfolio Section-->
-<section class="page-section donation" id="donation">
+<div class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Give us your donation</h2>
@@ -47,22 +51,20 @@
                         </div>
 
                         <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Delivery Type</label>
                                 
                                 <select name="deliverytype" class="form-control" id="deliverytype" type="text" value="{{ old('deliverytype') }}">
-                                    <option value="1">Windows Vista</option> 
-                                    <option value="2">Windows 7</option>
+                                    <option value="1">I'll send it to you</option> 
+                                    <option value="2">Pick it at my home</option>
                                  </select>
 
                                 <p class="help-block text-danger"></p>
-                            </div>
                         </div>
 
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Date</label>
-                                <input class="form-control" id="date" type="text" placeholder="Date" value="{{ old('date') }}" />
+                                <input class="form-control" id="date" type="date" placeholder="Date" value="{{ old('date') }}" />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -78,7 +80,7 @@
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Photos</label>
-                                <input class="form-control" id="photos" type="text" placeholder="Photos" value="{{ old('photos') }}" />
+                                <input class="form-control" id="photos" type="file" placeholder="Photos" value="{{ old('photos') }}" />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

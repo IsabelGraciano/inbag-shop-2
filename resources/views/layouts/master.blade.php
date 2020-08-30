@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>@yield('title','Home Page')</title>
+        <title>@yield('title','Inbag Shop')</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
@@ -41,29 +41,15 @@
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="{{ asset('img/logo.png') }}" alt="" />
-                <!-- Masthead Heading-->
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Masthead Subheading-->
-                
-                <p class="masthead-subheading font-weight-light mb-0">Online shopping site</p>
-            </div>
-        </header>
+        <!--aqui iba el cosito-->
+        
 
         @yield('content')
 
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
+                
                 <div class="row">
                     <!-- Footer Location-->
                     <div class="col-lg-4 mb-5 mb-lg-0">

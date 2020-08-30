@@ -1,10 +1,17 @@
 <?php
-
+/* Isabel Graciano Vasquez */
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Validation\Rule;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\PostStoreRequest;
+use Illuminate\Http\Request\PostUpdateRequest;
+
+use App\Http\Controllers\Post;
 use Illuminate\Validation\Rules\Exists;
+use Illuminate\Support\Facades\Storage;
+use App\Donation;
 
 class DonationController extends Controller
 {   
@@ -65,22 +72,32 @@ class DonationController extends Controller
     }*/
 
 
-    
+    //post store request????
     public function save(Request $request)
     {
         $data = [];
+
         $data["title"] = "Thanks for helping us and our foundations";
-        //$data["info"] = "We already have your data and will contact you as soon as possible";
-        
+        $data["info"] = "We already have your data and will contact you as soon as possible";
+
+        //$post = Post::create($storerequest->all());
 
         $request->validate([
-            "size" => "required",
-            "usetime" => "required",
-            "deliverytype" => "required",
-            "date" => "required"|"date",
-            "description" => "required",
-            "photos" => "required"
+            "size" => "",
+            "usetime" => "",
+            "deliverytype" => "",
+            "date" => ""|"date",
+            "description" => "",
+            "photos" => ""
         ]);
+
+        //Donation::create($request->only(["size","usetime","deliverytype","date","name","price"]));
+
+        //image
+        //if($storerequest->file('file')){
+        //    $path = Storage::disk('public')->put('image', $storerequest->file('file'));
+        //    $post->fill(['file'=> asset($path)])->save();
+        //}
 
         return view('donation.save')->with("data", $data);
 

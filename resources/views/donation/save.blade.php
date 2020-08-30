@@ -1,3 +1,5 @@
+<!-- Isabel Graciano Vasquez -->
+
 @extends('layouts.master')
 @section("title", $data["title"])
     
@@ -7,8 +9,8 @@
 <section class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">hola</h2>
-        <!--<h3 class="page-section-heading text-center text-uppercase text-secondary mb-0"></h2>-->
+        <b><h5 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ $data["title"] }}</h3><br />
+        <b><h5 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ $data["info"] }}</h5><br />
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
