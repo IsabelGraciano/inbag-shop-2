@@ -1,0 +1,23 @@
+Pasos para correr el proyecto
+
+1. Crear una base de datos llamada: inbag-shop
+2. Configurar el archivo .env con el nombre del usuario, la contraseña, base de datos entre otros
+3. Hacer el migrate en la respectiva carpeta con -> php artisan migrate
+9. ingresar a http://localhost/inbag-shop/public
+10. En la parte superior en el menú dar click en donations ya que es la vista 
+    para el primer punto del taller, a partir de aquí seguir los botones para insertar o ver datos
+
+11. Archivos que cambié:
+CONTROLADOR
+-app/Http/Controllers/DonationController.php
+
+MODELO
+-app/Donation.php
+-database/factories/DonationFactory.php
+-database/migrations/2020_29_08_000000_create_donations_table
+
+VISTAS
+-resources/views/donation
+
+RUTAS
+-routes/web.php

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donation extends Model
 {
-    //attributes id, size, usetime, description, deliveryType, PHOTOS, created_at, updated_at
-    protected $fillable = ['size','usetime','description','deliverytype',];
+    //attributes id, size, usetime, description, deliveryType, image, created_at, updated_at
+    protected $fillable = ['name','size','usetime','description','deliveryType','image'];
 
     public function getId()
     {
@@ -18,6 +18,16 @@ class Donation extends Model
     public function setId($id)
     {
         $this->attributes['id'] = $id;
+    }
+
+    public function getName()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
     }
 
 
@@ -56,12 +66,23 @@ class Donation extends Model
 
     public function getDeliverytype()
     {
-        return $this->attributes['deliverytype'];
+        return $this->attributes['deliveryType'];
     }
 
-    public function setDeliverytype($deliverytype)
+    public function setDeliverytype($deliveryType)
     {
-        $this->attributes['deliverytype'] = $deliverytype;
+        $this->attributes['deliveryType'] = $deliveryType;
+    }
+
+
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+
+    public function setImage($image)
+    {
+        $this->attributes['image'] = $image;
     }
 
 }

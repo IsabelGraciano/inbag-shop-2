@@ -32,20 +32,34 @@
                     </ul>
                     @endif
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form method="POST" action="{{ route('donation.save') }}">
-                    @csrf
+                <form method="POST" action="{{ route('donation.save') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                     <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Size</label>
-                                <input class="form-control" id="size" type="text" placeholder="Size" value="{{ old('size') }}" />
-                                <p class="help-block text-danger"></p>
-                            </div>
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Name</label>
+                            <input class="form-control" id="name" type="text" name="name" placeholder="Name your clothing item" value="{{ old('name') }}" />
+                            <p class="help-block text-danger"></p>
                         </div>
+                    </div>
+
+                    <div class="control-group">
+                                <label>Size</label>
+                                <select name="size" class="form-control" id="size" type="text" value="{{ old('size') }}">
+                                    <option value="none">none</option> 
+                                    <option value="XS">XS</option> 
+                                    <option value="S">S</option>
+                                    <option value="M">M</option> 
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option> 
+                                    <option value="XXL">XXL</option>
+                                 </select>
+                                <p class="help-block text-danger"></p>
+                    </div>
                         
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Use time </label>
-                                <input class="form-control" id="usetime" type="text" placeholder="Use time" value="{{ old('usetime') }}" />
+                                <input class="form-control" id="usetime" type="text" name="usetime" placeholder="Use time (in months)" value="{{ old('usetime') }}" />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -53,9 +67,9 @@
                         <div class="control-group">
                                 <label>Delivery Type</label>
                                 
-                                <select name="deliverytype" class="form-control" id="deliverytype" type="text" value="{{ old('deliverytype') }}">
-                                    <option value="1">I'll send it to you</option> 
-                                    <option value="2">Pick it at my home</option>
+                                <select name="deliveryType" class="form-control" id="deliveryType" name="deliveryType" type="text" value="{{ old('deliveryType') }}">
+                                    <option value="I will send it to you">I will send it to you</option> 
+                                    <option value="Pick it at my home">Pick it at my home</option>
                                  </select>
 
                                 <p class="help-block text-danger"></p>
@@ -63,16 +77,8 @@
 
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Date</label>
-                                <input class="form-control" id="date" type="date" placeholder="Date" value="{{ old('date') }}" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Description</label>
-                                <textarea class="form-control" id="description" rows="5" placeholder="Description" value="{{ old('date') }}" ></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="5" placeholder="Description" value="{{ old('date') }}" ></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -80,7 +86,7 @@
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Photos</label>
-                                <input class="form-control" id="photos" type="file" placeholder="Photos" value="{{ old('photos') }}" />
+                                <input class="form-control" id="image" name="file" type="file" placeholder="Photos" />
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

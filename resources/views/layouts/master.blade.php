@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>@yield('title','Inbag Shop')</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/flav.ico') }}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
