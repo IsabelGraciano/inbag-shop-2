@@ -4,11 +4,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Donation extends Model
 {
     //attributes id, size, usetime, description, deliveryType, image, created_at, updated_at
     protected $fillable = ['name','size','usetime','description','deliveryType','image'];
+
+    public static function validate(Request $request){
+        $request->validate([
+            "name" => 'required',
+            "usetime" => 'numeric|gt:0|required',
+            "description" => 'required',
+            "image" => 'mimes:jpeg,bmp,png,jpg'
+        ]);
+    }
+
 
     public function getId()
     {

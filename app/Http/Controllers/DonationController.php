@@ -54,13 +54,8 @@ class DonationController extends Controller
         $data = [];
         $data["title"] = "Thanks for helping us and our foundations \n We already have your data and will contact you as soon as possible";
 
-        $request->validate([
-            "name" => 'required',
-            "usetime" => 'numeric|gt:0|required',
-            "description" => 'required',
-            "image" => 'mimes:jpeg,bmp,png,jpg'
-        ]);
-
+        /** Validate the form calling the method validate in the model */
+        Donation::validate($request);
         /* verify if the request has a file and move it to the folder */
         if($request->hasFile('file')){
             $file = $request->file('file');
@@ -69,13 +64,12 @@ class DonationController extends Controller
         }
 
         $donation = new Donation();
-        $donation->name = $request->input('name');
-        $donation->size = $request->input('size');
-        $donation->usetime = $request->input('usetime');
-        $donation->deliveryType = $request->input('deliveryType');
-        $donation->description = $request->input('description');
-        $donation->image = $nameImage;
-
+        $donation->setName($request->name);
+        $donation->setSize($request->size);
+        $donation->setUsetime($request->usetime);
+        $donation->setDeliverytype($request->deliveryType);
+        $donation->setDescription($request->description);
+        $donation->setImage($nameImage);
         $donation->save();
 
         return view('donation.save')->with("data", $data);

@@ -26,3 +26,6 @@ Route::get('/donation/view', 'DonationController@view')->name("donation.view");
 Route::get('/donation/view/{id}', 'DonationController@viewdonation')->name("donation.viewdonation");
 
 Route::delete('/donation/delete/{id}', 'DonationController@delete')->name("donation.delete");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
