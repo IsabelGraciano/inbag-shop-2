@@ -18,13 +18,13 @@
 
         <!--Buttons-->
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.create') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userCreate') }}">
                 <i class="fas fa-hand-holding-heart"></i>
                 Give us your donation!
             </a>
         </div>
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.view') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userList') }}">
                 <i class="far fa-laugh-beam"></i>
                 View your donations!
             </a>

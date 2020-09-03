@@ -10,6 +10,10 @@ class HomeController extends Controller
     }
 
     public function donation(){
-        return view('donation.donation');
+        return view('donation.userDonation');
+    }
+
+    public function product(){
+        return view('admin.product.adminProduct');
     }
 }

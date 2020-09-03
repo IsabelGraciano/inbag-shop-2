@@ -5,24 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Validation\Rule;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Request\PostStoreRequest;
-use Illuminate\Http\Request\PostUpdateRequest;
-
-use App\Http\Controllers\Post;
-use Illuminate\Validation\Rules\Exists;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Donation;
 
-class DonationController extends Controller
+class UserDonationController extends Controller
 {   
     /* This method returns a view with all the donation objects that are inserted into the database */
-    public function view()
+    public function list()
     {
         $data = []; 
         $data["title"] = "Here are the donations you have done";
         $data["donations"] = Donation::all();
 
-        return view('donation.view')->with("data",$data);
+        return view('donation.userList')->with("data",$data);
+
 
     }
 
@@ -33,18 +29,25 @@ class DonationController extends Controller
         $data["title"] = "Create product";
         $data["donation"] = Donation::all();
 
-        return view('donation.create')->with("data",$data);
+        return view('donation.userCreate')->with("data",$data);
     }
 
 
     /* This method shows the information of one donation in specific */
     public function viewdonation($id)
     {
-        $data = []; //to be sent to the view
-        $data["donation"] = Donation::findOrFail($id);
-        $data["title"] = Donation::findOrFail($id)->getName();
+        $data = []; //to be sent to the view      
+
+        try{
+            $donation = Donation::findOrFail($id);
+        }catch(ModelNotFoundException $e){
+            return redirect()->route('donation.userList');
+        }
+
+        $data["donation"] = $donation;
+        $data["title"] = $donation->getName();
                
-        return view('donation.viewdonation')->with("data",$data);
+        return view('donation.userViewdonation')->with("data",$data);
     }
 
     /* Saves the form with the respective data */
@@ -72,18 +75,18 @@ class DonationController extends Controller
         $donation->setImage($nameImage);
         $donation->save();
 
-        return view('donation.save')->with("data", $data);
+        return view('donation.userSave')->with("data", $data);
     }
 
     /* deletes a donation object */
     public function delete($id)
     {
-        $data = [];
-        $data["title"] = "Your donation has been deleted successfully";
+        //$data = [];
+        //$data["title"] = "Your donation has been deleted successfully";
 
         $donationDelete = Donation::findOrFail($id);
         $donationDelete->delete();
 
-        return view('donation.delete')->with("data", $data);
+        return redirect()->route('donation.userList');
     }
 }
