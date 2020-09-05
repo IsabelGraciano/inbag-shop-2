@@ -10181,3 +10181,16 @@ form .row:first-child .floating-label-form-group {
 .btn-social {
   margin-bottom: 0.5rem;
 }
+
+
+.active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #C2AF89;
+  box-shadow: 0 1px 0 0 #C2AF89;
+}
+.active-cyan input.form-control[type=text] {
+  border-bottom: 1px solid #C2AF89;
+  box-shadow: 0 1px 0 0 #C2AF89;
+}
+.active-cyan .fa, .active-cyan-2 .fa {
+  color: #C2AF89;
+}

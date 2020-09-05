@@ -22,7 +22,7 @@ class UserProductController extends Controller
 
 
     /* This method shows the information of one product in specific */
-    public function viewproduct($id)
+    public function view($id)
     {
         $data = []; //to be sent to the view      
 
@@ -34,7 +34,7 @@ class UserProductController extends Controller
 
         $data["product"] = $product;
         $data["title"] = $product->getName();
-               
-        return view('product.userViewproduct')->with("data",$data);
+        
+        return view('product.userView')->with("data",$data);
     }
 }

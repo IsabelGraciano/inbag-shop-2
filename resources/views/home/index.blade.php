@@ -23,7 +23,7 @@
         </header>
         
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 mt-5">Portfolio</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -33,56 +33,38 @@
         <!-- Portfolio Grid Items-->
         <div class="row">
             <!-- Portfolio Item 1-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
                     <img class="img-fluid" src="{{ asset('img/portfolio/product-7.jpg') }}" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 2-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
                     <img class="img-fluid" src="{{ asset('img/portfolio/rp-2.jpg') }}" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 3-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
                     <img class="img-fluid" src="{{ asset('img/portfolio/rp-4.jpg') }}" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 4-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
                     <img class="img-fluid" src="{{ asset('img/portfolio/shop-1.jpg') }}" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 5-->
-            <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
                     <img class="img-fluid" src="{{ asset('img/portfolio/shop-5.jpg') }}" alt="" />
                 </div>
             </div>
             <!-- Portfolio Item 6-->
-            <div class="col-md-6 col-lg-4">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                    </div>
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
                     <img class="img-fluid" src="{{ asset('img/portfolio/shop-6.jpg') }}" alt="" />
                 </div>
             </div>

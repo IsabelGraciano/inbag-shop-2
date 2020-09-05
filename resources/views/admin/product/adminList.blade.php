@@ -18,28 +18,20 @@
         </div> 
 
         
-        @foreach($data["donations"] as $donation)
+        <div class="row">
+            @foreach($data["products"] as $product)
 
-            @if ($loop->index < 2)
-                <b>Donation id: {{ $donation->getId() }} </b>
-            @else 
-                Donation id: {{ $donation->getId() }}
-            @endif
-
-            <div class="text-left mt-2 mb-3">
-                <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.viewdonation', $donation->getId() ) }}">
-                    <i class="far fa-hand-point-right"></i>
-                    Go to this donation
-                </a>
+            
+            <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-toggle="modal">
+                    <a href="{{ route('admin.product.adminView', ['id'=>$product->getId()]) }}">
+                    <img class="img-fluid" src="{{ asset('/productImages/' . $product->getImage()) }}">
+                    <p> {{ $product->getName() }} </p>
+                </div>
             </div>
             
-            <p> Image: <p> <img src="{{ asset('/donationImages/' . $donation->getImage()) }}">
-            
-
-            <div class="divider-custom">
-                <div class="divider-custom-line-long"></div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
 
         
 

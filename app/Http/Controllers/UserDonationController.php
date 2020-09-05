@@ -18,15 +18,13 @@ class UserDonationController extends Controller
         $data["donations"] = Donation::all();
 
         return view('donation.userList')->with("data",$data);
-
-
     }
 
     /* Returns a view wich creates a new donation, this is the form */
     public function create()
     {
         $data = [];
-        $data["title"] = "Create product";
+        $data["title"] = "Give us your donation";
         $data["donation"] = Donation::all();
 
         return view('donation.userCreate')->with("data",$data);
@@ -81,12 +79,10 @@ class UserDonationController extends Controller
     /* deletes a donation object */
     public function delete($id)
     {
-        //$data = [];
-        //$data["title"] = "Your donation has been deleted successfully";
-
         $donationDelete = Donation::findOrFail($id);
         $donationDelete->delete();
 
         return redirect()->route('donation.userList');
+        
     }
 }

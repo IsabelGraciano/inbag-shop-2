@@ -30,19 +30,20 @@ Route::delete('/donation/userDelete/{id}', 'UserDonationController@delete')->nam
 /* Routes for Product clothing with Admin */
 Route::get('/product/list', 'ProductController@list')->name("product.list");
 
-Route::get('/admin/product', 'HomeController@product')->name("admin.product.adminProduct");
+Route::get('/admin/product', 'AdminProductController@product')->name("admin.product.adminOptions");
 Route::get('/admin/product/adminCreate', 'AdminProductController@create')->name("admin.product.adminCreate");
-
-Route::post('/admin/product/adminSave', 'AdminProductController@save')->name("product.adminSave");
-Route::get('/admin/product/adminList', 'AdminProductController@list')->name("product.adminList");
-Route::get('/admin/product/adminView/{id}', 'AdminProductController@viewproduct')->name("product.");
-Route::delete('/admin/product/adminDelete/{id}', 'AdminProductController@delete')->name("product.adminDelete");
+Route::post('/admin/product/adminSave', 'AdminProductController@save')->name("admin.product.adminSave");
+Route::get('/admin/product/adminList', 'AdminProductController@list')->name("admin.product.adminList");
+Route::get('/admin/product/adminView/{id}', 'AdminProductController@view')->name("admin.product.adminView");
+Route::delete('/admin/product/adminDelete/{id}', 'AdminProductController@delete')->name("admin.product.adminDelete");
 
 
 /* Routes for Product clothing with User */
-Route::get('/product/userList', 'UserProductController@list')->name("product.userList");
+Route::get('/userProduct/userList', 'UserProductController@list')->name("product.userList");
+Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("product.userView");
 
-
+/* Routes for search */
+Route::get('/search/{search}', 'SearchController@search')->name("search");
 
 Auth::routes();
 

@@ -9,7 +9,7 @@
 <section class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <b><h5 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ $data["title"] }}</h3><br />
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-3 bt-5">{{ $data["title"] }}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -17,12 +17,12 @@
             <div class="divider-custom-line"></div>
         </div> 
 
-        <b>Donation name:</b> {{ $data["donation"]["name"] }}<br />
-        <b>Donation size:</b> {{ $data["donation"]["size"] }}<br />
-        <b>Donation use time:</b> {{ $data["donation"]["usetime"] }}<br />
-        <b>Donation description:</b> {{ $data["donation"]["description"] }}<br />
-        <b>Donation delivery type:</b> {{ $data["donation"]["deliveryType"] }}<br />
-        <b>Donation image:</b> {{ $data["donation"]["image"] }}<br />
+        <b>Donation name:</b> {{ $data["donation"]->getName() }}<br />
+        <b>Donation size:</b> {{ $data["donation"]->getSize() }}<br />
+        <b>Donation use time:</b> {{ $data["donation"]->getUsetime() }}<br />
+        <b>Donation description:</b> {{ $data["donation"]->getDescription() }}<br />
+        <b>Donation delivery type:</b> {{ $data["donation"]->getDeliverytype() }}<br />
+        <b>Donation image:</b> {{ $data["donation"]->getImage() }}<br />
 
         <b>Donation image:</b> 
         <p> Image: <p> <img src="{{ asset('/donationImages/' . $data["donation"]->getImage()) }}">
