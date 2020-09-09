@@ -19,9 +19,7 @@
 
 
         <div class="row">
-            @foreach($data["products"] as $product)
-
-            
+            @foreach($data["products"] as $product)            
             <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
                 <div class="portfolio-item mx-auto" data-toggle="modal">
                     <a href="{{ route('product.userView', ['id'=>$product->getId()]) }}">
@@ -34,7 +32,6 @@
         </div>
 
         
-
     </div>
 </section>
 @endsection

@@ -13,5 +13,7 @@ class HomeController extends Controller
         return view('donation.userDonation');
     }
 
-    
+    public function product(){
+        return view('admin.product.adminProduct');
+    }
 }

@@ -10,7 +10,6 @@ use App\Product;
 
 class UserProductController extends Controller
 {   
-    /* This method returns a view with all the product objects that are inserted into the database */
     public function list()
     {
         $data = []; 
@@ -20,8 +19,6 @@ class UserProductController extends Controller
         return view('product.userList')->with("data",$data);
     }
 
-
-    /* This method shows the information of one product in specific */
     public function view($id)
     {
         $data = []; //to be sent to the view      

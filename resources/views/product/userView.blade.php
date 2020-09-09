@@ -30,6 +30,24 @@
         <b>Product image:</b> 
         <p> Image: <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
         
+        @foreach($data["product"] as $product)
+
+        <b>product id: {{ $product->getId() }} </b>
+
+        <div class="text-left mt-2 mb-3">
+            <a class="btn btn-xl btn-outline-dark" href="">
+                <i class="far fa-hand-point-right"></i>
+                Go to this product
+            </a>
+        </div>
+        <b>Comments:</b><br />
+        @foreach($product->reviews as $review)
+        - {{ $review->getDescription() }}<br />
+        @endforeach
+        <br />
+
+        @endforeach
+        
 
     </div>
 </section>

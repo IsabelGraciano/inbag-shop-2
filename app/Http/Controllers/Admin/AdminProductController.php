@@ -38,6 +38,7 @@ class AdminProductController extends Controller
         $data["title"] = "Create product";
         $data["product"] = Product::all();
 
+        //CAMBIAR CON RETURN BACK
         return view('admin.product.adminCreate')->with("data",$data);
     }
 

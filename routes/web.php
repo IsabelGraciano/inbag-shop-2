@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name("home.index");
+Route::get('/', 'HomeController@index')->name("home");
 
 /*Changes made by Isabel Graciano */
 /* Routes for donation */
@@ -42,9 +42,25 @@ Route::delete('/admin/product/adminDelete/{id}', 'AdminProductController@delete'
 Route::get('/userProduct/userList', 'UserProductController@list')->name("product.userList");
 Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("product.userView");
 
-/* Routes for search */
-Route::get('/search/{search}', 'SearchController@search')->name("search");
 
+/*Routes for login/register of User */
+Route::get('/', 'HomeController@index')->name("home.index");
+Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index");
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*Routes for Review with User*/
+Route::get('review/userCreate','UserReviewController@create')->name("review.userCreate");
+Route::post('/review/userSave', 'UserReviewController@save')->name("review.userSave");
+Route::get('/review/userList', 'UserReviewController@list')->name("review.userList");
+Route::get('/review/userShow/{id}', 'UserReviewController@show')->name("review.userShow");
+
+//CAMBIAR DELETE Y UPDATE POR GET Y POST
+Route::delete('/review/userDelete/{id}', 'UserReviewController@delete')->name("review.userDelete");
+Route::get('/review/userEdit/{id}', 'UserReviewController@edit')->name("review.userEdit");
+Route::post('/review/userUpdate/{id}', 'UserReviewController@update')->name("review.userUpdate");
+
+
+
+
+
