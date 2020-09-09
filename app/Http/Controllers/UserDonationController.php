@@ -10,7 +10,6 @@ use App\Donation;
 
 class UserDonationController extends Controller
 {   
-    /* This method returns a view with all the donation objects that are inserted into the database */
     public function list()
     {
         $data = []; 
@@ -20,7 +19,6 @@ class UserDonationController extends Controller
         return view('donation.userList')->with("data",$data);
     }
 
-    /* Returns a view wich creates a new donation, this is the form */
     public function create()
     {
         $data = [];
@@ -30,8 +28,6 @@ class UserDonationController extends Controller
         return view('donation.userCreate')->with("data",$data);
     }
 
-
-    /* This method shows the information of one donation in specific */
     public function viewdonation($id)
     {
         $data = []; //to be sent to the view      
@@ -48,15 +44,14 @@ class UserDonationController extends Controller
         return view('donation.userViewdonation')->with("data",$data);
     }
 
-    /* Saves the form with the respective data */
     public function save(Request $request)
     {
         
         $data = [];
         $data["title"] = "Thanks for helping us and our foundations \n We already have your data and will contact you as soon as possible";
 
-        /** Validate the form calling the method validate in the model */
         Donation::validate($request);
+
         /* verify if the request has a file and move it to the folder */
         if($request->hasFile('file')){
             $file = $request->file('file');
@@ -76,13 +71,11 @@ class UserDonationController extends Controller
         return view('donation.userSave')->with("data", $data);
     }
 
-    /* deletes a donation object */
     public function delete($id)
     {
         $donationDelete = Donation::findOrFail($id);
         $donationDelete->delete();
 
         return redirect()->route('donation.userList');
-        
     }
 }
