@@ -1,16 +1,11 @@
 <?php
 /* Isabel Graciano Vasquez */
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Contracts\Validation\Rule;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
-
-use App\Http\Controllers\Post;
-use Illuminate\Validation\Rules\Exists;
-use Illuminate\Support\Facades\Storage;
 use App\Product;
 
 class AdminProductController extends Controller

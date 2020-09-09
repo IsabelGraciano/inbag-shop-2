@@ -6,12 +6,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+
 class Product extends Model
 {
     //attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
-    protected $fillable = ['name','description', 'size','discount','category','color', 'price', 'image'];
+    protected $fillable = ['name', 'description', 'size', 'discount', 'category', 'color', 'price', 'image'];
 
-    public static function validate(Request $request){
+    public static function validate(Request $request)
+    {
         $request->validate([
             "name" => 'required',
             "description" => 'required',
@@ -120,4 +122,8 @@ class Product extends Model
         $this->attributes['image'] = $image;
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
