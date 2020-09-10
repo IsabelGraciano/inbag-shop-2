@@ -9,27 +9,25 @@
 <section class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <b><h5 class="page-section-heading text-center text-uppercase text-secondary mt-10">{{ $data["title"] }}</h3><br />
+        <b><h5 class="page-section-heading text-center text-uppercase text-secondary mt-10">{{ $data["product"]->getName() }}</h3><br />
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
-        </div> 
+        </div>
 
-        <b> Product name:</b> {{ $data["product"]->getName() }}<br />
-        <b> Product size:</b> {{ $data["product"]->getSize() }}<br />
-        <b> Product use time:</b> {{ $data["product"]->getDiscount() }}<br />
-        <b> Product description:</b> {{ $data["product"]->getDescription() }}<br />
-        <b> Product category:</b> {{ $data["product"]->getCategory() }}<br />
-        <b> Product color:</b> {{ $data["product"]->getColor() }}<br />
-        <b> Product price:</b> {{ $data["product"]->getPrice() }}<br />
-        <b> Product image:</b> {{ $data["product"]->getImage() }}<br />
+        <b>{{__('product.view.name')}}</b> {{ $data["product"]->getName() }}<br />
+        <b>{{__('product.view.size')}}</b> {{ $data["product"]->getSize() }}<br />
+        <b>{{__('product.view.discount')}}</b> {{ $data["product"]->getDiscount() }}<br />
+        <b>{{__('product.view.description')}}</b> {{ $data["product"]->getDescription() }}<br />
+        <b>{{__('product.view.category')}}</b> {{ $data["product"]->getCategory() }}<br />
+        <b>{{__('product.view.color')}}</b> {{ $data["product"]->getColor() }}<br />
+        <b>{{__('product.view.price')}}</b> {{ $data["product"]->getPrice() }}<br />
+        <b>{{__('product.view.image')}}</b>
 
-        <b> Product image:</b> 
-        <p> Image: <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
-        
-        
+        <p>  <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
+
 
         <form method="POST" action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}">
             {{ csrf_field() }}

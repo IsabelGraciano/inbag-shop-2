@@ -17,18 +17,16 @@
             <div class="divider-custom-line"></div>
         </div> 
         
+        <b>{{__('product.view.name')}}</b> {{ $data["product"]->getName() }}<br />
+        <b>{{__('product.view.size')}}</b> {{ $data["product"]->getSize() }}<br />
+        <b>{{__('product.view.discount')}}</b> {{ $data["product"]->getDiscount() }}<br />
+        <b>{{__('product.view.description')}}</b> {{ $data["product"]->getDescription() }}<br />
+        <b>{{__('product.view.category')}}</b> {{ $data["product"]->getCategory() }}<br />
+        <b>{{__('product.view.color')}}</b> {{ $data["product"]->getColor() }}<br />
+        <b>{{__('product.view.price')}}</b> {{ $data["product"]->getPrice() }}<br />
+        <b>{{__('product.view.image')}}</b>
 
-        <b>Product name:</b> {{ $data["product"]->getName() }}<br />
-        <b>Product size:</b> {{ $data["product"]->getSize() }}<br />
-        <b>Product use time:</b> {{ $data["product"]->getDiscount() }}<br />
-        <b>Product category:</b> {{ $data["product"]->getCategory() }}<br />
-        <b>Product color:</b> {{ $data["product"]->getColor() }}<br />
-        <b>Product price:</b> {{ $data["product"]->getPrice() }}<br />
-        <b>Product description:</b> {{ $data["product"]->getDescription() }}<br />
-        <b>Product image:</b> {{ $data["product"]->getImage() }}<br />
-
-        <b>Product image:</b> 
-        <p> Image: <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
+        <p>  <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
         
         @foreach($data["product"] as $product)
 

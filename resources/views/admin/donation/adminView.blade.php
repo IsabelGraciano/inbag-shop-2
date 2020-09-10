@@ -1,6 +1,7 @@
 <!-- Isabel Graciano Vasquez -->
 
-@extends('layouts.master')    
+@extends('layouts.master')
+    
 
 @section('content')
 <!-- Portfolio Section-->
@@ -23,20 +24,6 @@
         <b>{{__('donation.view.image')}}</b>
 
         <p>  <p> <img src="{{ asset('/donationImages/' . $data["donation"]->getImage()) }}">
-        
-        
-
-        <form method="POST" action="{{ route('donation.userDelete', ['id'=> $data['donation']['id']]) }}">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-xl btn-outline-dark">
-                <i class="far fa-trash-alt"></i>
-                {{__('donation.view.delete')}}
-                </button>
-            </div>
-        </form>
-
     </div>
 </section>
 @endsection

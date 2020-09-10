@@ -1,15 +1,13 @@
 <!-- Isabel Graciano Vasquez -->
 
 @extends('layouts.master')
-@section("title", $data["title"])
-    
 
 @section('content')
 <!-- Portfolio Section-->
 <section class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ $data["title"] }}</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ __('product.list.title') }}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>

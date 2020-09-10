@@ -10,30 +10,26 @@ use App\Donation;
 
 class UserDonationController extends Controller
 {   
-    /* This method returns a view with all the donation objects that are inserted into the database */
+    public function options(){
+        return view('donation.userOptions');
+    }
+
     public function list()
     {
         $data = []; 
-        $data["title"] = "Here are the donations you have done";
         $data["donations"] = Donation::all();
 
         return view('donation.userList')->with("data",$data);
-
-
     }
 
-    /* Returns a view wich creates a new donation, this is the form */
     public function create()
     {
         $data = [];
-        $data["title"] = "Create product";
         $data["donation"] = Donation::all();
 
         return view('donation.userCreate')->with("data",$data);
     }
 
-
-    /* This method shows the information of one donation in specific */
     public function viewdonation($id)
     {
         $data = []; //to be sent to the view      
@@ -44,18 +40,14 @@ class UserDonationController extends Controller
             return redirect()->route('donation.userList');
         }
 
-        $data["donation"] = $donation;
-        $data["title"] = $donation->getName();
-               
+        $data["donation"] = $donation;               
         return view('donation.userViewdonation')->with("data",$data);
     }
 
-    /* Saves the form with the respective data */
     public function save(Request $request)
     {
         
         $data = [];
-        $data["title"] = "Thanks for helping us and our foundations \n We already have your data and will contact you as soon as possible";
 
         /** Validate the form calling the method validate in the model */
         Donation::validate($request);
@@ -78,15 +70,10 @@ class UserDonationController extends Controller
         return view('donation.userSave')->with("data", $data);
     }
 
-    /* deletes a donation object */
     public function delete($id)
     {
-        //$data = [];
-        //$data["title"] = "Your donation has been deleted successfully";
-
         $donationDelete = Donation::findOrFail($id);
         $donationDelete->delete();
-
         return redirect()->route('donation.userList');
     }
 }

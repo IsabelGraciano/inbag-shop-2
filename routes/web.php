@@ -13,18 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name("home");
+Route::get('/admin/home/index', 'HomeController@index')->name("home");
 
 /*Changes made by Isabel Graciano */
-/* Routes for donation */
-//Route::get('/carpeta', 'nombrecontroller@nombremetodo')->name("donation.userDonation");   alias
-
-Route::get('/donation', 'HomeController@donation')->name("donation.userDonation");
+/* Routes for donation user */
+Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
 Route::get('/donation/userCreate', 'UserDonationController@create')->name("donation.userCreate");
 Route::post('/donation/userSave', 'UserDonationController@save')->name("donation.userSave");
 Route::get('/donation/userList', 'UserDonationController@list')->name("donation.userList");
 Route::get('/donation/userView/{id}', 'UserDonationController@viewdonation')->name("donation.userViewdonation");
 Route::delete('/donation/userDelete/{id}', 'UserDonationController@delete')->name("donation.userDelete");
+
+/* Routes for donation admin */
+Route::get('/admin/donation/adminList', 'AdminDonationController@list')->name("admin.donation.adminList");
+Route::get('/admin/donation/adminView/{id}', 'AdminDonationController@view')->name("admin.donation.adminView");
 
 
 /* Routes for Product clothing with Admin */
