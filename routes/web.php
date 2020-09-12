@@ -65,12 +65,15 @@ Route::post('/review/userUpdate/{id}', 'UserReviewController@update')->name("rev
 
 /**Changes made by Santiago moreno */
 //Routes for cart
-Route::get('/userProduct/cartView', 'UserProductController@cartView')->name("product.cartView");
-Route::get('/userProduct/cartAdd', 'UserProductController@cartAdd')->name("product.cartAdd");
+Route::get('/cart/cartView', 'UserProductController@cartView')->name("product.cartView");
+//--------------------
+Route::post('/cart/addToCart/{id}', 'UserProductController@addToCart')->name("product.addToCart");
+Route::get('/cart/remove', 'UserProductController@removeCart')->name("product.removeCart");
+Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
+Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
 
 //Routes for wishlist
-//save????
-Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishList");
+Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishListSave");
 Route::get('/userProduct/wishListShowAll', 'UserProductController@viewWishList')->name("product.userWishListView");
 Route::get('/userProduct/wishListProduct/{id}', 'UserProductController@wishListView')->name("product.userWishListProductShow");
 Route::delete('/userProduct/wishListDelete/{id}', 'UserProductController@delete')->name("product.wishListDelete");

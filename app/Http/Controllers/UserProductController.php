@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\WishList;
+use App\Http\Controllers\Input;
 use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
 
 class UserProductController extends Controller
@@ -40,12 +41,20 @@ class UserProductController extends Controller
     public function saveWishList($id)
     {
         $userId= 1;
-
+        $verification = WishList::all()->where('product_id',$id);
+        if($verification->isEmpty()){
         $wishList = new WishList();
         $wishList->setCustomerId($userId);
         $wishList->setProductId($id);
         $wishList->save();
         return redirect()->route('product.userView',$id);
+        
+        }else{
+
+            return back();
+        }
+       
+        
        // return view('product.userList')->with("data",$data);
     }
 
@@ -86,26 +95,72 @@ class UserProductController extends Controller
 
     public function delete($id)
     {
-        $wishlistDelete = WishList::where('product_id', $id)->delete();;
-        //$wishlistDelete->delete();
+        WishList::where('product_id', $id)->delete();;
         return redirect()->route('product.userWishListView');
     }
 
-    public function cart($id)
+    public function addToCart($id, Request $request)
     {
-        $idUser=1;
-        try{
-        $product= Product::findOrFail($id);
+        $products = $request->session()->get("products");
+        dd($products);
 
-        } catch(EloquentModelNotFoundException $e){
-            return redirect()->route('home.index');
-          
-        }
-        $cart= session()->get("products");
-        $cart[$id]=1;
-        session()->put("products",$cart);
-        $cart=session()->get("products");
-        return back();
+
+        $data = [];
+        $quantity = $request->quantity;
+        $products = $request->session()->get("products");
+        $products[$id] = $quantity;
+        $request->session()->put('products', $products);
+
+        //return back();
 
     }
+
+    public function removeCart(Request $request)
+    {
+        $request->session()->forget('products');
+        return redirect()->route('product.userList');
+    }
+
+    public function cart(Request $request)
+    {
+        $products = $request->session()->get("products");
+        if($products){
+            $keys = array_keys($products);
+            $productsModels = Product::find($keys); //find multiple id's
+            $data["products"] = $productsModels;
+            return view('product.cart')->with("data",$data);
+        }
+
+        return redirect()->route('product.userList');        
+    }
+/*
+    public function buy(Request $request)
+    {
+        $order = new Order();
+        $order->setTotal("0");
+        $order->save();
+
+        $precioTotal = 0;
+
+        $products = $request->session()->get("products");
+        if($products){
+            $keys = array_keys($products);
+            for($i=0;$i<count($keys);$i++){
+                $item = new Item();
+                $item->setProductId($keys[$i]);
+                $item->setOrderId($order->getId());
+                $item->setQuantity($products[$keys[$i]]);
+                $item->save();
+                $productActual = Product::find($keys[$i]);
+                $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
+            }
+
+            $order->setTotal($precioTotal);
+            $order->save();
+
+            $request->session()->forget('products');
+        }
+
+        return redirect()->route('product.index');
+    }*/
 }

@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Product;
+use Exception;
+use Illuminate\Http\Request;
+
 
 class WishList extends Model
 {
