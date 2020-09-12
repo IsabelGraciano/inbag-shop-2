@@ -49,6 +49,7 @@ class UserProductController extends Controller
        // return view('product.userList')->with("data",$data);
     }
 
+    //lista todos los wishlist
     public function viewWishList()
     { 
         $userId= 1;
@@ -59,17 +60,35 @@ class UserProductController extends Controller
         $productsWishList = WishList::all()->where('customer_id',$userId);
         $data["productsWishList"]= $productsWishList;
         
-      //  echo(sizeof($productsWishList));
-      
-        for ($i = 0; $i <= sizeof($productsWishList)-1; $i++) {
-            echo($i);
-            array_push ( $product , Product::findOrFail($productsWishList[$i]->getProductId()));
+
+      for ($i = 0; $i <= sizeof($productsWishList)-1; $i++) {    
+           array_push ( $product , Product::findOrFail($productsWishList[$i]->getProductId()));
         }
         $data["products"] = $product;
-         
-        //$data["products"] = Product::all();
-       
-        return view('product.userWishListView')->with("data",$data);
+       return view('product.userWishListView')->with("data",$data);
+    }
+
+    public function wishListView($id)
+    {
+        $data = []; //to be sent to the view      
+
+        try{
+            $product = Product::findOrFail($id);
+        }catch(ModelNotFoundException $e){
+            return redirect()->route('product.userWishListView');
+        }
+
+        $data["product"] = $product;
+        $data["title"] = $product->getName();
+        
+        return view('product.userWishListProductShow')->with("data",$data);
+    }
+
+    public function delete($id)
+    {
+        $wishlistDelete = WishList::where('product_id', $id)->delete();;
+        //$wishlistDelete->delete();
+        return redirect()->route('product.userWishListView');
     }
 
     public function cart($id)

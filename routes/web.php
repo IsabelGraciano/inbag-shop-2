@@ -69,8 +69,11 @@ Route::get('/userProduct/cartView', 'UserProductController@cartView')->name("pro
 Route::get('/userProduct/cartAdd', 'UserProductController@cartAdd')->name("product.cartAdd");
 
 //Routes for wishlist
+//save????
 Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishList");
 Route::get('/userProduct/wishListShowAll', 'UserProductController@viewWishList')->name("product.userWishListView");
+Route::get('/userProduct/wishListProduct/{id}', 'UserProductController@wishListView')->name("product.userWishListProductShow");
+Route::delete('/userProduct/wishListDelete/{id}', 'UserProductController@delete')->name("product.wishListDelete");
 
 //Routes for order
 Route::get('/order/show/{id}', 'UserOrderController@show')->name("order.show");

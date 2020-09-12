@@ -27,21 +27,18 @@
         <b>{{__('product.view.image')}}</b>
 
         <p>  <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
-        
-        <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="">
-                <i class="fas fa-chevron-circle-left"></i>
-                Add to cart
-            </a>
-        </div>
 
 
-        <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userWishListView', ['id'=> $data['product']->getId()])}}">
-                <i class="fas fa-chevron-circle-left"></i>
-                Add to Wish List
-            </a>
-        </div>
+        <form method="POST" action="{{ route('product.wishlistDelete', ['id'=> $data['product']['id']]) }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-xl btn-outline-dark">
+                <i class="far fa-trash-alt"></i>
+                Delete product from my wishlist
+                </button>
+            </div>
+        </form>
         
 
     </div>

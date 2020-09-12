@@ -36,12 +36,19 @@
         </div>
 
 
-        <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userWishListView', ['id'=> $data['product']->getId()])}}">
-                <i class="fas fa-chevron-circle-left"></i>
-                Add to Wish List
-            </a>
-        </div>
+
+
+
+        <form method="POST" action="{{ route('product.wishListDelete', ['id'=> $data['product']['id']]) }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-xl btn-outline-dark">
+                <i class="far fa-trash-alt"></i>
+                Delete product from my wishlist
+                </button>
+            </div>
+        </form>
         
 
     </div>

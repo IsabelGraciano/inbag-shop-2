@@ -39,7 +39,7 @@
                             <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
                               aria-label="Search">
                         </form>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger"><i class="far fa-heart"></i></i>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.userWishListView') }}"><i class="far fa-heart"></i></i>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger"><i class="fas fa-shopping-bag"></i>
                     </ul>
                 </div>
