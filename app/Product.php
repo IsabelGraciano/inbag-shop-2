@@ -109,7 +109,6 @@ class Product extends Model
         $this->attributes['price'] = $price;
     }
 
-
     public function getImage()
     {
         return $this->attributes['image'];
@@ -120,4 +119,9 @@ class Product extends Model
         $this->attributes['image'] = $image;
     }
 
+    public function wishLists(){
+
+        return $this->belongsToMany(WishList::class);
+
+    }
 }

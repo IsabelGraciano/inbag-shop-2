@@ -28,23 +28,20 @@
 
         <p>  <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
         
-        @foreach($data["product"] as $product)
-
-        <b>product id: {{ $product->getId() }} </b>
-
-        <div class="text-left mt-2 mb-3">
+        <div class="text-center mt-4">
             <a class="btn btn-xl btn-outline-dark" href="">
-                <i class="far fa-hand-point-right"></i>
-                Go to this product
+                <i class="fas fa-chevron-circle-left"></i>
+                Add to cart
             </a>
         </div>
-        <b>Comments:</b><br />
-        @foreach($product->reviews as $review)
-        - {{ $review->getDescription() }}<br />
-        @endforeach
-        <br />
 
-        @endforeach
+
+        <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userWishList', ['id'=> $data['product']->getId()])}}">
+                <i class="fas fa-chevron-circle-left"></i>
+                Add to Wish List
+            </a>
+        </div>
         
 
     </div>

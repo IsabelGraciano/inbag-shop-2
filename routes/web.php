@@ -45,9 +45,10 @@ Route::get('/userProduct/userList', 'UserProductController@list')->name("product
 Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("product.userView");
 
 
+/**Changes made by Camila Barona */
 /*Routes for login/register of User */
 Route::get('/', 'HomeController@index')->name("home.index");
-Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index");
+Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index"); //ADMIN
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -62,7 +63,18 @@ Route::delete('/review/userDelete/{id}', 'UserReviewController@delete')->name("r
 Route::get('/review/userEdit/{id}', 'UserReviewController@edit')->name("review.userEdit");
 Route::post('/review/userUpdate/{id}', 'UserReviewController@update')->name("review.userUpdate");
 
+/**Changes made by Santiago moreno */
+//Routes for cart
+Route::get('/userProduct/cartView', 'UserProductController@cartView')->name("product.cartView");
+Route::get('/userProduct/cartAdd', 'UserProductController@cartAdd')->name("product.cartAdd");
 
+//Routes for wishlist
+Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishList");
+Route::get('/userProduct/wishListShowAll', 'UserProductController@viewWishList')->name("product.userWishListView");
 
-
-
+//Routes for order
+Route::get('/order/show/{id}', 'UserOrderController@show')->name("order.show");
+Route::get('/order/show', 'UserOrderController@showAll')->name("order.showAll");
+Route::get('/order/create', 'UserOrderController@create')->name("order.create");
+Route::post('/order/save', 'UserOrderController@save')->name("order.save");
+Route::delete('/order/{id}', 'UserOrderController@delete')->name("order.delete");
