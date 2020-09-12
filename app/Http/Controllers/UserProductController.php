@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
 use App\WishList;
+use App\Item;
+use App\Order;
 use App\Http\Controllers\Input;
 use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
 
@@ -99,20 +101,15 @@ class UserProductController extends Controller
         return redirect()->route('product.userWishListView');
     }
 
+    //COMENTARIO PARA SANTIAGO 
     public function addToCart($id, Request $request)
     {
-        $products = $request->session()->get("products");
-        dd($products);
-
-
-        $data = [];
+        $data = []; //to be sent to the view
         $quantity = $request->quantity;
         $products = $request->session()->get("products");
         $products[$id] = $quantity;
         $request->session()->put('products', $products);
-
-        //return back();
-
+        return back();
     }
 
     public function removeCart(Request $request)
@@ -126,14 +123,14 @@ class UserProductController extends Controller
         $products = $request->session()->get("products");
         if($products){
             $keys = array_keys($products);
-            $productsModels = Product::find($keys); //find multiple id's
+            $productsModels = Product::find($keys);
             $data["products"] = $productsModels;
             return view('product.cart')->with("data",$data);
         }
 
-        return redirect()->route('product.userList');        
+        return redirect()->route('product.userList');
     }
-/*
+
     public function buy(Request $request)
     {
         $order = new Order();
@@ -161,6 +158,6 @@ class UserProductController extends Controller
             $request->session()->forget('products');
         }
 
-        return redirect()->route('product.index');
-    }*/
+        return redirect()->route('product.userList');
+    }
 }

@@ -3,13 +3,14 @@
 namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use App\Item;
 
 class Order extends Model
 {
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['totalPay','date','discountOrder','shippingCost'];
+    protected $fillable = ['total'];
     
-    
+    /*
     public static function validate(Request $request){
     $request->validate([
         "totalPay" => "required|numeric|gt:0",
@@ -18,7 +19,6 @@ class Order extends Model
         "shippingCost" => "required|numeric|gt:0"
         
     ]);
-
     }
 
     public function getId()
@@ -31,16 +31,16 @@ class Order extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function getTotalPay()
+    public function getTotal()
     {
-        return $this->attributes['totalPay'];
+        return $this->attributes['total'];
     }
 
-    public function setTotalPay($totalPay)
+    public function setTotal($total)
     {
-        $this->attributes['totalPay'] = $totalPay;
+        $this->attributes['total'] = $total;
     }
-
+    
     public function getDate()
     {
         return $this->attributes['date'];
@@ -68,6 +68,32 @@ class Order extends Model
     public function setShippingCost($shippingCost)
     {
         $this->attributes['shippingCost'] = $shippingCost;
+    }
+    */
+
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
+
+    public function getTotal()
+    {
+        return $this->attributes['total'];
+    }
+
+    public function setTotal($total)
+    {
+        $this->attributes['total'] = $total;
+    }
+
+    public function items(){
+        return $this->hasMany(Item::class);
     }
 
 }
