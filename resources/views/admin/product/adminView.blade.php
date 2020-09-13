@@ -6,40 +6,53 @@
 
 @section('content')
 <!-- Portfolio Section-->
-<section class="page-section donation" id="donation">
-    <div class="container">
-        <!-- Portfolio Section Heading-->
-        <b><h5 class="page-section-heading text-center text-uppercase text-secondary mt-10">{{ $data["product"]->getName() }}</h3><br />
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
+<section class="page-section donation" id="donation">  
+
+@section('content')
+    <div class="row" style="margin-top:20px; margin-bottom:20px">
+        <div class="col-lg-8 mx-auto">
+            <!-- List group-->
+            <ul class="list-group shadow">
+                <!-- list group item-->
+                <li class="list-group-item">
+                    <!-- Custom content-->
+                    <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                        <div class="media-body order-2 order-lg-1">
+                            <p>Go to cart</p>
+                            <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ $data["product"]->getName() }}</a></h5>
+                            
+                            
+                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                
+                                <div class="ml-5">
+                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.size')}} {{ $data["product"]->getSize() }}</h6> <br /> 
+                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.discount')}} {{ $data["product"]->getDiscount() }}</h6> <br />
+                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.description')}} {{ $data["product"]->getDescription() }}</h6> <br />
+                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.category')}} {{ $data["product"]->getCategory() }}</h6> <br />
+                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.color')}} {{ $data["product"]->getColor() }}</h6> <br />
+                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.price')}} {{ $data["product"]->getPrice() }}</h6> <br />
+                                </div>
+                               
+                                <div>
+                                    <form action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}" method="POST">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-xl btn-outline-dark mt-0"><i class="far fa-trash-alt"></i> Delete this product</button>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div> <!-- End -->
+                </li> <!-- End -->
+            </ul> <!-- End -->
         </div>
-
-        <b>{{__('product.view.name')}}</b> {{ $data["product"]->getName() }}<br />
-        <b>{{__('product.view.size')}}</b> {{ $data["product"]->getSize() }}<br />
-        <b>{{__('product.view.discount')}}</b> {{ $data["product"]->getDiscount() }}<br />
-        <b>{{__('product.view.description')}}</b> {{ $data["product"]->getDescription() }}<br />
-        <b>{{__('product.view.category')}}</b> {{ $data["product"]->getCategory() }}<br />
-        <b>{{__('product.view.color')}}</b> {{ $data["product"]->getColor() }}<br />
-        <b>{{__('product.view.price')}}</b> {{ $data["product"]->getPrice() }}<br />
-        <b>{{__('product.view.image')}}</b>
-
-        <p>  <p> <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}">
-
-
-        <form method="POST" action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-xl btn-outline-dark">
-                <i class="far fa-trash-alt"></i>
-                Delete product
-                </button>
-            </div>
-        </form>
-
     </div>
+
+</section>
+@endsection
 </section>
 @endsection

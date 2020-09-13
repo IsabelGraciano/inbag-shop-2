@@ -101,7 +101,6 @@ class UserProductController extends Controller
         return redirect()->route('product.userWishListView');
     }
 
-    //COMENTARIO PARA SANTIAGO 
     public function addToCart($id, Request $request)
     {
         $data = []; //to be sent to the view

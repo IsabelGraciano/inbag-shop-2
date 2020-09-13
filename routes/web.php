@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/home/index', 'HomeController@index')->name("home");
 
-/*Changes made by Isabel Graciano */
 /* Routes for donation user */
 Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
 Route::get('/donation/userCreate', 'UserDonationController@create')->name("donation.userCreate");
@@ -45,7 +44,6 @@ Route::get('/userProduct/userList', 'UserProductController@list')->name("product
 Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("product.userView");
 
 
-/**Changes made by Camila Barona */
 /*Routes for login/register of User */
 Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index"); //ADMIN
@@ -63,7 +61,6 @@ Route::delete('/review/userDelete/{id}', 'UserReviewController@delete')->name("r
 Route::get('/review/userEdit/{id}', 'UserReviewController@edit')->name("review.userEdit");
 Route::post('/review/userUpdate/{id}', 'UserReviewController@update')->name("review.userUpdate");
 
-/**Changes made by Santiago moreno */
 //Routes for cart
 Route::get('/cart/cartView', 'UserProductController@cartView')->name("product.cartView");
 //--------------------

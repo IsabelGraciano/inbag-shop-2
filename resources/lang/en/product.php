@@ -45,7 +45,7 @@ return [
         'size'=>'Size:',
         'discount'=>'Discount:',
         'description'=>'Description:',
-        'category'=>'Delivery type:',
+        'category'=>'Category:',
         'color'=>'Color:',
         'price'=>'Price:',
         'image'=>'Image:',
