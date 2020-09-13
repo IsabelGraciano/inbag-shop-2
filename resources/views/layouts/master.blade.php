@@ -29,7 +29,7 @@
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse "  id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                 @guest
                     <li class="nav-item mx-0 mx-lg-1">

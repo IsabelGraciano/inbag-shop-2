@@ -133,15 +133,18 @@ class UserProductController extends Controller
     {
         $order = new Order();
         $order->setTotal("0");
+        $order->setShippingCost("0");
+        $order->set("0");
         $order->save();
 
         $precioTotal = 0;
+        $shippingCost=110;
 
         $products = $request->session()->get("products");
 
         if($products){
             $keys = array_keys($products);
-            $shippingCost=0;
+            
             for($i=0; $i<count($keys); $i++){
                 $item = new Item();
                 $item->setProductId($keys[$i]);
@@ -150,16 +153,15 @@ class UserProductController extends Controller
                 $item->save();
                 $productActual = Product::find($keys[$i]);
                 $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
-                $shippingCost= 1000;
+                //$shippingCost= 1000;
             }
 
             $order->setTotal($precioTotal);
+            
             $order->save();
-            $order->setShippingCost($shippingCost);
 
             $request->session()->forget('products');
             //retornar a la vista
-            dd($order->getId());
         }
 
         return redirect()->route('product.userList');
