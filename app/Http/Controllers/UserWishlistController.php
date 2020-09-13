@@ -14,7 +14,7 @@ use App\Http\Controllers\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
 
-class UserProductController extends Controller
+class UserWishlistController extends Controller
 {   
     public function list()
     {
@@ -41,32 +41,10 @@ class UserProductController extends Controller
         return view('product.userView')->with("data",$data);
     }
 
-    public function viewWishList()
-    { 
-        $customer_id= Auth::user()->id;
-        $data = [];
-        $keys=[];
-        $productsWishList = WishList::all()->where('customer_id',$customer_id);
-        $products_aux = json_decode($productsWishList,true);
-        $products =array_values($products_aux );
-        for ($i = 0; $i <= sizeof($products)-1; $i++) {
-            array_push($keys,$products[$i]['product_id']);
-        }
-
-        if($products){
-            $data["title"] = "WishList";
-            $productsModels = Product::find($keys);
-            $data["products"] = $productsModels;
-            return view('product.userWishListView')->with("data",$data);
-        }
-        return redirect()->route('product.userList');
-
-    }
-
     public function saveWishList($id)
     {
-        $userId=Auth::user()->id;
-        $verification = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
+        $userId= 1;
+        $verification = WishList::all()->where('product_id',$id);
         if($verification->isEmpty()){
         $wishList = new WishList();
         $wishList->setCustomerId($userId);
@@ -78,6 +56,27 @@ class UserProductController extends Controller
 
             return back();
         }
+        
+       // return view('product.userList')->with("data",$data);
+    }
+
+    //lista todos los wishlist
+    public function viewWishList()
+    { 
+        $userId= 1;
+        $data = []; //to be sent to the view
+        $product = [];
+
+        $data["title"] = "WishList";
+        $productsWishList = WishList::all()->where('customer_id',$userId);
+        $data["productsWishList"]= $productsWishList;
+        
+
+      for ($i = 0; $i <= sizeof($productsWishList)-1; $i++) {    
+           array_push ( $product , Product::findOrFail($productsWishList[$i]->getProductId()));
+        }
+        $data["products"] = $product;
+       return view('product.userWishListView')->with("data",$data);
     }
 
     public function wishListView($id)
@@ -98,8 +97,7 @@ class UserProductController extends Controller
 
     public function delete($id)
     {
-        $customer_id= Auth::user()->id;
-        WishList::where('product_id', $id)->where('customer_id',$customer_id)->delete();
+        WishList::where('product_id', $id)->delete();
         return redirect()->route('product.userWishListView');
     }
 

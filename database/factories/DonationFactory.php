@@ -25,6 +25,7 @@ $factory->define(Donation::class, function (Faker $faker) {
         'usetime' => $faker->numberBetween($min = 1, $max = 72).' meses',
         'description' => $faker->paragraph,
         'deliveryType' => $faker->randomElement(['I will send it to you','Pick it at my home']),
-        'image' => $faker->image
+        'image' => $faker->image,
+        'customer_id'=>$faker->numberBetween($min=1, $max=10)
     ];
 });

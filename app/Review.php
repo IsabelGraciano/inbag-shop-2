@@ -61,6 +61,16 @@ class Review extends Model
         $this->attributes['product_id'] = $pId;
     }
 
+    public function getCustomerId()
+    {
+        return $this->attributes['customer_id'];
+    }
+
+    public function setCustomerId($customer_id)
+    {
+        $this->attributes['customer_id'] = $customer_id;
+    }
+
     public function products()
     {
         return $this->belongsTo(Product::class);

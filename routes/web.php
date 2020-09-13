@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes for reviews
-Route::post('/userProduct/userSave/{id}', 'UserProductController@saveReview')->name("product.userSaveReview");  
+Route::post('/userProduct/userSave/{id}', 'UserReviewController@saveReview')->name("product.userSaveReview");  
 Route::delete('/userProduct/userDelete/{id}', 'UserProductController@deleteReview')->name("product.userDeleteReview");
 
 //Routes for cart
@@ -63,6 +64,7 @@ Route::get('/cart/remove', 'UserProductController@removeCart')->name("product.re
 Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
 Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
 
+//Routes for wishlist
 //Routes for wishlist
 Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishListSave");
 Route::get('/userProduct/wishListShowAll', 'UserProductController@viewWishList')->name("product.userWishListView");

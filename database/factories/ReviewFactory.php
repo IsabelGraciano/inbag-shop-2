@@ -22,5 +22,7 @@ $factory->define(Review::class, function (Faker $faker) {
     return [
         'description' => $faker->paragraph,
         'ranking' => $faker->numberBetween($min = 1, $max = 5),
+        'product_id'=>$faker->numberBetween($min=1,$max=10),
+        'customer_id'=>$faker->numberBetween($min=1,$max=10)
     ];
 });

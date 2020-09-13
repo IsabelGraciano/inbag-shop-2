@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function donation(){
+        return $this->hasMany(Donation::class);
+    }
+
     public function review(){
         return $this->belongsToMany(Review::class);
     }

@@ -23,6 +23,9 @@ class CreateDonationsTable extends Migration
             $table->enum('deliveryType', ['I will send it to you','Pick it at my home']);
             $table->mediumText('image');
             
+            $table->bigInteger('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }

@@ -96,7 +96,6 @@
                 
                             </div>
                         </div>
-                        
                         <form method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId()]) }}">
                             @csrf
                             <h3>Star rating </h3>

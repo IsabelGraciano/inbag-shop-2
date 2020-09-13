@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\User;
 
 class Donation extends Model
 {
@@ -96,4 +97,17 @@ class Donation extends Model
         $this->attributes['image'] = $image;
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function getCustomerId()
+    {
+        return $this->attributes['customer_id'];
+    }
+
+    public function setCustomerId($customer_id)
+    {
+        $this->attributes['customer_id'] = $customer_id;
+    }
 }
