@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 
 class WishList extends Model
 {
-    
-    protected $fillable = ['customer_id','product_id'];
-
+    //attributes id, customer_id, product_id, created_at, updated_at
     public function getId()
     {
         return $this->attributes['id'];

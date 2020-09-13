@@ -10,7 +10,9 @@ use App\Product;
 use App\WishList;
 use App\Item;
 use App\Order;
+use App\Review;
 use App\Http\Controllers\Input;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
 
 class UserProductController extends Controller
@@ -134,7 +136,9 @@ class UserProductController extends Controller
         $order = new Order();
         $order->setTotal("0");
         $order->setShippingCost("0");
-        $order->set("0");
+        $customer_id = Auth::user()->id;
+        $order->setCustomerId($customer_id);
+
         $order->save();
 
         $precioTotal = 0;
@@ -165,5 +169,19 @@ class UserProductController extends Controller
         }
 
         return redirect()->route('product.userList');
+    }
+
+    public function saveReview(Request $request, $id)
+    {
+        $idC = Auth::user()->id;
+        $review = new Review();
+        $review->setCustomerId($idC);
+        echo ($review);
+        $review->setProductId($id);
+        $review->setDescription($request->input('review'));
+        $review->setRanking($request->input('rating'));
+        $review->save();
+        
+        return redirect()->route('product.userView', $id);
     }
 }

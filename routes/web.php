@@ -51,16 +51,9 @@ Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*Routes for Review with User*/
-Route::get('review/userCreate','UserReviewController@create')->name("review.userCreate");
-Route::post('/review/userSave', 'UserReviewController@save')->name("review.userSave");
-Route::get('/review/userList', 'UserReviewController@list')->name("review.userList");
-Route::get('/review/userShow/{id}', 'UserReviewController@show')->name("review.userShow");
-
-//CAMBIAR DELETE Y UPDATE POR GET Y POST
-Route::delete('/review/userDelete/{id}', 'UserReviewController@delete')->name("review.userDelete");
-Route::get('/review/userEdit/{id}', 'UserReviewController@edit')->name("review.userEdit");
-Route::post('/review/userUpdate/{id}', 'UserReviewController@update')->name("review.userUpdate");
+//Routes for reviews
+Route::post('/userProduct/userSave/{id}', 'UserProductController@saveReview')->name("product.userSaveReview");  
+Route::delete('/userProduct/userDelete/{id}', 'UserProductController@deleteReview')->name("product.userDeleteReview");
 
 //Routes for cart
 Route::get('/cart/cartView', 'UserProductController@cartView')->name("product.cartView");

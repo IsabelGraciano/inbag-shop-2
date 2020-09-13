@@ -21,6 +21,6 @@ use Illuminate\Support\Str;
 $factory->define(Review::class, function (Faker $faker) {
     return [
         'description' => $faker->paragraph,
-        'ranking' => $faker->numberBetween($min = 0, $max = 5),
+        'ranking' => $faker->numberBetween($min = 1, $max = 5),
     ];
 });

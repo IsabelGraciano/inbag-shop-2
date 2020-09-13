@@ -6,6 +6,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Item;
+use App\Review;
 
 class Product extends Model
 {
@@ -120,9 +121,13 @@ class Product extends Model
         $this->attributes['image'] = $image;
     }
 
-    public function wishLists(){
-
+    public function wishLists()
+    {
         return $this->belongsToMany(WishList::class);
+    }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

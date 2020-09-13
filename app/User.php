@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+    //attributes id, name, lastname, email, password, rol, created_at, updated_at
     use Notifiable;
 
     /**
@@ -44,5 +46,17 @@ class User extends Authenticatable
 
     public function order(){
         return $this->hasMany(Order::class);
+    }
+
+    public function review(){
+        return $this->belongsToMany(Review::class);
+    }
+
+    public function getName(){
+        return $this->attributes['name'];
+    }
+
+    public function getLastName(){
+        return $this->attributes['lastName'];
     }
 }

@@ -41,6 +41,16 @@ class Order extends Model
         $this->attributes['shipping_cost'] = $shipping_cost;
     }
 
+    public function getCustomerId()
+    {
+        return $this->attributes['customer_id'];
+    }
+
+    public function setCustomerId($customer_id)
+    {
+        $this->attributes['customer_id'] = $customer_id;
+    }
+
     public function items(){
         return $this->hasMany(Item::class);
     }

@@ -9,8 +9,8 @@ use App\Product;
 
 class Review extends Model
 {
-    //attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
-    protected $fillable = ['description', 'ranking','product_id'];
+    //attributes id, description, ranking, created_at, updated_at
+    protected $fillable = ['description', 'ranking'];
 
     public static function validate(Request $request){
         $request->validate([
@@ -66,4 +66,8 @@ class Review extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function customer()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
