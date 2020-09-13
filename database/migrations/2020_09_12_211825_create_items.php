@@ -16,8 +16,10 @@ class CreateItems extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
+
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
+            
             $table->bigInteger('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();

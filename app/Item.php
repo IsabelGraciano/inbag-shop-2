@@ -1,5 +1,5 @@
 <?php
-
+/**Isabel Graciano Vasquez */
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;

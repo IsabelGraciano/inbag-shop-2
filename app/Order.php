@@ -1,26 +1,16 @@
 <?php
-/*Santiago Moreno Rave*/
+/*Isabel Graciano Vasquez*/
 namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
+use App\User;
 
 class Order extends Model
 {
     //attributes id, name, price, created_at, updated_at
     protected $fillable = ['total'];
     
-    /*
-    public static function validate(Request $request){
-    $request->validate([
-        "totalPay" => "required|numeric|gt:0",
-        "date" =>"required",
-        "discountOrder" => "required|numeric|gt:0",
-        "shippingCost" => "required|numeric|gt:0"
-        
-    ]);
-    }
-
     public function getId()
     {
         return $this->attributes['id'];
@@ -40,60 +30,22 @@ class Order extends Model
     {
         $this->attributes['total'] = $total;
     }
-    
-    public function getDate()
-    {
-        return $this->attributes['date'];
-    }
 
-    public function setDate($date)
-    {
-        $this->attributes['date'] = $date;
-    }
-
-    public function getDiscountOrder()
-    {
-        return $this->attributes['discountOrder'];
-    }
-
-    public function setDiscountOrder($discountOrder)
-    {
-        $this->attributes['discountOrder'] = $discountOrder;
-    }
     public function getShippingCost()
     {
-        return $this->attributes['shippingCost'];
+        return $this->attributes['shipping_cost'];
     }
 
-    public function setShippingCost($shippingCost)
+    public function setShippingCost($shipping_cost)
     {
-        $this->attributes['shippingCost'] = $shippingCost;
-    }
-    */
-
-
-    public function getId()
-    {
-        return $this->attributes['id'];
-    }
-
-    public function setId($id)
-    {
-        $this->attributes['id'] = $id;
-    }
-
-    public function getTotal()
-    {
-        return $this->attributes['total'];
-    }
-
-    public function setTotal($total)
-    {
-        $this->attributes['total'] = $total;
+        $this->attributes['shipping_cost'] = $shipping_cost;
     }
 
     public function items(){
         return $this->hasMany(Item::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

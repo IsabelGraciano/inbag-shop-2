@@ -97,7 +97,7 @@ class UserProductController extends Controller
 
     public function delete($id)
     {
-        WishList::where('product_id', $id)->delete();;
+        WishList::where('product_id', $id)->delete();
         return redirect()->route('product.userWishListView');
     }
 
@@ -126,8 +126,7 @@ class UserProductController extends Controller
             $data["products"] = $productsModels;
             return view('product.cart')->with("data",$data);
         }
-
-        return redirect()->route('product.userList');
+        return redirect()->route('product.x');
     }
 
     public function buy(Request $request)
@@ -139,9 +138,11 @@ class UserProductController extends Controller
         $precioTotal = 0;
 
         $products = $request->session()->get("products");
+
         if($products){
             $keys = array_keys($products);
-            for($i=0;$i<count($keys);$i++){
+            $shippingCost=0;
+            for($i=0; $i<count($keys); $i++){
                 $item = new Item();
                 $item->setProductId($keys[$i]);
                 $item->setOrderId($order->getId());
@@ -149,12 +150,16 @@ class UserProductController extends Controller
                 $item->save();
                 $productActual = Product::find($keys[$i]);
                 $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
+                $shippingCost= 1000;
             }
 
             $order->setTotal($precioTotal);
             $order->save();
+            $order->setShippingCost($shippingCost);
 
             $request->session()->forget('products');
+            //retornar a la vista
+            dd($order->getId());
         }
 
         return redirect()->route('product.userList');

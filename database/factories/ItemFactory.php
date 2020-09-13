@@ -1,8 +1,8 @@
 <?php
-/*Santiago Moreno Rave */
+/*Isabel Graciano Vasquez */
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Order;
+use App\Item;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,10 +17,10 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Order::class, function (Faker $faker) {
+$factory->define(Item::class, function (Faker $faker) {
     return [
-        'total'=> $faker->numberBetween($min = 200.0, $max = 9000.0),
-        'shipping_cost'=> $faker->numberBetween($min = 200.0, $max = 9000.0),
-        'customer_id'=>$faker->numberBetween($min=1, $max=10)
+        'quantity'=> $faker->numberBetween($min = 1, $max = 10),
+        'product_id'=> $faker->numberBetween($min = 1, $max = 10),
+        'order_id'=>$faker->numberBetween($min=1, $max=10)
     ];
 });

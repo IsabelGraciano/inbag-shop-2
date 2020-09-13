@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/home/index', 'HomeController@index')->name("home");
 
+/*Changes made by Isabel Graciano */
 /* Routes for donation user */
 Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
 Route::get('/donation/userCreate', 'UserDonationController@create')->name("donation.userCreate");

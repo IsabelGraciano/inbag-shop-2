@@ -20,8 +20,7 @@
                         <div class="media-body order-2 order-lg-1">
                             <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ $data["product"]->getName() }}</a></h5>
                             
-                            
-                            <div class="d-flex align-items-center justify-content-between mt-1">
+                            <div class="d-flex align-items-center justify-content-between mt-1 mt-4">
                                 
                                 <div class="ml-5">
                                 <b> <h6 class="font-weight-bold my-2">{{__('product.view.size')}} {{ $data["product"]->getSize() }}</h6> <br /> 

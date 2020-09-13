@@ -17,8 +17,25 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                
-                <p class="masthead-subheading font-weight-light mb-0">Online shopping site</p>
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminOptions') }}">
+                        <i class="far fa-laugh-beam"></i>
+                        Go to the options of products 
+                    </a>
+                </div>
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminList') }}">
+                        <i class="far fa-laugh-beam"></i>
+                        Go to the donations 
+                    </a>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-dark" href="">
+                        <i class="far fa-laugh-beam"></i>
+                        Go to the orders
+                    </a>
+                </div>
             </div>
         </header>
         
