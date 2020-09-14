@@ -6,6 +6,14 @@
 
 @section('content')
     <div class="space-column">
+        <div class="text-center mt-0 mb-5">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userBestSellers') }}">
+                <i class="fas fa-star"></i>
+                {{__('product.view.sellers')}}
+            </a>
+        </div>
+
+
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">

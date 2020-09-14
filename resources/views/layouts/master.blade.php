@@ -58,7 +58,7 @@
                     </li>
                     @endguest
                     <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList') }}"> {{ __('master.user.Products') }} </a></li>
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.donation.adminList') }}"> {{ __('master.user.Donations') }} </a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('donation.userOptions') }}"> {{ __('master.user.Donations') }} </a></li>
 
                     
                     <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.userWishListShowAll') }}"><i class="far fa-heart"></i></a></li>

@@ -56,7 +56,8 @@ return [
         'Review' => 'Reviews: ',
         'sendComment' => 'Send comment',
         'Star' => 'Star comment',
-        'deleteWishlist' => ' Delete product'
+        'deleteWishlist' => ' Delete product',
+        'sellers' => 'Go to best sellers'
     ],
 
 

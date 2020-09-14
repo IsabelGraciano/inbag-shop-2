@@ -173,26 +173,21 @@ class UserProductController extends Controller
         return redirect()->route('product.userList');
     }
 
-
-
-
-
-
     public function bestSellers()
     {
+        $data = [];
+        $productsModels = [];
+        $item = Item::groupBy('product_id')->selectRaw('sum(quantity) as sum, product_id')->orderBy('sum', 'desc')->pluck('sum', 'product_id')->take(5);
 
-
-        $data = []; //to be sent to the view
-        $data["title"] = "Ranking";
-
-        $categorias = Item::groupBy('product_id')->selectRaw('sum(quantity) as sum, product_id')->pluck('sum','product_id');
-
-      // originally lists(), which was deprecated in favour of pluck in 5.2
-      // and dropped completely in 5.3
-      // ->lists('sum','users_editor_id');
-
-
-        dd($categorias);
-
+        $key = $item->keys();
+        
+        for ($i = 0; $i < 5; $i++) {
+            array_push($productsModels,Product::findOrFail($key[$i]));
+        }    
+        
+        $data["title"] = "Top 5";
+        $data["products"] = $productsModels;
+        
+        return view('product.userBestSellers')->with("data", $data);
     }
 }

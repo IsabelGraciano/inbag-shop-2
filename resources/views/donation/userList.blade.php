@@ -17,7 +17,7 @@
                             <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('donation.userViewdonation',['id'=> $donation->getId()]) }}">{{ $donation->getName() }}</a></h5>
                             
                             <div class="d-flex align-items-center justify-content-between mt-1">
-                                
+                            
                             </div>
                         </div><img src="{{ asset('/donationImages/' . $donation->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
