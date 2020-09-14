@@ -42,7 +42,7 @@ class UserProductController extends Controller
         return view('product.userView')->with("data",$data);
     }
 
-    public function viewWishList()
+    public function userWishListShowAll()
     { 
         $customer_id= Auth::user()->id;
         $data = [];
@@ -58,7 +58,7 @@ class UserProductController extends Controller
             $data["title"] = "WishList";
             $productsModels = Product::find($keys);
             $data["products"] = $productsModels;
-            return view('product.userWishListView')->with("data",$data);
+            return view('product.userWishListShowAll')->with("data",$data);
         }
         return redirect()->route('product.userList');
 
@@ -81,27 +81,27 @@ class UserProductController extends Controller
         }
     }
 
-    public function wishListView($id)
+    public function wishlistShowOne($id)
     {
         $data = []; //to be sent to the view      
 
         try{
             $product = Product::findOrFail($id);
         }catch(ModelNotFoundException $e){
-            return redirect()->route('product.userWishListView');
+            return redirect()->route('product.userWishListShowAll');
         }
 
         $data["product"] = $product;
         $data["title"] = $product->getName();
         
-        return view('product.userWishListProductShow')->with("data",$data);
+        return view('product.wishlistShowOne')->with("data",$data);
     }
 
     public function delete($id)
     {
         $customer_id= Auth::user()->id;
         WishList::where('product_id', $id)->where('customer_id',$customer_id)->delete();
-        return redirect()->route('product.userWishListView');
+        return redirect()->route('product.userWishListShowAll');
     }
 
     public function addToCart($id, Request $request)
@@ -129,7 +129,7 @@ class UserProductController extends Controller
             $data["products"] = $productsModels;
             return view('product.cart')->with("data",$data);
         }
-        return redirect()->route('product.x');
+        return back();
     }
 
     public function buy(Request $request)

@@ -20,14 +20,6 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/userProduct/bestSellers','UserProductController@bestSellers')->name("product.userBestSellers");
 
-
-
-
-
-
-
-
-
 Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
 Route::get('/donation/userCreate', 'UserDonationController@create')->name("donation.userCreate");
 Route::post('/donation/userSave', 'UserDonationController@save')->name("donation.userSave");
@@ -75,10 +67,12 @@ Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
 Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
 
 //Routes for wishlist
-//Routes for wishlist
 Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishListSave");
-Route::get('/userProduct/wishListShowAll', 'UserProductController@viewWishList')->name("product.userWishListView");
-Route::get('/userProduct/wishListProduct/{id}', 'UserProductController@wishListView')->name("product.userWishListProductShow");
+
+Route::get('/userProduct/wishListShowAll', 'UserProductController@userWishListShowAll')->name("product.userWishListShowAll");
+
+Route::get('/userProduct/wishlistShowOne/{id}', 'UserProductController@wishlistShowOne')->name("product.wishlistShowOne");
+
 Route::delete('/userProduct/wishListDelete/{id}', 'UserProductController@delete')->name("product.wishListDelete");
 
 //Routes for order
