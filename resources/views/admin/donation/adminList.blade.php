@@ -13,7 +13,7 @@
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
-        </div> 
+        </div>
         <div class="row">
             @foreach($data["donations"] as $donation)
             <div class="col-md-6 col-lg-4 pb-5 mb-lg-0">
@@ -24,6 +24,8 @@
                 </div>
             </div>
             @endforeach
+
+
         </div>
     </div>
 </section>

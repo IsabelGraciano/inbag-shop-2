@@ -14,10 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/admin/home/index', 'HomeController@index')->name("home");
 
 /*Changes made by Isabel Graciano */
 /* Routes for donation user */
+
+Route::get('/userProduct/bestSellers','UserProductController@bestSellers')->name("product.userBestSellers");
+
+
+
+
+
+
+
+
+
 Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
 Route::get('/donation/userCreate', 'UserDonationController@create')->name("donation.userCreate");
 Route::post('/donation/userSave', 'UserDonationController@save')->name("donation.userSave");

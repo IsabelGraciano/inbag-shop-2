@@ -15,7 +15,7 @@
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
-        </div> 
+        </div>
         
         <b>{{__('product.view.name')}}</b> {{ $data["product"]->getName() }}<br />
         <b>{{__('product.view.size')}}</b> {{ $data["product"]->getSize() }}<br />
@@ -31,13 +31,9 @@
         <div class="text-center mt-4">
             <a class="btn btn-xl btn-outline-dark" href="">
                 <i class="fas fa-chevron-circle-left"></i>
-                Add to cart
+                {{ __('product.view.CartAdd') }}
             </a>
         </div>
-
-
-
-
 
         <form method="POST" action="{{ route('product.wishListDelete', ['id'=> $data['product']['id']]) }}">
             {{ csrf_field() }}
@@ -45,12 +41,10 @@
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-xl btn-outline-dark">
                 <i class="far fa-trash-alt"></i>
-                Delete product from my wishlist
+                {{ __('product.view.deleteWishlist') }}
                 </button>
             </div>
         </form>
-        
-
     </div>
 </section>
 @endsection

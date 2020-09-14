@@ -22,7 +22,6 @@ class AdminProductController extends Controller
     public function list()
     {
         $data = []; 
-        $data["title"] = "Here are the products you have done";
         $data["products"] = Product::all();
 
         return view('admin.product.adminList')->with("data",$data);

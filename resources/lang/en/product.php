@@ -49,7 +49,14 @@ return [
         'color'=>'Color:',
         'price'=>'Price:',
         'image'=>'Image:',
-        'delete'=>'Delete this donation'
+        'delete'=>'Delete this product',
+        'Quantity' => 'Quantity: ',
+        'CartAdd' => 'Add to cart',
+        'Wishlist' => 'Add to your wishlist ',
+        'Review' => 'Reviews: ',
+        'sendComment' => 'Send comment',
+        'Star' => 'Star comment',
+        'deleteWishlist' => ' Delete product'
     ],
 
 

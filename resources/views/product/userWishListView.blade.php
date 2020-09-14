@@ -9,7 +9,7 @@
 <section class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4 mt-0">{{ __('product.userWishListProductShow.title') }}</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-4 mt-0">ayusdaaaaa</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>

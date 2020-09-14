@@ -35,7 +35,7 @@
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-xl btn-outline-dark">
                 <i class="far fa-trash-alt"></i>
-                Delete product from my wishlist
+                {{ __('product.view.deleteWishlist') }}
                 </button>
             </div>
         </form>

@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Isabel Graciano Vasquez -->
 
 @extends('layouts.master')

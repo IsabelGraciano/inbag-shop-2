@@ -18,7 +18,6 @@
                     <!-- Custom content-->
                     <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                         <div class="media-body order-2 order-lg-1">
-                            <p>Go to cart</p>
                             <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ $data["product"]->getName() }}</a></h5>
                             
                             
@@ -39,7 +38,7 @@
                                         {{ method_field('DELETE') }}
                                         <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-xl btn-outline-dark mt-0"><i class="far fa-trash-alt"></i> Delete this product</button>
+                                        <button type="submit" class="btn btn-xl btn-outline-dark mt-0"><i class="far fa-trash-alt"></i> {{__('product.view.delete')}} </button>
                                         </div>
                                         </div>
                                     </form>

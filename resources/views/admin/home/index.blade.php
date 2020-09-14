@@ -20,20 +20,20 @@
                 <div class="text-center mt-4">
                     <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminOptions') }}">
                         <i class="far fa-laugh-beam"></i>
-                        Go to the options of products 
+                        {{__('home.admin.options')}}
                     </a>
                 </div>
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminList') }}">
+                    <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.donation.adminList') }}">
                         <i class="far fa-laugh-beam"></i>
-                        Go to the donations 
+                        {{__('home.admin.donations')}}
                     </a>
                 </div>
 
                 <div class="text-center mt-4">
                     <a class="btn btn-xl btn-outline-dark" href="">
                         <i class="far fa-laugh-beam"></i>
-                        Go to the orders
+                        {{__('home.admin.orders')}}
                     </a>
                 </div>
             </div>

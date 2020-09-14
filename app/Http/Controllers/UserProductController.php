@@ -13,6 +13,7 @@ use App\Order;
 use App\Http\Controllers\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
+use App\Http\Controllers\DB;
 
 class UserProductController extends Controller
 {   
@@ -170,5 +171,28 @@ class UserProductController extends Controller
         }
 
         return redirect()->route('product.userList');
+    }
+
+
+
+
+
+
+    public function bestSellers()
+    {
+
+
+        $data = []; //to be sent to the view
+        $data["title"] = "Ranking";
+
+        $categorias = Item::groupBy('product_id')->selectRaw('sum(quantity) as sum, product_id')->pluck('sum','product_id');
+
+      // originally lists(), which was deprecated in favour of pluck in 5.2
+      // and dropped completely in 5.3
+      // ->lists('sum','users_editor_id');
+
+
+        dd($categorias);
+
     }
 }

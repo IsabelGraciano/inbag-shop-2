@@ -1,11 +1,10 @@
 <!-- Isabel Graciano Vasquez -->
 
 @extends('layouts.master')
-@section("title", $data["title"])
     
 
 @section('content')
-    <div class="row" style="margin-top:20px; margin-bottom:20px">
+    <div class="row" style="margin-top:150px">
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">

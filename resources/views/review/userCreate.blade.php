@@ -9,7 +9,7 @@
 <div class="page-section donation" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Give us your opinion</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"> {{ __('review.give') }} </h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -38,7 +38,7 @@
 
                         <!-- Add icon library -->
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                        <label>Raiting: </label>
+                        <label> {{ __('review.raiting') }} </label>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -48,20 +48,20 @@
 
 
                         <div class="form-group">
-                            <label for="description">Insert your review here</label>
+                            <label for="description">{{ __('review.insert') }}</label>
                              <!--<input type=text-area value="{{ old('description') }}"><textarea class="form-control" id="description" rows="5"></textarea>-->
                             <input type="text" name="description" cols="40" rows="5" value="{{ old('description') }}">
             
                         </div>
 
                         <div class="form-group">
-                            <label for="ranking">Ranking</label>
+                            <label for="ranking">{{ __('review.ranking') }}</label>
                             <input type="number" min="1" max="5" name="ranking" cols="40" rows="5" value="{{ old('ranking') }}">
                         </div>
 
 
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary">Send</button>
+                            <button type="submit" class="btn btn-primary">{{ __('review.send') }}</button>
                         </div>
                         </button>
                 </div>

@@ -9,7 +9,7 @@
 <section class="page-section donation" id="donation">  
 
 @section('content')
-    <div class="row" style="margin-top:20px; margin-bottom:20px">
+    <div class="row" style="margin-top:150px; margin-bottom:20px">
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">
@@ -35,12 +35,12 @@
                                     <form action="{{ route('product.addToCart',['id'=> $data['product']->getId()]) }}" method="POST">
                                         @csrf
                                         <div class="form-row">
-                                        <div class="col-md-12">Quantity: 
-                                        <input type="number" class="form-control" name="quantity" min="0" style="width: 80px;">
+                                        <div class="col-md-12">{{ __('product.view.Quantity') }}
+                                        <input type="number" class="form-control" name="quantity" value="1" min="1" required style="width: 80px; ">
                                         </div>
                                         
                                         <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-outline-success mt-3">Add to cart</button>
+                                        <button type="submit" class="btn btn-outline-success mt-3">{{ __('product.view.CartAdd') }}</button>
                                         </div>
                                         </div>
                                     </form>
@@ -52,7 +52,7 @@
                                         @csrf
                                         <div class="form-row">
                                         <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-outline-success mt-5">Add to wishlist</button>
+                                        <button type="submit" class="btn btn-outline-success mt-5">{{ __('product.view.Wishlist') }}</button>
                                         </div>
                                         </div>
                                     </form>
@@ -69,7 +69,7 @@
 
                             <div class="card" style="width: 18rem;">
                                 <div class="card-header">
-                                    Reviews
+                                    {{ __('product.view.Review') }}
                                 </div>
                 
                                 @foreach($data["product"]->reviews as $comment)
@@ -98,7 +98,7 @@
                         </div>
                         <form method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId()]) }}">
                             @csrf
-                            <h3>Star rating </h3>
+                            <h3>{{ __('product.view.Star') }}</h3>
                             <div class="rating" value="{{ old('ranking') }}">
                                 <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
                                 <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
@@ -108,12 +108,12 @@
                             </div>
                 
                             <div class="form-group">
-                                <label for="inputPhone">Review</label>
+                                <label for="inputPhone">{{ __('product.view.Review') }}</label>
                                 <input type="text" class="form-control" id="inputPhone" placeholder="Enter your review" name="review">
                             </div>
                 
                             <div class="col text-center">
-                                <button type="submit" class="btn btn-primary">Send comment</button>
+                                <button type="submit" class="btn btn-primary">{{ __('product.view.sendComment') }}</button>
                             </div>
                         </form>
 
