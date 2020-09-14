@@ -16,7 +16,7 @@ class UserReviewController extends Controller
 {    
     public function saveReview(Request $request, $id)
     {
-        $idC = Auth::user()->id;
+        $idC = Auth::user()->id;      
         $review = new Review();
         $review->setCustomerId($idC);
         echo ($review);

@@ -9,14 +9,14 @@
     <meta name="author" content="" />
     <title>@yield('title','Inbag Shop')</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/flav.ico') }}" />    <!-- Font Awesome icons (free version)-->
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/flav.ico') }}" /> <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-   
+
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ asset('css/myStyle.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/styles1.css') }}" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -25,12 +25,15 @@
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">Inbag shop</a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                
+
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse "  id="navbarResponsive">
+            <div class="collapse navbar-collapse " id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                @guest
+                    @guest
+                    <li class="nav-item mx-5 mx-lg-4">
+                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList') }}"> {{ __('master.user.Products') }} </a></li>
+
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
@@ -57,12 +60,20 @@
                         </div>
                     </li>
                     @endguest
+
+                    @if(!Auth::guest())
+                    @if(Auth::user()->getRole()=="client")
                     <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList') }}"> {{ __('master.user.Products') }} </a></li>
                     <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('donation.userOptions') }}"> {{ __('master.user.Donations') }} </a></li>
-
-                    
                     <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.userWishListShowAll') }}"><i class="far fa-heart"></i></a></li>
                     <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.cart') }}"><i class="fas fa-shopping-bag"></i></a></li>
+                    @endif
+                    @if(Auth::user()->getRole()=="admin")
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.donation.adminList') }}"> {{ __('master.admin.Donations') }} </a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.product.adminOptions') }}"> {{ __('master.admin.Products') }} </a></li>
+            
+                    @endif
+                    @endif
                 </ul>
             </div>
         </div>
@@ -80,10 +91,10 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase mb-4">{{ __('master.user.Location') }}</h4>
                     <p class="lead mb-0">
-                        
+
                         {{ __('master.user.infoLoc') }}
                         <br />
-                        
+
                         {{ __('master.user.infoLoc2') }}
                     </p>
                 </div>

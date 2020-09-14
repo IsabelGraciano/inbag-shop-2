@@ -33,7 +33,6 @@ Route::get('/admin/donation/adminView/{id}', 'AdminDonationController@view')->na
 
 /* Routes for Product clothing with Admin */
 Route::get('/product/list', 'ProductController@list')->name("product.list");
-
 Route::get('/admin/product', 'AdminProductController@product')->name("admin.product.adminOptions");
 Route::get('/admin/product/adminCreate', 'AdminProductController@create')->name("admin.product.adminCreate");
 Route::post('/admin/product/adminSave', 'AdminProductController@save')->name("admin.product.adminSave");

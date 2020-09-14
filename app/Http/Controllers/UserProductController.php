@@ -19,11 +19,11 @@ class UserProductController extends Controller
 {   
     public function list()
     {
-        $data = []; 
+        $data = [];
         $data["title"] = "Available products";
         $data["products"] = Product::all();
 
-        return view('product.userList')->with("data",$data);
+        return view('product.userList')->with("data", $data);
     }
 
     public function view($id)

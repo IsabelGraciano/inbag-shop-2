@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Portfolio Section-->
-<section class="page-section donation" id="donation">
+<section class="page-section donation space-column-style2" id="donation">
     <div class="container">
         <!-- Portfolio Section Heading-->
         <b><h5 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{__('donation.save.title')}}</h3><br />

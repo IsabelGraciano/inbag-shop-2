@@ -1,14 +1,15 @@
 <!-- Isabel Graciano Vasquez -->
 
 @extends('layouts.master')
-    
-
 @section('content')
-    <div class="row" style="margin-top:20px; margin-bottom:20px">
+
+
+    <div class="row space-column-style2">
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">
             @foreach($data["donations"] as $donation)
+            @if($donation->getCustomerId() == Auth::user()->id)
                 <!-- list group item-->
                 <li class="list-group-item">
                     <!-- Custom content-->
@@ -22,6 +23,7 @@
                         </div><img src="{{ asset('/donationImages/' . $donation->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
                 </li> <!-- End -->
+                @endif
                 @endforeach
             </ul> <!-- End -->
         </div>

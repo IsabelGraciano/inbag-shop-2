@@ -6,7 +6,8 @@ return [
     //for admin
     'admin' => [
         'title'=>'Go to the options of products ',
-        'products'=>'Product',
+        'Products'=>'Product',
+        'Donations'=>'Donation',
         'login'=>'Login / Register'
     ],
 

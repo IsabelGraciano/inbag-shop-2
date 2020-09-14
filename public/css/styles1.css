@@ -10321,13 +10321,6 @@ form .row:first-child .floating-label-form-group {
     margin-bottom: 0.5rem;
 }
 
-
-.space-column {
-    margin-top:10em; 
-    margin-bottom:5rem
-}
-
-
 .active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #C2AF89;
     box-shadow: 0 1px 0 0 #C2AF89;
@@ -10402,3 +10395,17 @@ p {
     }
 }
 
+
+.space-column {
+    margin-top:10rem; 
+    margin-bottom:5rem
+}
+
+.space-column-style2 {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+.review {
+    width: 50rem;
+}

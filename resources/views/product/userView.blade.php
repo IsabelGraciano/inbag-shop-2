@@ -64,62 +64,58 @@
 
                         </div><img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                         
-
-                        <div class="row justify-content-center">
-
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-header">
-                                    {{ __('product.view.Review') }}
-                                </div>
-                
-                                @foreach($data["product"]->reviews as $comment)
-
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <b> {{ $comment->customer->getName() }} {{ $comment->customer->getLastName() }} </b> </br>
-                                        <b> {{ $comment->getDescription() }} </b></br>
-                                        {{ $comment->getRanking() }} <i class="fa fa-star" aria-hidden="true"></i><br />
-
-                                        @if($comment->getCustomerId() == Auth::user()->id)
-                                        <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $comment->getId()]) }}">
-                                            @csrf
-                                            {{ method_field('DELETE') }}
-                                            <button type="input" class="close" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </form>
-                                        @endif
-                                    </li>
-                                </ul>
-
-                                @endforeach
-                
-                            </div>
-                        </div>
-                        <form method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId()]) }}">
-                            @csrf
-                            <h3>{{ __('product.view.Star') }}</h3>
-                            <div class="rating" value="{{ old('ranking') }}">
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                            </div>
-                
-                            <div class="form-group">
-                                <label for="inputPhone">{{ __('product.view.Review') }}</label>
-                                <input type="text" class="form-control" id="inputPhone" placeholder="Enter your review" name="review">
-                            </div>
-                
-                            <div class="col text-center">
-                                <button type="submit" class="btn btn-primary">{{ __('product.view.sendComment') }}</button>
-                            </div>
-                        </form>
-
-
-
                     </div> <!-- End -->
+                    <div class="row justify-content-center">
+
+                        <div class="card review">
+                            <div class="card-header">
+                                {{ __('product.view.Review') }}
+                            </div>
+            
+                            @foreach($data["product"]->reviews as $comment)
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <b> {{ $comment->customer->getName() }} {{ $comment->customer->getLastName() }} </b> </br>
+                                    <b> {{ $comment->getDescription() }} </b></br>
+                                    {{ $comment->getRanking() }} <i class="fa fa-star" aria-hidden="true"></i><br />
+
+                                    @if($comment->getCustomerId() == Auth::user()->id)
+                                    <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $comment->getId()]) }}">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <button type="input" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </form>
+                                    @endif
+                                </li>
+                            </ul>
+
+                            @endforeach
+            
+                        </div>
+                    </div>
+                    <form method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId()]) }}">
+                        @csrf
+                        <h3>{{ __('product.view.Star') }}</h3>
+                        <div class="rating">
+                            <input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label>
+                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="inputPhone">{{ __('product.view.Review') }}</label>
+                            <input type="text" class="form-control" id="inputPhone" placeholder="Enter your review" name="review"><br /><br />
+                        </div>
+            
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary">{{ __('product.view.sendComment') }}</button>
+                        </div>
+                    </form>
                 </li> <!-- End -->
             </ul> <!-- End -->
         </div>

@@ -18,10 +18,10 @@ class UserDonationController extends Controller
 
     public function list()
     {
-        $data = []; 
+        $customer_id = Auth::user()->id;
+        $data = [];
         $data["donations"] = Donation::all();
-
-        return view('donation.userList')->with("data",$data);
+        return view('donation.userList')->with("data", $data);
     }
 
     public function create()

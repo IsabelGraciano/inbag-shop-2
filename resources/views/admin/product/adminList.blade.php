@@ -4,7 +4,7 @@
     
 
 @section('content')
-    <div class="row" style="margin-top:150px">
+    <div class="row space-column">
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">
