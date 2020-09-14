@@ -27,4 +27,11 @@ class UserReviewController extends Controller
         
         return redirect()->route('product.userView', $id);
     }
+
+    public function deleteReview($id)
+    {
+        $customer_id = Auth::user()->id;
+        $review = Review::where('id', $id)->where('customer_id', $customer_id)->delete();
+        return back();
+    }
 }

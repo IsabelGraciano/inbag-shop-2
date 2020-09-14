@@ -73,16 +73,16 @@
                                 </div>
                 
                                 @foreach($data["product"]->reviews as $comment)
-                
+
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                    <b> {{ $comment->customer->getName() }}  {{ $comment->customer->getLastName() }} </b> </br>
-                                        <b> {{ $comment->getDescription() }} </b>
-                                        <i class="fa fa-trophy"></i>{{ $comment->getRanking() }} <br />
-                
+                                        <b> {{ $comment->customer->getName() }} {{ $comment->customer->getLastName() }} </b> </br>
+                                        <b> {{ $comment->getDescription() }} </b></br>
+                                        {{ $comment->getRanking() }} <i class="fa fa-star" aria-hidden="true"></i><br />
+
                                         @if($comment->getCustomerId() == Auth::user()->id)
-                                        <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $data['product']['id']]) }}">
-                                            {{ csrf_field() }}
+                                        <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $comment->getId()]) }}">
+                                            @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="input" class="close" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -91,7 +91,7 @@
                                         @endif
                                     </li>
                                 </ul>
-                
+
                                 @endforeach
                 
                             </div>

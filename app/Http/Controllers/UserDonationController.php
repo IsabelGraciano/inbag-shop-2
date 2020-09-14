@@ -7,6 +7,8 @@ use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Donation;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserDonationController extends Controller
 {   
@@ -65,6 +67,8 @@ class UserDonationController extends Controller
         $donation->setDeliverytype($request->deliveryType);
         $donation->setDescription($request->description);
         $donation->setImage($nameImage);
+        $customer_id = Auth::user()->id;
+        $donation->setCustomerId($customer_id);
         $donation->save();
 
         return view('donation.userSave')->with("data", $data);

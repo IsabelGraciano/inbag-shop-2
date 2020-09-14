@@ -142,7 +142,7 @@ class UserProductController extends Controller
         $order->save();
 
         $precioTotal = 0;
-        $shippingCost=110;
+        $shippingCost=0;
 
         $products = $request->session()->get("products");
 
@@ -157,10 +157,11 @@ class UserProductController extends Controller
                 $item->save();
                 $productActual = Product::find($keys[$i]);
                 $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
-                //$shippingCost= 1000;
+                $shippingCost= $shippingCost + 1000;
             }
 
             $order->setTotal($precioTotal);
+            $order->setShippingCost($shippingCost);
             
             $order->save();
 

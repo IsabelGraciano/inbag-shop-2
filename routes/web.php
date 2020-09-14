@@ -54,7 +54,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes for reviews
 Route::post('/userProduct/userSave/{id}', 'UserReviewController@saveReview')->name("product.userSaveReview");  
-Route::delete('/userProduct/userDelete/{id}', 'UserProductController@deleteReview')->name("product.userDeleteReview");
+Route::delete('/userProduct/userDelete/{id}', 'UserReviewController@deleteReview')->name("product.userDeleteReview");
 
 //Routes for cart
 Route::get('/cart/cartView', 'UserProductController@cartView')->name("product.cartView");
