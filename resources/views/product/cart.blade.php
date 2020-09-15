@@ -41,11 +41,9 @@
                                 </button>
                             </div>
                             <h2>{{ __('product.view.summary') }}</h2>
-                            <b> {{ __('product.cart.order') }} {{ $data["total-cart"] }} <br />
                                 <b> {{ __('product.cart.shipping') }} {{ $data["shipping-cost"] }} <br />
-                                <b> {{ __('product.cart.total1') }} {{ $data["total1"] }} <br />
-                                <b> {{ __('product.cart.total') }} {{ $data["total-order"] }} <br />
-
+                                <b> {{ __('product.cart.total') }} {{ $data["total1"] }} <br />
+                                <b> {{ __('product.cart.with') }} {{ $data["discount"] }} {{ __('product.cart.discount') }}
                             <div class="modal-footer">
                                 <button class="btn btn-outline-success mt-5" class="col text-center" type="submit">{{ __('product.cart.buy') }}</button>
 

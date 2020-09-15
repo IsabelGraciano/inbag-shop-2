@@ -17,13 +17,12 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
-//attributes id, name, description, size, discount, category, color, price, activated, image, created_at, updated_at
+//attributes id, name, description, size, category, color, price, activated, image, created_at, updated_at
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
         'size' => $faker->randomElement(['none','XS','S','M','L','XL','XXL']),
-        'discount' => $faker->numberBetween($min = 0, $max = 100),
         'description' => $faker->paragraph,
         'category' => $faker->randomElement(['Man','Woman','Kids','Accessories','Shoes']),
         'color' => $faker->colorName,

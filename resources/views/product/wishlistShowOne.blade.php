@@ -16,7 +16,6 @@
                 <div class="ml-5 mt-5 mr-5">
                     <b>{{__('product.view.name')}}</b> {{ $data["product"]->getName() }}<br />
                     <b>{{__('product.view.size')}}</b> {{ $data["product"]->getSize() }}<br />
-                    <b>{{__('product.view.discount')}}</b> {{ $data["product"]->getDiscount() }}<br />
                     <b>{{__('product.view.description')}}</b> {{ $data["product"]->getDescription() }}<br />
                     <b>{{__('product.view.category')}}</b> {{ $data["product"]->getCategory() }}<br />
                     <b>{{__('product.view.color')}}</b> {{ $data["product"]->getColor() }}<br />

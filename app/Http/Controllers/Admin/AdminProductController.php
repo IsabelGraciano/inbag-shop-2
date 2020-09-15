@@ -57,7 +57,6 @@ class AdminProductController extends Controller
         $product = new product();
         $product->setName($request->name);
         $product->setSize($request->size);
-        $product->setDiscount($request->discount);
         $product->setCategory($request->category);
         $product->setDescription($request->description);
         $product->setColor($request->color);

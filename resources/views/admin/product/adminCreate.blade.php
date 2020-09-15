@@ -57,14 +57,6 @@
                         
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>{{__('product.form.discount')}}</label>
-                                <input class="form-control" id="discount" type="text" name="discount" placeholder="{{__('product.form.discount')}}" value="{{ old('discount') }}" />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>{{__('product.form.color')}}</label>
                                 <input class="form-control" id="color" type="text" name="color" placeholder="{{__('product.form.color')}}" value="{{ old('color') }}" />
                                 <p class="help-block text-danger"></p>

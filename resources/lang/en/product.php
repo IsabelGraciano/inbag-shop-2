@@ -6,7 +6,6 @@ return [
     //For admin
     'form' => [
         'name'=>'Name your clothing item',
-        'discount'=>'Discount (only the number)',
         'description'=>'Description',
         'photos'=>'Photos',
         'color'=>'Color',
@@ -43,7 +42,6 @@ return [
     'view'=>[
         'name'=>'Name:',
         'size'=>'Size:',
-        'discount'=>'Discount:',
         'description'=>'Description:',
         'category'=>'Category:',
         'color'=>'Color:',
@@ -78,10 +76,11 @@ return [
         'price'=>'Price: ',
         'shipping'=>'Shipping cost: ',
         'order'=>'Orden price: ',
-        'total'=>'Total price including discount: ',
         'buy'=>'Buy this cart',
         'delete'=>'Delete this cart',
-        'total1'=>'Total price: '
+        'with'=>'You have ',
+        'discount'=>'% of discount in your order',
+        'total'=>'Total price: '
     ],
 
     'sellers'=>[

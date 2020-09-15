@@ -9,7 +9,7 @@ class CreateWishListsTable extends Migration
 {
     /**
      * Run the migrations.
-     * attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
+     * attributes id, name, description, size, category, color, price, image, created_at, updated_at
      * @return void
      */ 
     public function up()

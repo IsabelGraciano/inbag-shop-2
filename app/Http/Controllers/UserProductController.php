@@ -130,19 +130,21 @@ class UserProductController extends Controller
                 $productActual = Product::find($keys[$i]);
                 $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
                 $shippingCost= $shippingCost - 1000;
-                $discount = $productActual->getDiscount();
-                $PriceWithDiscount = $precioTotal - (($precioTotal * $discount) / 100);                
             }
 
-            if($shippingCost < 0){
-                $shippingCost = 0;
+            $discount = 0;
+            if($precioTotal < 300000){
+                $precioTotal = ($precioTotal - (($precioTotal * 15) / 100));
+                $discount = 15;
+            }
+            else{
+                $precioTotal = ($precioTotal - (($precioTotal * 25) / 100));
+                $discount = 25;
             }
 
             $data["shipping-cost"] = $shippingCost;
-            $data["total-cart"] = $PriceWithDiscount;
-            $data["total-order"] = $shippingCost + $PriceWithDiscount;
-            $data["total1"] = $shippingCost + $precioTotal;
-
+            $data["total1"] = $shippingCost + $precioTotal; 
+            $data["discount"] = $discount;
             return view('product.cart')->with("data",$data);
         }
         return back();
@@ -175,6 +177,13 @@ class UserProductController extends Controller
                 $productActual = Product::find($keys[$i]);
                 $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
                 $shippingCost= $shippingCost + 1000;
+            }
+
+            if($precioTotal < 300000){
+                $precioTotal = ($precioTotal - (($precioTotal * 15) / 100));
+            }
+            else{
+                $precioTotal = ($precioTotal - (($precioTotal * 25) / 100));
             }
 
             $order->setTotal($precioTotal);

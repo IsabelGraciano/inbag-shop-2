@@ -9,7 +9,7 @@ class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
-     * attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
+     * attributes id, name, description, size, category, color, price, image, created_at, updated_at
      * @return void
      */ 
     public function up()
@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->text('name');
             $table->enum('size', ['none','XS','S','M','L','XL','XXL']);
-            $table->integer('discount');
             $table->mediumText('description');
             $table->enum('category', ['Man','Woman','Kids','Accessories','Shoes']);
             $table->text('color');

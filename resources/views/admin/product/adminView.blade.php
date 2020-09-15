@@ -24,7 +24,6 @@
                                 
                                 <div class="ml-5">
                                 <b> <h6 class="font-weight-bold my-2">{{__('product.view.size')}} {{ $data["product"]->getSize() }}</h6> <br /> 
-                                <b> <h6 class="font-weight-bold my-2">{{__('product.view.discount')}} {{ $data["product"]->getDiscount() }}</h6> <br />
                                 <b> <h6 class="font-weight-bold my-2">{{__('product.view.description')}} {{ $data["product"]->getDescription() }}</h6> <br />
                                 <b> <h6 class="font-weight-bold my-2">{{__('product.view.category')}} {{ $data["product"]->getCategory() }}</h6> <br />
                                 <b> <h6 class="font-weight-bold my-2">{{__('product.view.color')}} {{ $data["product"]->getColor() }}</h6> <br />

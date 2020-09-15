@@ -10,15 +10,14 @@ use App\Review;
 
 class Product extends Model
 {
-    //attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
-    protected $fillable = ['name','description', 'size','discount','category','color', 'price', 'activated', 'image'];
+    //attributes id, name, description, size, category, color, price, image, created_at, updated_at
+    protected $fillable = ['name','description', 'size','category','color', 'price', 'activated', 'image'];
 
     public static function validate(Request $request){
         $request->validate([
             "name" => 'required',
             "description" => 'required',
             "size" => 'required',
-            "discount" => 'digits_between:0,100|required',
             "category" => 'required',
             "color" => 'required',
             "price" => 'required|numeric',
@@ -58,17 +57,6 @@ class Product extends Model
     {
         $this->attributes['size'] = $size;
     }
-
-    public function getDiscount()
-    {
-        return $this->attributes['discount'];
-    }
-
-    public function setDiscount($discount)
-    {
-        $this->attributes['discount'] = $discount;
-    }
-
 
     public function getCategory()
     {

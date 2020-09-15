@@ -26,7 +26,6 @@
                                     <b>
                                         <h6 class="font-weight-bold my-2">{{__('product.view.size')}} {{ $data["product"]->getSize() }}</h6> <br />
                                         <b>
-                                            <h6 class="font-weight-bold my-2">{{__('product.view.discount')}} {{ $data["product"]->getDiscount() }}</h6> <br />
                                             <b>
                                                 <h6 class="font-weight my-2 mr-5 mt-5">{{__('product.view.description')}} {{ $data["product"]->getDescription() }}</h6> <br />
                                                 <b>
