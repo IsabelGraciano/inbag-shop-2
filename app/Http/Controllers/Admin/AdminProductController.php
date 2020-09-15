@@ -2,15 +2,8 @@
 /* Isabel Graciano Vasquez */
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Validation\Rule;
-
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
-
-use App\Http\Controllers\Post;
-use Illuminate\Validation\Rules\Exists;
-use Illuminate\Support\Facades\Storage;
 use App\Product;
 
 class AdminProductController extends Controller
@@ -30,7 +23,6 @@ class AdminProductController extends Controller
     public function create()
     {
         $data = [];
-        $data["title"] = "Create product";
         $data["product"] = Product::all();
 
         return view('admin.product.adminCreate')->with("data",$data);
@@ -54,9 +46,8 @@ class AdminProductController extends Controller
 
     public function save(Request $request)
     {
-        /** Validate the form calling the method validate in the model */
         Product::validate($request);
-        /* verify if the request has a file and move it to the folder */
+
         if($request->hasFile('file')){
             $file = $request->file('file');
             $nameImage = time().$file->getClientOriginalName();

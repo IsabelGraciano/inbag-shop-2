@@ -11,7 +11,7 @@ use App\Review;
 class Product extends Model
 {
     //attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
-    protected $fillable = ['name','description', 'size','discount','category','color', 'price', 'image'];
+    protected $fillable = ['name','description', 'size','discount','category','color', 'price', 'activated', 'image'];
 
     public static function validate(Request $request){
         $request->validate([
@@ -22,6 +22,7 @@ class Product extends Model
             "category" => 'required',
             "color" => 'required',
             "price" => 'required|numeric',
+            "activated" => 'required'|'numeric',
             "image" => 'mimes:jpeg,bmp,png,jpg'
         ]);
     }
@@ -109,6 +110,16 @@ class Product extends Model
     public function setPrice($price)
     {
         $this->attributes['price'] = $price;
+    }
+
+    public function getActivated()
+    {
+        return $this->attributes['activated'];
+    }
+
+    public function setActivated($activated)
+    {
+        $this->attributes['activated'] = $activated;
     }
 
     public function getImage()

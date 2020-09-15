@@ -1,5 +1,5 @@
 <?php
-/*Santiago Moreno Rave */
+/**Isabel Graciano Vasquez */
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Order;
@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
+//attributes id, total, shipping_cost, customer_id, created_at, updated_at
 
 $factory->define(Order::class, function (Faker $faker) {
     return [

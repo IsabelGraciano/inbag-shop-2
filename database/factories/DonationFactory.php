@@ -2,9 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+/** Isabel Graciano Vasquez */
+
 use App\Donation;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------

@@ -56,7 +56,7 @@ Route::delete('/userProduct/userDelete/{id}', 'UserReviewController@deleteReview
 
 //Routes for cart
 Route::post('/cart/addToCart/{id}', 'UserProductController@addToCart')->name("product.addToCart");
-Route::get('/cart/remove', 'UserProductController@removeCart')->name("product.removeCart");
+Route::delete('/cart/remove', 'UserProductController@removeCart')->name("product.removeCart");
 Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
 Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
 

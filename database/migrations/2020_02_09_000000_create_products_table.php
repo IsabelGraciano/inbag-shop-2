@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->enum('category', ['Man','Woman','Kids','Accessories','Shoes']);
             $table->text('color');
             $table->integer('price');
+            $table->enum('activated', ['1','0']);
             $table->mediumText('image');
             
             $table->timestamps();

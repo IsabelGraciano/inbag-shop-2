@@ -67,6 +67,21 @@ return [
         'title'=>'Available products'
     ],
 
+    'cart'=>[
+        'quantity'=>'Quantity: ',
+        'price'=>'Price: ',
+        'shipping'=>'Shipping cost: ',
+        'order'=>'Orden price: ',
+        'total'=>'Total price: ',
+        'discount'=>'Discount',
+        'buy'=>'Buy this cart',
+        'delete'=>'Deleet this cart'
+    ],
+
+    'sellers'=>[
+        'title'=>'Top 5 best sellers'
+    ],
+
     'submit'=>'Create',
     'title'=>'Create product'
 ];

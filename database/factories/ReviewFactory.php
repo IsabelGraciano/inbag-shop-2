@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
-//attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
+//attributes id, description, ranking, product_id, customer_id, created_at, updated_at
 
 $factory->define(Review::class, function (Faker $faker) {
     return [

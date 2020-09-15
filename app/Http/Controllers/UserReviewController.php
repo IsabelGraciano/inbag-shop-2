@@ -3,14 +3,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Validation\Rule;
-
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Review;
 use Illuminate\Support\Facades\Auth;
-
-
 
 class UserReviewController extends Controller
 {    
@@ -19,7 +14,6 @@ class UserReviewController extends Controller
         $idC = Auth::user()->id;      
         $review = new Review();
         $review->setCustomerId($idC);
-        echo ($review);
         $review->setProductId($id);
         $review->setDescription($request->input('review'));
         $review->setRanking($request->input('rating'));
@@ -31,7 +25,7 @@ class UserReviewController extends Controller
     public function deleteReview($id)
     {
         $customer_id = Auth::user()->id;
-        $review = Review::where('id', $id)->where('customer_id', $customer_id)->delete();
+        Review::where('id', $id)->where('customer_id', $customer_id)->delete();
         return back();
     }
 }

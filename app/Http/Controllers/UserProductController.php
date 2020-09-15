@@ -1,8 +1,8 @@
 <?php
-/* Isabel Graciano Vasquez */
-namespace App\Http\Controllers;
+/* Isabel Graciano Vasquez con Product y Cart*/
+/* Santiago Moreno Rave con Wishlist */
 
-use Illuminate\Contracts\Validation\Rule;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -10,17 +10,13 @@ use App\Product;
 use App\WishList;
 use App\Item;
 use App\Order;
-use App\Http\Controllers\Input;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\ModelNotFoundException as EloquentModelNotFoundException;
-use App\Http\Controllers\DB;
 
 class UserProductController extends Controller
 {   
     public function list()
     {
         $data = [];
-        $data["title"] = "Available products";
         $data["products"] = Product::all();
 
         return view('product.userList')->with("data", $data);
@@ -61,13 +57,13 @@ class UserProductController extends Controller
             return view('product.userWishListShowAll')->with("data",$data);
         }
         return redirect()->route('product.userList');
-
     }
 
     public function saveWishList($id)
     {
         $userId=Auth::user()->id;
         $verification = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
+
         if($verification->isEmpty()){
         $wishList = new WishList();
         $wishList->setCustomerId($userId);
@@ -76,7 +72,6 @@ class UserProductController extends Controller
         return redirect()->route('product.userView',$id);
         
         }else{
-
             return back();
         }
     }
@@ -106,7 +101,6 @@ class UserProductController extends Controller
 
     public function addToCart($id, Request $request)
     {
-        $data = []; //to be sent to the view
         $quantity = $request->quantity;
         $products = $request->session()->get("products");
         $products[$id] = $quantity;
@@ -122,11 +116,33 @@ class UserProductController extends Controller
 
     public function cart(Request $request)
     {
+        $data = [];
         $products = $request->session()->get("products");
+        $precioTotal = 0;
+        $shippingCost=25000;
+
         if($products){
             $keys = array_keys($products);
             $productsModels = Product::find($keys);
             $data["products"] = $productsModels;
+
+            for($i=0; $i<count($keys); $i++){
+                $productActual = Product::find($keys[$i]);
+                $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
+                $shippingCost= $shippingCost - 1000;
+                $discount = $productActual->getDiscount();
+                $PriceWithDiscount = $precioTotal - (($precioTotal * $discount) / 100);                
+            }
+
+            if($shippingCost < 0){
+                $shippingCost = 0;
+            }
+
+            $data["shipping-cost"] = $shippingCost;
+            $data["total-cart"] = $PriceWithDiscount;
+            $data["total-order"] = $shippingCost + $PriceWithDiscount;
+            $data["discount"] = $discount;
+
             return view('product.cart')->with("data",$data);
         }
         return back();
@@ -163,13 +179,10 @@ class UserProductController extends Controller
 
             $order->setTotal($precioTotal);
             $order->setShippingCost($shippingCost);
-            
             $order->save();
 
             $request->session()->forget('products');
-            //retornar a la vista
         }
-
         return redirect()->route('product.userList');
     }
 
@@ -185,9 +198,7 @@ class UserProductController extends Controller
             array_push($productsModels,Product::findOrFail($key[$i]));
         }    
         
-        $data["title"] = "Top 5";
         $data["products"] = $productsModels;
-        
         return view('product.userBestSellers')->with("data", $data);
     }
 }

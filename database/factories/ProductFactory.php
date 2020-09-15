@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+/**Isabel Graciano Vasquez */
 
 use App\Product;
 use Faker\Generator as Faker;
@@ -16,7 +17,7 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
-//attributes id, name, description, size, discount, category, color, price, image, created_at, updated_at
+//attributes id, name, description, size, discount, category, color, price, activated, image, created_at, updated_at
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
@@ -27,6 +28,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'category' => $faker->randomElement(['Man','Woman','Kids','Accessories','Shoes']),
         'color' => $faker->colorName,
         'price' => $faker->numberBetween($min = 0, $max = 1000000),
+        'activated' => $faker->randomElement(['1','0']),
         'image' => $faker->image
     ];
 });

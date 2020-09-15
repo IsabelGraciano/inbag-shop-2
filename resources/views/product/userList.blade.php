@@ -1,7 +1,7 @@
 <!-- Isabel Graciano Vasquez -->
 
 @extends('layouts.master')
-@section("title", $data["title"])
+@section("title", __('product.userList.title'))
 
 
 @section('content')

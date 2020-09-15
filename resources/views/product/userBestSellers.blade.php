@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section("title", $data["title"])
+@section("title", __('product.sellers.title'))
 @section('content')
 <div class="row" style="margin-top:150px; margin-bottom:20px">
     <div class="col-lg-8 mx-auto">
