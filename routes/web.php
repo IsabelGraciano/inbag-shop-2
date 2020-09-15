@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
-/*Changes made by Isabel Graciano */
+/* Route for top 5 best sellers */
 Route::get('/userProduct/bestSellers','UserProductController@bestSellers')->name("product.userBestSellers");
-
 
 /* Routes for donation user */
 Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
@@ -31,6 +29,10 @@ Route::delete('/donation/userDelete/{id}', 'UserDonationController@delete')->nam
 Route::get('/admin/donation/adminList', 'AdminDonationController@list')->name("admin.donation.adminList");
 Route::get('/admin/donation/adminView/{id}', 'AdminDonationController@view')->name("admin.donation.adminView");
 
+/* Routes for Product clothing with User */
+Route::get('/userProduct/userList', 'UserProductController@list')->name("product.userList");
+Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("product.userView");
+
 /* Routes for Product clothing with Admin */
 Route::get('/product/list', 'ProductController@list')->name("product.list");
 Route::get('/admin/product', 'AdminProductController@product')->name("admin.product.adminOptions");
@@ -40,35 +42,24 @@ Route::get('/admin/product/adminList', 'AdminProductController@list')->name("adm
 Route::get('/admin/product/adminView/{id}', 'AdminProductController@view')->name("admin.product.adminView");
 Route::delete('/admin/product/adminDelete/{id}', 'AdminProductController@delete')->name("admin.product.adminDelete");
 
-/* Routes for Product clothing with User */
-Route::get('/userProduct/userList', 'UserProductController@list')->name("product.userList");
-Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("product.userView");
-
 /*Routes for login/register of User */
 Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index"); //ADMIN
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Routes for reviews
+/*Routes for reviews*/
 Route::post('/userProduct/userSave/{id}', 'UserReviewController@saveReview')->name("product.userSaveReview");  
 Route::delete('/userProduct/userDelete/{id}', 'UserReviewController@deleteReview')->name("product.userDeleteReview");
 
-//Routes for cart
+/**Routes for cart */
 Route::post('/cart/addToCart/{id}', 'UserProductController@addToCart')->name("product.addToCart");
 Route::delete('/cart/remove', 'UserProductController@removeCart')->name("product.removeCart");
 Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
 Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
 
-//Routes for wishlist
+/**Routes for wishlist */
 Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishListSave");
 Route::get('/userProduct/wishListShowAll', 'UserProductController@userWishListShowAll')->name("product.userWishListShowAll");
 Route::get('/userProduct/wishlistShowOne/{id}', 'UserProductController@wishlistShowOne')->name("product.wishlistShowOne");
 Route::delete('/userProduct/wishListDelete/{id}', 'UserProductController@delete')->name("product.wishListDelete");
-
-//Routes for order
-Route::get('/order/show/{id}', 'UserOrderController@show')->name("order.show");
-Route::get('/order/show', 'UserOrderController@showAll')->name("order.showAll");
-Route::get('/order/create', 'UserOrderController@create')->name("order.create");
-Route::post('/order/save', 'UserOrderController@save')->name("order.save");
-Route::delete('/order/{id}', 'UserOrderController@delete')->name("order.delete");

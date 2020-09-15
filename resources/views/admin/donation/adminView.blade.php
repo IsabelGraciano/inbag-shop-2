@@ -7,15 +7,7 @@
 <!-- Portfolio Section-->
 <section class="page-section donation" id="donation">
     <div class="container">
-        <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-3 bt-5">{{ $data["donation"]->getName() }}</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div> 
-
+        
         <b>{{__('donation.view.name')}}</b> {{ $data["donation"]->getName() }}<br />
         <b>{{__('donation.view.size')}}</b> {{ $data["donation"]->getSize() }}<br />
         <b>{{__('donation.view.usetime')}}</b> {{ $data["donation"]->getUsetime() }}<br />

@@ -1,3 +1,5 @@
+<!-- Camila Barona -->
+
 @extends('layouts.master')
 @section("title", __('product.sellers.title'))
 @section('content')
