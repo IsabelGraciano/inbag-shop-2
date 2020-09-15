@@ -52,17 +52,23 @@ return [
         'delete'=>'Delete this product',
         'Quantity' => 'Quantity: ',
         'CartAdd' => 'Add to cart',
-        'Wishlist' => 'Add to your wishlist ',
+        'Wishlist' => 'Add to your wishlist',
         'Review' => 'Reviews: ',
         'sendComment' => 'Send comment',
         'Star' => 'Star comment',
         'deleteWishlist' => ' Delete product',
-        'sellers' => 'Go to best sellers'
+        'sellers' => 'Go to best sellers',
+        'notice' => 'Notice!',
+        'CartAddBtn' => 'Do you want to add this item to your cart?',
+        'confirm' => 'Confirm',
+        'cartDeleteBtn' => 'Do you want to delete all the items from your cart?',
+        'cartDelete' => 'Delecte all the products',
+        'buy'=>'Buy',
+        'summary'=>'Purchase summary'
+   
     ],
 
-
     //For the user
-
     'userList'=>[
         'title'=>'Available products'
     ],
@@ -72,10 +78,10 @@ return [
         'price'=>'Price: ',
         'shipping'=>'Shipping cost: ',
         'order'=>'Orden price: ',
-        'total'=>'Total price: ',
-        'discount'=>'Discount',
+        'total'=>'Total price including discount: ',
         'buy'=>'Buy this cart',
-        'delete'=>'Deleet this cart'
+        'delete'=>'Delete this cart',
+        'total1'=>'Total price: '
     ],
 
     'sellers'=>[

@@ -41,7 +41,9 @@ return [
         'description'=>'Description:',
         'delivery'=>'Delivery type:',
         'image'=>'Image:',
-        'delete'=>'Delete this donation'
+        'delete'=>'Delete this donation',
+        'deleteBtn'=>'Do you want to delete this product from your donations?',
+        
     ],
 
     'save'=>[

@@ -97,7 +97,7 @@ class Donation extends Model
         $this->attributes['image'] = $image;
     }
 
-    public function user(){
+    public function customer(){
         return $this->belongsTo(User::class);
     }
 

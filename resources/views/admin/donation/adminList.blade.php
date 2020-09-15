@@ -5,7 +5,7 @@
 @section('content')
 <!-- Portfolio Section-->
 <section class="page-section donation" id="donation">
-    <div class="row" style="margin-top:20px; margin-bottom:20px">
+    <div class="row space-column">
         <div class="col-lg-8 mx-auto">
             <!-- List group-->
             <ul class="list-group shadow">
@@ -15,7 +15,7 @@
                     <!-- Custom content-->
                     <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                         <div class="media-body order-2 order-lg-1">
-                            <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('donation.userViewdonation',['id'=> $donation->getId()]) }}">{{ $donation->getName() }}</a></h5>
+                            <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('admin.donation.adminView',['id'=> $donation->getId()]) }}">{{ $donation->getName() }}</a></h5>
                             
                             <div class="d-flex align-items-center justify-content-between mt-1">
                                 

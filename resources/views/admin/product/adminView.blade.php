@@ -20,7 +20,6 @@
                         <div class="media-body order-2 order-lg-1">
                             <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ $data["product"]->getName() }}</a></h5>
                             
-                            
                             <div class="d-flex align-items-center justify-content-between mt-1">
                                 
                                 <div class="ml-5">
@@ -32,20 +31,21 @@
                                 <b> <h6 class="font-weight-bold my-2">{{__('product.view.price')}} {{ $data["product"]->getPrice() }}</h6> <br />
                                 </div>
                                
-                                <div>
-                                    <form action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}" method="POST">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-xl btn-outline-dark mt-0"><i class="far fa-trash-alt"></i> {{__('product.view.delete')}} </button>
-                                        </div>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
                         </div><img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
+                    <div class="text-center">
+                        <form action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}" method="POST">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <div class="form-row">
+                            <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-xl btn-outline-dark mt-0"><i class="far fa-trash-alt"></i> {{__('product.view.delete')}} </button>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </li> <!-- End -->
             </ul> <!-- End -->
         </div>

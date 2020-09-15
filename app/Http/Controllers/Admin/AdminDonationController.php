@@ -17,8 +17,7 @@ class AdminDonationController extends Controller
 
     public function view($id)
     {
-        $data = []; //to be sent to the view      
-
+        $data = []; //to be sent to the view
         try{
             $donation = Donation::findOrFail($id);
         }catch(ModelNotFoundException $e){

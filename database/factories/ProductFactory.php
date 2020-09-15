@@ -28,7 +28,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'category' => $faker->randomElement(['Man','Woman','Kids','Accessories','Shoes']),
         'color' => $faker->colorName,
         'price' => $faker->numberBetween($min = 0, $max = 1000000),
-        'activated' => $faker->randomElement(['1','0']),
-        'image' => $faker->image
+        'image' => $faker->randomElement(['p1.jpg', 'p2.jpg', 'p3.jpg', 'p4.jpg', 'p5.jpg', 'p6.jpg','p7.jpg', 'p8.jpg', 'p9.jpg',
+                                          'p10.jpg', 'p12.jpg', 'p13.jpg', 'p14.jpg', 'p15.jpg','p16.jpg', 'p17.jpg', 'p18.jpg',
+                                          'p19.jpg', 'p20.jpg', 'p21.jpg', 'p22.jpg', 'p23.jpg', 'p24.jpg','p25.jpg'])
     ];
 });

@@ -10410,3 +10410,9 @@ p {
     width: 50rem;
 }
 
+.text-color{
+
+    color: #28a745;
+    margin-bottom: 0;
+    line-height: 1.5;
+}

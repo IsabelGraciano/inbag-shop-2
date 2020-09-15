@@ -119,7 +119,7 @@ class UserProductController extends Controller
         $data = [];
         $products = $request->session()->get("products");
         $precioTotal = 0;
-        $shippingCost=25000;
+        $shippingCost=10000;
 
         if($products){
             $keys = array_keys($products);
@@ -141,7 +141,7 @@ class UserProductController extends Controller
             $data["shipping-cost"] = $shippingCost;
             $data["total-cart"] = $PriceWithDiscount;
             $data["total-order"] = $shippingCost + $PriceWithDiscount;
-            $data["discount"] = $discount;
+            $data["total1"] = $shippingCost + $precioTotal;
 
             return view('product.cart')->with("data",$data);
         }

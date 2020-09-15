@@ -6,5 +6,6 @@ return [
     'raiting'=>'Raiting: ',
     'insert'=>'Insert your review here',
     'ranking'=>'Ranking',
-    'send'=>'Send'
+    'send'=>'Send',
+    'WishlistBtn' => 'Do you want to add this item to your wishlist?'
 ];
