@@ -48,21 +48,21 @@ class AdminProductController extends Controller
     public function save(Request $request)
     {
         Product::validate($request);
+        $product = new product();
 
         if($request->hasFile('file')){
             $file = $request->file('file');
             $nameImage = time().$file->getClientOriginalName();
-            $file->move(public_path().'/img/',$nameImage);
+            $file->move(public_path().'/img/', $nameImage);
+            $product->setImage($nameImage);
         }
 
-        $product = new product();
         $product->setName($request->name);
         $product->setSize($request->size);
         $product->setCategory($request->category);
         $product->setDescription($request->description);
         $product->setColor($request->color);
         $product->setPrice($request->price);
-        $product->setImage($nameImage);
         $product->save();
 
         return back();
