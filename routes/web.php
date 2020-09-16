@@ -25,9 +25,9 @@ Route::get('/donation/userList', 'UserDonationController@list')->name("donation.
 Route::get('/donation/userView/{id}', 'UserDonationController@viewdonation')->name("donation.userViewdonation");
 Route::delete('/donation/userDelete/{id}', 'UserDonationController@delete')->name("donation.userDelete");
 
-/* Routes for donation admin */
-Route::get('/admin/donation/adminList', 'AdminDonationController@list')->name("admin.donation.adminList");
-Route::get('/admin/donation/adminView/{id}', 'AdminDonationController@view')->name("admin.donation.adminView");
+//* Routes for donation admin */
+Route::get('/admin/donation/adminList', 'Admin\AdminDonationController@list')->name("admin.donation.adminList");
+Route::get('/admin/donation/adminView/{id}', 'Admin\AdminDonationController@view')->name("admin.donation.adminView");
 
 /* Routes for Product clothing with User */
 Route::get('/userProduct/userList', 'UserProductController@list')->name("product.userList");
@@ -35,12 +35,12 @@ Route::get('/userProduct/userView/{id}', 'UserProductController@view')->name("pr
 
 /* Routes for Product clothing with Admin */
 Route::get('/product/list', 'ProductController@list')->name("product.list");
-Route::get('/admin/product', 'AdminProductController@product')->name("admin.product.adminOptions");
-Route::get('/admin/product/adminCreate', 'AdminProductController@create')->name("admin.product.adminCreate");
-Route::post('/admin/product/adminSave', 'AdminProductController@save')->name("admin.product.adminSave");
-Route::get('/admin/product/adminList', 'AdminProductController@list')->name("admin.product.adminList");
-Route::get('/admin/product/adminView/{id}', 'AdminProductController@view')->name("admin.product.adminView");
-Route::delete('/admin/product/adminDelete/{id}', 'AdminProductController@delete')->name("admin.product.adminDelete");
+Route::get('/admin/product', 'Admin\AdminProductController@product')->name("admin.product.adminOptions");
+Route::get('/admin/product/adminCreate', 'Admin\AdminProductController@create')->name("admin.product.adminCreate");
+Route::post('/admin/product/adminSave', 'Admin\AdminProductController@save')->name("admin.product.adminSave");
+Route::get('/admin/product/adminList', 'Admin\AdminProductController@list')->name("admin.product.adminList");
+Route::get('/admin/product/adminView/{id}', 'Admin\AdminProductController@view')->name("admin.product.adminView");
+Route::delete('/admin/product/adminDelete/{id}', 'Admin\AdminProductController@delete')->name("admin.product.adminDelete");
 
 /*Routes for login/register of User */
 Route::get('/', 'HomeController@index')->name("home.index");

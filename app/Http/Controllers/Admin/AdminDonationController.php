@@ -1,7 +1,9 @@
 <?php
 /* Isabel Graciano Vasquez */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Donation;
 
