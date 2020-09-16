@@ -43,6 +43,7 @@ return [
         'image'=>'Image:',
         'delete'=>'Delete this donation',
         'deleteBtn'=>'Do you want to delete this product from your donations?',
+        'nameCustomer'=>'Name of the customer'
         
     ],
 
