@@ -52,7 +52,7 @@ class AdminProductController extends Controller
         if($request->hasFile('file')){
             $file = $request->file('file');
             $nameImage = time().$file->getClientOriginalName();
-            $file->move(public_path().'/productImages/',$nameImage);
+            $file->move(public_path().'/img/',$nameImage);
         }
 
         $product = new product();

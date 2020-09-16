@@ -57,7 +57,7 @@ class UserDonationController extends Controller
         if($request->hasFile('file')){
             $file = $request->file('file');
             $nameImage = time().$file->getClientOriginalName();
-            $file->move(public_path().'/donationImages/',$nameImage);
+            $file->move(public_path().'/img/',$nameImage);
         }
 
         $donation = new Donation();
