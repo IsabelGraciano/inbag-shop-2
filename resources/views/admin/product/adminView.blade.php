@@ -31,7 +31,7 @@
                                 </div>
                                
                             </div>
-                        </div><img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        </div><img src="{{ asset('/img/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
                     <div class="text-center">
                         <form action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}" method="POST">

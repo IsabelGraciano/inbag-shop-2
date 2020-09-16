@@ -29,7 +29,7 @@
                 </div>
                 
                 <p> 
-                    <img src="{{ asset('/donationImages/' . $data["donation"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    <img src="{{ asset('/img/' . $data["donation"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
 
             </li>
         </ul>

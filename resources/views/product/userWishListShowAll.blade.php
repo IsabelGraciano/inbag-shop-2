@@ -23,7 +23,7 @@
                                 
                             </div>
                         </div>
-                        <img src="{{ asset('/productImages/' . $product->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        <img src="{{ asset('/img/' . $product->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
                 </li> <!-- End -->
                 @endforeach

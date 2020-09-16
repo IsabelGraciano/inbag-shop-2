@@ -20,7 +20,7 @@
                             <div class="d-flex align-items-center justify-content-between mt-1">
                                 
                             </div>
-                        </div><img src="{{ asset('/donationImages/' . $donation->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        </div><img src="{{ asset('/img/' . $donation->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
                 </li> <!-- End -->
                 @endforeach

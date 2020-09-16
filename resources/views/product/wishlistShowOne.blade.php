@@ -24,7 +24,7 @@
                 </div>
                 <p>
                     <p>
-                        <img src="{{ asset('/productImages/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        <img src="{{ asset('/img/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
 
 
                         <div class="col text-center">

@@ -38,7 +38,7 @@
                                 <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
                             </ul>
                         </div>
-                    </div><img src="{{ asset('/productImages/' . $product->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                    </div><img src="{{ asset('/img/' . $product->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                 </div> <!-- End -->
             </li> <!-- End -->
             @endforeach
