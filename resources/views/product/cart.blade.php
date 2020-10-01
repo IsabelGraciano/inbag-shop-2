@@ -17,7 +17,6 @@
                                 <b>
                                     <h6 class="font-weight-bold my-2"> {{ __('product.cart.quantity') }} {{ Session::get('products')[$product->getId()] }}</h6>
                                     <h6 class="card-text"> {{ __('product.cart.price') }} {{$product->getPrice()}}</h6></br>
-
                             </div>
                         </div>
                     </div>
@@ -30,7 +29,7 @@
             <form action="{{ route('product.buy') }}" method="POST"> </br>
                 @csrf
 
-                <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal1">{{ __('product.cart.buy') }}</button>
+                <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal1">{{ __('product.cart.buy') }}</button>                
                 <div class="modal" tabindex="-1" role="dialog" id="myModal1">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -61,6 +60,8 @@
                 {{ method_field('DELETE') }}
 
                 <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal2">{{ __('product.view.cartDelete') }}</button>
+                <a href="{{ route('product.cartlist') }}"><button type="button" class="btn btn-outline-success">pruebaaa</button></a>
+               
                 <div class="modal" tabindex="-1" role="dialog" id="myModal2">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -75,7 +76,6 @@
 
                             <div class="modal-footer">
                                 <button class="btn btn-outline-success mt-5" class="col text-center" type="submit">{{ __('product.view.confirm') }}</button>
-
                             </div>
                         </div>
                     </div>

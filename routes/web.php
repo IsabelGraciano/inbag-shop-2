@@ -57,6 +57,7 @@ Route::post('/cart/addToCart/{id}', 'UserProductController@addToCart')->name("pr
 Route::delete('/cart/remove', 'UserProductController@removeCart')->name("product.removeCart");
 Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
 Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
+Route::get('/cart/list', 'UserProductController@cartlist')->name("product.cartlist");
 
 /**Routes for wishlist */
 Route::get('/userProduct/wishList/{id}', 'UserProductController@saveWishList')->name("product.userWishListSave");

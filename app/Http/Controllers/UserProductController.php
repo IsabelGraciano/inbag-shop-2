@@ -150,6 +150,40 @@ class UserProductController extends Controller
         return back();
     }
 
+    public function cartlist(){
+        $customer_id= Auth::user()->id;
+        $data = [];
+        $items=[];
+        $products = [];
+
+        $list = Order::all()->where('customer_id',$customer_id);
+        $list_aux = json_decode($list,true);
+
+        $cart =array_values($list_aux);
+        for ($i = 0; $i <= sizeof($cart)-1; $i++) {
+            $item = Item::all()->where('order_id',$cart[$i]['id']);
+            $item_aux = json_decode($item,true);
+
+            for($j = 0; $j <= sizeof($item_aux)-1; $j++){
+                $products = Product::all()->where('order_id',$cart[$i]['id']);
+                $products_aux = json_decode($products,true);
+            }
+
+            $var = array_merge($cart[$i], $item_aux);
+            array_push($items, $var);
+        }
+
+        dd($item);
+
+        //$product = Product::all()->where('id',$item[$i]['product_id']);
+        //$product_aux = json_decode($product,true);
+
+        //dd($items);
+
+        //$orders = array_merge($cart, $item);
+        //$data["orders"] = $orders;
+    }
+
     public function buy(Request $request)
     {
         $order = new Order();

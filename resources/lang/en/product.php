@@ -60,10 +60,10 @@ return [
         'CartAddBtn' => 'Do you want to add this item to your cart?',
         'confirm' => 'Confirm',
         'cartDeleteBtn' => 'Do you want to delete all the items from your cart?',
-        'cartDelete' => 'Delecte all the products',
+        'cartDelete' => 'Delete all the products',
         'buy'=>'Buy',
-        'summary'=>'Purchase summary'
-   
+        'summary'=>'Purchase summary',
+        'listcart'=>'View you orders',
     ],
 
     //For the user
