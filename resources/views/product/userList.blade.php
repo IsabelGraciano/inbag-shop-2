@@ -1,8 +1,6 @@
 <!-- Isabel Graciano Vasquez -->
-
 @extends('layouts.master')
 @section("title", __('product.userList.title'))
-
 
 @section('content')
 <div class="space-column">
@@ -12,7 +10,6 @@
             {{__('product.view.sellers')}}
         </a>
     </div>
-
 
     <div class="col-lg-8 mx-auto">
         <!-- List group-->

@@ -22,16 +22,39 @@ class UserProductController extends Controller
         return view('product.userList')->with("data", $data);
     }
 
-    public function view($id)
+    /*
+    public function wishlistShowOne($id)
     {
         $data = []; //to be sent to the view      
 
         try{
             $product = Product::findOrFail($id);
         }catch(ModelNotFoundException $e){
+            return redirect()->route('product.userWishListShowAll');
+        }
+
+        $data["product"] = $product;
+        $data["title"] = $product->getName();
+        
+        return view('product.wishlistShowOne')->with("data",$data);
+    }
+    */
+
+
+    public function view($id)
+    {
+        $data = []; //to be sent to the view
+
+        $userId=Auth::user()->id;
+        $wishlist = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
+        
+        try{
+            $product = Product::findOrFail($id);
+        }catch(ModelNotFoundException $e){
             return redirect()->route('product.userList');
         }
 
+        $data["wishlist"] = $wishlist;
         $data["product"] = $product;
         $data["title"] = $product->getName();
         
@@ -65,31 +88,15 @@ class UserProductController extends Controller
         $verification = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
 
         if($verification->isEmpty()){
-        $wishList = new WishList();
-        $wishList->setCustomerId($userId);
-        $wishList->setProductId($id);
-        $wishList->save();
-        return redirect()->route('product.userView',$id);
+            $wishList = new WishList();
+            $wishList->setCustomerId($userId);
+            $wishList->setProductId($id);
+            $wishList->save();
+            return redirect()->route('product.userView',$id);
         
         }else{
             return back();
         }
-    }
-
-    public function wishlistShowOne($id)
-    {
-        $data = []; //to be sent to the view      
-
-        try{
-            $product = Product::findOrFail($id);
-        }catch(ModelNotFoundException $e){
-            return redirect()->route('product.userWishListShowAll');
-        }
-
-        $data["product"] = $product;
-        $data["title"] = $product->getName();
-        
-        return view('product.wishlistShowOne')->with("data",$data);
     }
 
     public function delete($id)

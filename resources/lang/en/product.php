@@ -54,7 +54,7 @@ return [
         'Review' => 'Reviews: ',
         'sendComment' => 'Send comment',
         'Star' => 'Star comment',
-        'deleteWishlist' => ' Delete product',
+        'deleteWishlist' => ' Delete product from your wishlist',
         'sellers' => 'Go to best sellers',
         'notice' => 'Notice!',
         'CartAddBtn' => 'Do you want to add this item to your cart?',

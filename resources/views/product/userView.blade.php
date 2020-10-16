@@ -77,7 +77,40 @@
                                     </form>
                                 </div>
 
-
+                                @if(!$data['wishlist']->isEmpty())
+                                <div>
+                                    <form action="{{ route('product.wishListDelete', ['id'=> $data['product']['id']]) }}" method="POST">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+        
+        
+                                                <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal2">{{ __('product.view.deleteWishlist') }}</button>
+                                                <div class="modal" tabindex="-1" role="dialog" id="myModal2">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="text-color">{{__('product.view.notice')}}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+         
+                                                            <h2 class="mr-5 ml-5 mt-5 text-center">{{ __('product.view.CartAddBtn') }}</h2>
+        
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-outline-success mt-5">{{ __('product.view.confirm') }}</button>
+        
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>        
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                @else 
                                 <div>
                                     <form action="{{ route('product.userWishListSave', ['id'=> $data['product']->getId()])}}" method="GET">
                                         @csrf
@@ -110,6 +143,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                @endif
 
 
                             </div>
