@@ -2,10 +2,10 @@
 /**Isabel Cristina Graciano  */
 
 return [
-    'title'=>'Wishlist',
+    'title'=>'Lista de deseos',
     'raiting'=>'Raiting: ',
-    'insert'=>'Insert your review here',
+    'insert'=>'Insertar comentario',
     'ranking'=>'Ranking',
-    'send'=>'Send',
-    'WishlistBtn' => 'Do you want to add this item to your wishlist?'
+    'send'=>'Enviar',
+    'WishlistBtn' => '¿Quieres añadir este producto a tu lista de deseos?'
 ];
