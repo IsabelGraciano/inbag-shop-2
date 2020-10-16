@@ -2,9 +2,9 @@
 /**Isabel Cristina Graciano  */
 
 return [
-    'give'=>'Give us your opinion',
+    'give'=>'Danos tu opinión',
     'raiting'=>'Rating: ',
-    'insert'=>'Insert your review here',
+    'insert'=>'Inserta tu comentario aquí',
     'ranking'=>'Ranking',
-    'send'=>'Send'
+    'send'=>'Enviar'
 ];
