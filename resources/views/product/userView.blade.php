@@ -97,7 +97,7 @@
                                                                 </button>
                                                             </div>
          
-                                                            <h2 class="mr-5 ml-5 mt-5 text-center">{{ __('product.view.CartAddBtn') }}</h2>
+                                                            <h2 class="mr-5 ml-5 mt-5 text-center">{{ __('product.view.whishlistDelete') }}</h2>
         
                                                             <div class="modal-footer">
                                                                 <button type="submit" class="btn btn-outline-success mt-5">{{ __('product.view.confirm') }}</button>

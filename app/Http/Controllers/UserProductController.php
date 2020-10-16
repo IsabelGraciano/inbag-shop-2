@@ -47,6 +47,7 @@ class UserProductController extends Controller
 
         $userId=Auth::user()->id;
         $wishlist = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
+
         
         try{
             $product = Product::findOrFail($id);
@@ -103,7 +104,7 @@ class UserProductController extends Controller
     {
         $customer_id= Auth::user()->id;
         WishList::where('product_id', $id)->where('customer_id',$customer_id)->delete();
-        return redirect()->route('product.userWishListShowAll');
+        return back();
     }
 
     public function addToCart($id, Request $request)

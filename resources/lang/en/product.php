@@ -61,6 +61,7 @@ return [
         'confirm' => 'Confirm',
         'cartDeleteBtn' => 'Do you want to delete all the items from your cart?',
         'cartDelete' => 'Delete all the products',
+        'whishlistDelete' => 'Do you want to delete this item from your wishlist?',
         'buy'=>'Buy',
         'summary'=>'Purchase summary',
         'listcart'=>'View you orders',
