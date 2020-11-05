@@ -6,9 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class AdminProductController extends Controller
 {   
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->getRole() == "client") {
+                return redirect()->route('home.index');
+            }
+
+            return $next($request);
+        });
+    }
+    
     public function product($language){
         return view('admin.product.adminOptions');
     }

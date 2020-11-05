@@ -6,9 +6,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Donation;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminDonationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->getRole() == "client") {
+                return redirect()->route('home.index');
+            }
+
+            return $next($request);
+        });
+    }
+
     public function list($language)
     {
         $data = []; 

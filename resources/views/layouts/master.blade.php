@@ -54,6 +54,10 @@
                                 {{ __('Logout') }}
                             </a>
 
+                            <a class="dropdown-item"  href="{{ route('auth.register', app()->getLocale()) }}">
+                                {{ __('Edit profile') }}
+                            </a>
+
                             <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" class="d-none">
                                 @csrf
                             </form>
