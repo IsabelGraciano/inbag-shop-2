@@ -34,7 +34,7 @@
                         </div><img src="{{ asset('/img/' . $data["product"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                     </div> <!-- End -->
                     <div class="text-center">
-                        <form action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id']]) }}" method="POST">
+                        <form action="{{ route('admin.product.adminDelete', ['id'=> $data['product']['id'], app()->getLocale()]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
                             <div class="form-row">

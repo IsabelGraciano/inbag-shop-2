@@ -18,7 +18,7 @@
                     <!-- Custom content-->
                     <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                         <div class="media-body order-2 order-lg-1">
-                            <h5 class="mt-0 font-weight-bold mb-2 ml-4"><a href="{{ route('product.userView',['id'=> $product->getId()]) }}">{{ $product->getName()  }}</a></h5>
+                            <h5 class="mt-0 font-weight-bold mb-2 ml-4"><a href="{{ route('product.userView',['id'=> $product->getId(), app()->getLocale()]) }}">{{ $product->getName()  }}</a></h5>
                             <div class="d-flex align-items-center justify-content-between mt-1">
                                 
                             </div>

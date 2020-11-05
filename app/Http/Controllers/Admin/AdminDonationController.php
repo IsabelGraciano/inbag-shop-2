@@ -9,7 +9,7 @@ use App\Donation;
 
 class AdminDonationController extends Controller
 {
-    public function list()
+    public function list($language)
     {
         $data = []; 
         $data["donations"] = Donation::all();
@@ -17,13 +17,13 @@ class AdminDonationController extends Controller
         return view('admin.donation.adminList')->with("data",$data);
     }
 
-    public function view($id)
+    public function view($language, $id)
     {
         $data = []; //to be sent to the view
         try{
             $donation = Donation::findOrFail($id);
         }catch(ModelNotFoundException $e){
-            return redirect()->route('admin.donation.adminList');
+            return redirect()->route('admin.donation.adminList', ['language' => $language]);
         }
 
         $data["donation"] = $donation;               

@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserDonationController extends Controller
 {   
-    public function options(){
+    public function options($language){
         return view('donation.userOptions');
     }
 
-    public function list()
+    public function list($language)
     {
         $customer_id = Auth::user()->id;
         $data = [];
@@ -24,7 +24,7 @@ class UserDonationController extends Controller
         return view('donation.userList')->with("data", $data);
     }
 
-    public function create()
+    public function create($language)
     {
         $data = [];
         $data["donation"] = Donation::all();
@@ -32,7 +32,7 @@ class UserDonationController extends Controller
         return view('donation.userCreate')->with("data",$data);
     }
 
-    public function viewdonation($id)
+    public function viewdonation($language, $id)
     {
         $data = []; //to be sent to the view      
 
@@ -42,11 +42,12 @@ class UserDonationController extends Controller
             return redirect()->route('donation.userList');
         }
 
-        $data["donation"] = $donation;               
+        $data["donation"] = $donation;
+                    
         return view('donation.userViewdonation')->with("data",$data);
     }
 
-    public function save(Request $request)
+    public function save(Request $request,$language)
     {
         
         $data = [];
@@ -74,10 +75,10 @@ class UserDonationController extends Controller
         return view('donation.userSave')->with("data", $data);
     }
 
-    public function delete($id)
+    public function delete($language, $id)
     {
         $donationDelete = Donation::findOrFail($id);
         $donationDelete->delete();
-        return redirect()->route('donation.userList');
+        return redirect()->route('donation.userList', ['language' => $language]);
     }
 }

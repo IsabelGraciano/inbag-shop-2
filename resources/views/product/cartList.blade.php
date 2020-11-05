@@ -6,42 +6,32 @@
 
 @section('content')
 <div class="space-column">
-    <div class="text-center mt-0 mb-5">
-        <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userBestSellers') }}">
-            <i class="fas fa-star"></i>
-            {{__('product.view.sellers')}}
-        </a>
-    </div>
 
     <div class="col-lg-8 mx-auto">
         <!-- List group-->
-        <ul class="list-group shadow">
-            @foreach($data["order"] as $orders)
+
+        <ul class="mt-0 font-weight-bold mb-2 ml-5">
+       
+            @for($i=1; $i<= count($data["orders"]); $i++)
+        
             <!-- list group item-->
             <li class="list-group-item">
                 <!-- Custom content-->
-                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                    <div class="media-body order-2 order-lg-1">
-                        @if(!Auth::guest())
-                        <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('product.userView',['id'=> $product->getId()]) }}">{{ $product->getName() }}</a></h5>
-                        @else 
-                        <h5 class="mt-0 font-weight-bold mb-2">Order</h5>
-                        @endif
-                        <div class="d-flex align-items-center justify-content-between mt-1">
-                            <h6 class="font-weight-bold my-2">{{ $product->getPrice() }}</h6>
+                <div class="media align-items-lg-center flex-lg-row p-3" >
+                <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ __('product.orders.order') }}{{$data["orders"][$i-1]["id"]}}</a></h5>
+                <div class="d-flex align-items-center justify-content-between mt-1">
                             <ul class="list-inline small">
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                             <h6 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ __('product.orders.total') }} {{$data["orders"][$i-1]["total"]}}</a></h6>
+                             <h6 class="mt-0 font-weight-bold mb-2 ml-5"><a>{{ __('product.orders.date') }} {{$data["dates"][$i-1]}}</a></h6>
                             </ul>
-                        </div>
-                    </div><img src="{{ asset('/img/' . $product->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                        <b class="mt-0 font-weight-bold mb-2 ml-5">
+                        <a method="POST" href="{{ route('product.orderView',['id'=> $data['orders'][$i-1]['id'], app()->getLocale()]) }}​​"> {{ __('product.orders.details') }} ​​​​​</a><br />
+                        </b>
                 </div> <!-- End -->
             </li> <!-- End -->
-            @endforeach
+            @endfor
         </ul> <!-- End -->
+      
     </div>
 </div>
 

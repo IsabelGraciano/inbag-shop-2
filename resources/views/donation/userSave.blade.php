@@ -17,7 +17,7 @@
         </div>  
         
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userCreate') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userCreate', app()->getLocale()) }}">
                 <i class="fas fa-chevron-circle-left"></i>
                 {{__('donation.save.text')}}
             </a>

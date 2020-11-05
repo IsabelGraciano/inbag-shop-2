@@ -1,9 +1,10 @@
 <?php
-/* Isabel Graciano Vasquez con Product y Cart*/
+/* Isabel Graciano Vasquez con Product, pdf y Cart*/
 /* Santiago Moreno Rave con Wishlist */
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Product;
@@ -12,9 +13,14 @@ use App\Item;
 use App\Order;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserProductController extends Controller
 {   
-    public function list()
+    public $precioTotal1 = NULL;
+    public $shippingCost1 = NULL;
+    public $discount1 = NULL;
+
+    public function list($language)
     {
         $data = [];
         $data["products"] = Product::all();
@@ -22,26 +28,7 @@ class UserProductController extends Controller
         return view('product.userList')->with("data", $data);
     }
 
-    /*
-    public function wishlistShowOne($id)
-    {
-        $data = []; //to be sent to the view      
-
-        try{
-            $product = Product::findOrFail($id);
-        }catch(ModelNotFoundException $e){
-            return redirect()->route('product.userWishListShowAll');
-        }
-
-        $data["product"] = $product;
-        $data["title"] = $product->getName();
-        
-        return view('product.wishlistShowOne')->with("data",$data);
-    }
-    */
-
-
-    public function view($id)
+    public function view($language, $id)
     {
         $data = []; //to be sent to the view
 
@@ -52,7 +39,7 @@ class UserProductController extends Controller
         try{
             $product = Product::findOrFail($id);
         }catch(ModelNotFoundException $e){
-            return redirect()->route('product.userList');
+            return redirect()->route('product.userList', ['language' => $language]);
         }
 
         $data["wishlist"] = $wishlist;
@@ -62,7 +49,7 @@ class UserProductController extends Controller
         return view('product.userView')->with("data",$data);
     }
 
-    public function userWishListShowAll()
+    public function userWishListShowAll($language)
     { 
         $customer_id= Auth::user()->id;
         $data = [];
@@ -80,10 +67,10 @@ class UserProductController extends Controller
             $data["products"] = $productsModels;
             return view('product.userWishListShowAll')->with("data",$data);
         }
-        return redirect()->route('product.userList');
+        return redirect()->route('product.userList', ['language' => $language]);
     }
 
-    public function saveWishList($id)
+    public function saveWishList($language, $id)
     {
         $userId=Auth::user()->id;
         $verification = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
@@ -93,21 +80,21 @@ class UserProductController extends Controller
             $wishList->setCustomerId($userId);
             $wishList->setProductId($id);
             $wishList->save();
-            return redirect()->route('product.userView',$id);
-        
+            return redirect()->route('product.userView', ['language' => $language, $id]);
+
         }else{
             return back();
         }
     }
 
-    public function delete($id)
+    public function delete($language, $id)
     {
         $customer_id= Auth::user()->id;
         WishList::where('product_id', $id)->where('customer_id',$customer_id)->delete();
         return back();
     }
 
-    public function addToCart($id, Request $request)
+    public function addToCart($language, $id, Request $request)
     {
         $quantity = $request->quantity;
         $products = $request->session()->get("products");
@@ -116,18 +103,20 @@ class UserProductController extends Controller
         return back();
     }
 
-    public function removeCart(Request $request)
+    public function removeCart($language, Request $request)
     {
         $request->session()->forget('products');
-        return redirect()->route('product.userList');
+        return redirect()->route('product.userList', ['language' => $language]);
     }
 
-    public function cart(Request $request)
+    public function cart(Request $request, $language)
     {
+        //global $precioTotal1, $shippingCost1, $discount1;
+
         $data = [];
         $products = $request->session()->get("products");
-        $precioTotal = 0;
-        $shippingCost=10000;
+        $this->precioTotal1 = 0;
+        $this->shippingCost1=10000;
 
         if($products){
             $keys = array_keys($products);
@@ -136,63 +125,74 @@ class UserProductController extends Controller
 
             for($i=0; $i<count($keys); $i++){
                 $productActual = Product::find($keys[$i]);
-                $precioTotal = $precioTotal + $productActual->getPrice()*$products[$keys[$i]];
-                $shippingCost= $shippingCost - 1000;
+                $this->precioTotal1 = $this->precioTotal1 + $productActual->getPrice()*$products[$keys[$i]];
+                $this->shippingCost1= $this->shippingCost1 - 1000;
             }
 
-            $discount = 0;
-            if($precioTotal < 300000){
-                $precioTotal = ($precioTotal - (($precioTotal * 15) / 100));
-                $discount = 15;
+            $this->discount1 = 0;
+            if($this->precioTotal1 < 300000){
+                $this->precioTotal1 = ($this->precioTotal1 - (($this->precioTotal1 * 15) / 100));
+                $this->discount1 = 15;
             }
             else{
-                $precioTotal = ($precioTotal - (($precioTotal * 25) / 100));
-                $discount = 25;
+                $this->precioTotal1 = ($this->precioTotal1 - (($this->precioTotal1 * 25) / 100));
+                $this->discount1 = 25;
             }
 
-            $data["shipping-cost"] = $shippingCost;
-            $data["total1"] = $shippingCost + $precioTotal; 
-            $data["discount"] = $discount;
+            $data["shipping-cost"] = $this->shippingCost1;
+            $data["total1"] = $this->shippingCost1 + $this->precioTotal1; 
+            $data["discount"] = $this->discount1;
             return view('product.cart')->with("data",$data);
         }
         return back();
     }
 
-    public function cartlist(){
+    public function cartList($language){
         $customer_id= Auth::user()->id;
         $data = [];
-        $items=[];
-        $products = [];
+        $dates = [];
 
         $list = Order::all()->where('customer_id',$customer_id);
         $list_aux = json_decode($list,true);
-
+        
         $cart =array_values($list_aux);
-        for ($i = 0; $i <= sizeof($cart)-1; $i++) {
-            $item = Item::all()->where('order_id',$cart[$i]['id']);
-            $item_aux = json_decode($item,true);
+        $data["orders"] =  $cart;
 
-            for($j = 0; $j <= sizeof($item_aux)-1; $j++){
-                $products = Product::all()->where('order_id',$cart[$i]['id']);
-                $products_aux = json_decode($products,true);
-            }
-
-            $var = array_merge($cart[$i], $item_aux);
-            array_push($items, $var);
+        for($i=0; $i <sizeof($cart); $i++){
+            
+            $date= strval($cart[$i]["created_at"]);
+            array_push($dates,substr($date,0,10));
         }
-
-        dd($item);
-
-        //$product = Product::all()->where('id',$item[$i]['product_id']);
-        //$product_aux = json_decode($product,true);
-
-        //dd($items);
-
-        //$orders = array_merge($cart, $item);
-        //$data["orders"] = $orders;
+        $data["dates"] = $dates;
+    return view('product.cartlist')->with("data", $data);
     }
 
-    public function buy(Request $request)
+    public function orderView($language, $id){
+        $data = [];
+        $products = [];
+        $list = Order::findOrFail($id);
+        $cart = array_values(json_decode($list,true));
+        $item = Item::all()->where('order_id',$id);
+        $item_aux = json_decode($item,true);
+        $items = array_values($item_aux);
+        $date= strval(substr($cart[4],0,10));
+        $quantity= [];
+      
+        for ($i = 0; $i < sizeof($items); $i++) {
+            array_push($products, Product::findOrFail($items[$i]["product_id"]));
+        }
+
+        for ($i = 0; $i < sizeof($items); $i++) {
+            array_push($quantity, [($items[$i]["product_id"]),($items[$i]["quantity"])]);
+        }
+        $data["order"] =  $cart;
+        $data["date"] = $date;
+        $data["products"] = $products;
+        $data["quantity"] = $quantity;
+        return view('product.order')->with("data", $data);
+    }
+
+    public function buy(Request $request, $language)
     {
         $order = new Order();
         $order->setTotal("0");
@@ -203,7 +203,7 @@ class UserProductController extends Controller
         $order->save();
 
         $precioTotal = 0;
-        $shippingCost=0;
+        $shippingCost= 0;
 
         $products = $request->session()->get("products");
 
@@ -234,10 +234,10 @@ class UserProductController extends Controller
 
             $request->session()->forget('products');
         }
-        return redirect()->route('product.userList');
+        return redirect()->route('product.userList', ['language' => $language]);
     }
 
-    public function bestSellers()
+    public function bestSellers($language)
     {
         $data = [];
         $productsModels = [];
@@ -251,5 +251,30 @@ class UserProductController extends Controller
         
         $data["products"] = $productsModels;
         return view('product.userBestSellers')->with("data", $data);
+    }
+
+    public function something(){
+        $this->shippingCost1 = 20;
+        $this->discount1 = 30;
+        $this->precioTotal1 = 23;
+    }
+
+    public function pdf($language, Request $request){
+        //global $precioTotal1, $shippingCost1, $discount1;
+        //dd($language);
+        
+        $this->cart($request, $language);
+
+        $data["shipping-cost"] = $this->shippingCost1;
+        $data["total1"] = $this->shippingCost1 + $this->precioTotal1; 
+        $data["discount"] = $this->discount1;
+        
+        $generatePdf = app(Pdf::class);
+        $generatePdf->generate($data);
+        return back();
+        //$pdf = \PDF::loadView('product.pdf_cart_View', compact('data'));
+        //return $pdf->stream('new.pdf');
+
+        //return back();
     }
 }

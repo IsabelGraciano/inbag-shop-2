@@ -81,7 +81,19 @@ return [
         'delete'=>'Delete this cart',
         'with'=>'You have ',
         'discount'=>'% of discount in your order',
-        'total'=>'Total price: '
+        'total'=>'Total price: ',
+        'text' => 'Do you want to buy this cart?',
+        'confirm'=>'Confirm',
+    ],
+
+    'orders'=>[
+        'orders' =>'My orders',
+        'order' =>'order',
+        'total' =>'total',
+        'shipping_cost' =>'shipping cost',
+        'date' =>'purchase date',
+        'quantify' =>'quantity:',
+        'details' =>'More details',
     ],
 
     'sellers'=>[

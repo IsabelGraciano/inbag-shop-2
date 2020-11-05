@@ -9,11 +9,11 @@ use App\Product;
 
 class AdminProductController extends Controller
 {   
-    public function product(){
+    public function product($language){
         return view('admin.product.adminOptions');
     }
 
-    public function list()
+    public function list($language)
     {
         $data = []; 
         $data["products"] = Product::all();
@@ -21,7 +21,7 @@ class AdminProductController extends Controller
         return view('admin.product.adminList')->with("data",$data);
     }
 
-    public function create()
+    public function create($language)
     {
         $data = [];
         $data["product"] = Product::all();
@@ -29,14 +29,14 @@ class AdminProductController extends Controller
         return view('admin.product.adminCreate')->with("data",$data);
     }
 
-    public function view($id)
+    public function view($language, $id)
     {
         $data = []; //to be sent to the view      
 
         try{
             $product = Product::findOrFail($id);
         }catch(ModelNotFoundException $e){
-            return redirect()->route('product.list');
+            return redirect()->route('admin.product.adminList', ['language' => $language]);
         }
 
         $data["product"] = $product;
@@ -45,7 +45,7 @@ class AdminProductController extends Controller
         return view('admin.product.adminView')->with("data",$data);
     }
 
-    public function save(Request $request)
+    public function save(Request $request, $language)
     {
         Product::validate($request);
         $product = new product();
@@ -68,10 +68,10 @@ class AdminProductController extends Controller
         return back();
     }
 
-    public function delete($id)
+    public function delete($language, $id)
     {
         $productDelete = Product::findOrFail($id);
         $productDelete->delete();
-        return redirect()->route('admin.product.adminList');
+        return redirect()->route('admin.product.adminList', ['language' => $language]);
     }
 }

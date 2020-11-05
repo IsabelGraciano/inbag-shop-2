@@ -60,6 +60,6 @@ return [
     ],
 
     'submit'=>'Crear',
-    'title'=>'Crear producto'
+    'title'=>'Crear Donación'
 ];
 

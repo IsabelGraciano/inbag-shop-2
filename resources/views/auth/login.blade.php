@@ -9,7 +9,7 @@
                     <div class="card-header">{{ __('Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login', app()->getLocale()) }}">
                             @csrf
 
                             <div class="form-group row">
@@ -58,11 +58,13 @@
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Login') }}
                                         </button>
-
+                                        <a class="btn btn-primary" href="{{ url('/auth/redirect/google') }}">Login with google</a>
+                                        <hr>                                        
                                         @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <a class="btn btn-link" href="{{ route('password.request', app()->getLocale()) }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
+                                        
                                         @endif
                                     </div>
                                 </div>

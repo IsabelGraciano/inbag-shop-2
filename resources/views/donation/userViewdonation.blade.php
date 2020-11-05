@@ -27,9 +27,7 @@
                 <p>
                     <p><img src="{{ asset('/img/' . $data["donation"]->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
 
-
-
-                        <form method="POST" action="{{ route('donation.userDelete', ['id'=> $data['donation']['id']]) }}">
+                        <form method="POST" action="{{ route('donation.userDelete', [  'id'=> $data['donation']['id']  ,  app()->getLocale()   ]) }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <div class="text-center mt-4">

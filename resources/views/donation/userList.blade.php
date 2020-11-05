@@ -15,7 +15,7 @@
                     <!-- Custom content-->
                     <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                         <div class="media-body order-2 order-lg-1">
-                            <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('donation.userViewdonation',['id'=> $donation->getId()]) }}">{{ $donation->getName() }}</a></h5>
+                            <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('donation.userViewdonation',    ['id'=>$donation->getId(), app()->getLocale()]) }}">{{ $donation->getName() }}</a></h5>
                             
                             <div class="d-flex align-items-center justify-content-between mt-1">
                             

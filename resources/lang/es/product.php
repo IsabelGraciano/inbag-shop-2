@@ -14,7 +14,7 @@ return [
         'category'=>'Categoría',
         'man'=>'Hombre',
         'woman'=>'Mujer',
-        'kids'=>'Minños',
+        'kids'=>'Niños',
         'shoes'=>'Zapatos',
         'accessories'=>'Accessorios',
 
@@ -81,7 +81,19 @@ return [
         'delete'=>'Eliminar carrito',
         'with'=>'Tienes ',
         'discount'=>'% de descuento en tu orden',
-        'total'=>'Precio total: '
+        'total'=>'Precio total: ',
+        'text' => '¿Deseas comprar este carrito?',
+        'confirm' => 'Confirmar',
+    ],
+
+    'orders'=>[
+        'orders' =>'Mis ordenes',
+        'order' =>'Ordenes',
+        'total' =>'total',
+        'shipping_cost' =>'Costo de envío',
+        'date' =>'Fecha de compra',
+        'quantify' =>'Cantidad:',
+        'details' =>'Más detalles'
     ],
 
     'sellers'=>[

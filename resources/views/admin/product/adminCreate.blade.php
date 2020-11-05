@@ -31,7 +31,7 @@
                     </ul>
                     @endif
                     
-                    <form method="POST" action="{{ route('admin.product.adminSave') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.product.adminSave', app()->getLocale()) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">

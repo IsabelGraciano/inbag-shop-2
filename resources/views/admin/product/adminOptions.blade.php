@@ -18,13 +18,13 @@
 
         <!--Buttons-->
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminCreate') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminCreate', app()->getLocale()) }}">
                 <i class="fas fa-plus-square"></i>
                 {{ __('product.options.create') }}
             </a>
         </div>
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminList') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('admin.product.adminList', app()->getLocale()) }}">
                 <i class="far fa-laugh-beam"></i>
                 {{ __('product.options.list') }}
             </a>

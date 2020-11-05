@@ -23,7 +23,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">Inbag shop</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index', app()->getLocale()) }}">Inbag shop</a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 
                 <i class="fas fa-bars"></i>
@@ -32,14 +32,14 @@
                 <ul class="navbar-nav ml-auto">
                     @guest
                     <li class="nav-item mx-5 mx-lg-4">
-                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList') }}"> {{ __('master.user.Products') }} </a></li>
+                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList', app()->getLocale()) }}"> {{ __('master.user.Products') }} </a></li>
 
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('login', app()->getLocale()) }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('register', app()->getLocale()) }}">{{ __('Register') }}</a>
                     </li>
                     @endif
                     @else
@@ -49,12 +49,12 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('logout', app()->getLocale()) }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout', app()->getLocale()) }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
@@ -63,15 +63,20 @@
 
                     @if(!Auth::guest())
                     @if(Auth::user()->getRole()=="client")
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList') }}"> {{ __('master.user.Products') }} </a></li>
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('donation.userOptions') }}"> {{ __('master.user.Donations') }} </a></li>
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.userWishListShowAll') }}"><i class="far fa-heart"></i></a></li>
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.cart') }}"><i class="fas fa-shopping-bag"></i></a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList', app()->getLocale()) }}"> {{ __('master.user.Products') }} </a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('donation.userOptions', app()->getLocale()) }}"> {{ __('master.user.Donations') }} </a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.userWishListShowAll', app()->getLocale()) }}"><i class="far fa-heart"></i></a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-2 rounded js-scroll-trigger" href="{{ route('product.cart', app()->getLocale()) }}"><i class="fas fa-shopping-bag"></i></a></li>
+                    <li class="nav-item mt-2 "><a href="{{ route(Route::currentRouteName(), 'en') }}" class="nav-link">EN </a> </li>
+                    <li class="nav-item mt-2 "><a href="{{ route(Route::currentRouteName(), 'es') }}" class="nav-link">ES </a> </li>
+
                     @endif
                     @if(Auth::user()->getRole()=="admin")
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.donation.adminList') }}"> {{ __('master.admin.Donations') }} </a></li>
-                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.product.adminOptions') }}"> {{ __('master.admin.Products') }} </a></li>
-            
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.donation.adminList', app()->getLocale()) }}"> {{ __('master.admin.Donations') }} </a></li>
+                    <li class="nav-item mx-5 mx-lg-4"><a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('admin.product.adminOptions', app()->getLocale()) }}"> {{ __('master.admin.Products') }} </a></li>
+                    <li class="nav-item mt-2 "><a href="{{ route(Route::currentRouteName(), 'en') }}" class="nav-link">EN </a> </li>
+                    <li class="nav-item mt-2 "><a href="{{ route(Route::currentRouteName(), 'es') }}" class="nav-link">ES </a> </li>
+                    
                     @endif
                     @endif
                 </ul>

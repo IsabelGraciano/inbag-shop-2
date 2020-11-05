@@ -10,7 +10,7 @@
             <li class="list-group-item">
                 <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                     <div class="media-body order-2 order-lg-1">
-                        <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a href="{{ route('product.userView',['id'=> $product->getId()]) }}">{{ $product->getName()}}</a></h5>
+                        <h5 class="mt-0 font-weight-bold mb-2 ml-5"><a href="{{ route('product.userView',['id'=> $product->getId(), app()->getLocale()]) }}">{{ $product->getName()}}</a></h5>
                         <div class="d-flex align-items-center justify-content-between mt-1 mt-4">
 
                             <div class="ml-5">
@@ -24,44 +24,51 @@
             </li>
             @endforeach
         </ul> <!-- End -->
-        
-        <div class="col text-center">
-            <form action="{{ route('product.buy') }}" method="POST"> </br>
-                @csrf
-
-                <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal1">{{ __('product.cart.buy') }}</button>                
-                <div class="modal" tabindex="-1" role="dialog" id="myModal1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="text-color">{{ __('product.view.notice') }}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <h2>{{ __('product.view.summary') }}</h2>
-                                <b> {{ __('product.cart.shipping') }} {{ $data["shipping-cost"] }} <br />
-                                <b> {{ __('product.cart.total') }} {{ $data["total1"] }} <br />
-                                <b> {{ __('product.cart.with') }} {{ $data["discount"] }} {{ __('product.cart.discount') }}
-                            <div class="modal-footer">
-                                <button class="btn btn-outline-success mt-5" class="col text-center" type="submit">{{ __('product.cart.buy') }}</button>
-
+        <div class="mt-5 ml-5 nextnext">
+            <h2>{{ __('product.view.summary') }}</h2>
+            <b> {{ __('product.cart.shipping') }} {{ $data["shipping-cost"] }} <br />
+            <b> {{ __('product.cart.total') }} {{ $data["total1"] }} <br />
+            <b> {{ __('product.cart.with') }} {{ $data["discount"] }} {{ __('product.cart.discount') }}<br />
+            <div class="col text-center">
+                <form action="{{ route('view.pdf', app()->getLocale()) }}" method="GET"> </br>
+                    @csrf
+                    <button type="submit" class="btn btn-outline-success mt-2">download a pdf</button>
+                </form>
+            </div>
+            <div class="col text-center">
+                <form action="{{ route('product.buy', app()->getLocale()) }}" method="POST"> </br>
+                    @csrf
+    
+                    <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal1">{{ __('product.cart.buy') }}</button>                
+                    <div class="modal" tabindex="-1" role="dialog" id="myModal1">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="text-color">{{ __('product.view.notice') }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <h2> {{ __('product.cart.text') }} </h2>
+                                <div class="modal-footer">
+                                    <button class="btn btn-outline-success mt-5" class="col text-center" type="submit">{{ __('product.cart.confirm') }}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-            </form>
+                </form>
+            </div>
         </div>
+
+        <div>
+        
         <div class="col text-center">
-            <form action="{{ route('product.removeCart') }}" method="POST"> </br>
+            <form action="{{ route('product.removeCart', app()->getLocale()) }}" method="POST"> </br>
                 @csrf
                 {{ method_field('DELETE') }}
 
-                <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal2">{{ __('product.view.cartDelete') }}</button>
-                <a href="{{ route('product.cartlist') }}"><button type="button" class="btn btn-outline-success">pruebaaa</button></a>
-               
+                <button type="button" class="btn btn-outline-success mt-0" data-toggle="modal" data-target="#myModal2">{{ __('product.view.cartDelete') }}</button>
+                <a href="{{ route('product.cartlist', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success">{{ __('product.orders.orders') }}</button></a>               
                 <div class="modal" tabindex="-1" role="dialog" id="myModal2">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -81,6 +88,7 @@
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
 @section('content')
 <div class="space-column">
     <div class="text-center mt-0 mb-5">
-        <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userBestSellers') }}">
+        <a class="btn btn-xl btn-outline-dark" href="{{ route('product.userBestSellers', app()->getLocale()) }}">
             <i class="fas fa-star"></i>
             {{__('product.view.sellers')}}
         </a>
@@ -21,7 +21,7 @@
                 <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                     <div class="media-body order-2 order-lg-1">
                         @if(!Auth::guest())
-                        <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('product.userView',['id'=> $product->getId()]) }}">{{ $product->getName() }}</a></h5>
+                        <h5 class="mt-0 font-weight-bold mb-2"><a href="{{ route('product.userView',['id'=> $product->getId(), app()->getLocale()]) }}">{{ $product->getName() }}</a></h5>
                         @else 
                         <h5 class="mt-0 font-weight-bold mb-2">{{ $product->getName() }}</h5>
                         @endif

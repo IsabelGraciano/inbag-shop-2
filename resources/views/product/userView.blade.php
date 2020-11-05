@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div>
-                                    <form action="{{ route('product.addToCart',['id'=> $data['product']->getId()]) }}" method="POST">
+                                    <form action="{{ route('product.addToCart',['id'=> $data['product']->getId(), app()->getLocale()]) }}" method="POST">
                                         @csrf
                                         <div class="form-row">
                                             <div class="col-md-12">{{ __('product.view.Quantity') }}
@@ -79,7 +79,7 @@
 
                                 @if(!$data['wishlist']->isEmpty())
                                 <div>
-                                    <form action="{{ route('product.wishListDelete', ['id'=> $data['product']['id']]) }}" method="POST">
+                                    <form action="{{ route('product.wishListDelete', ['id'=> $data['product']['id'], app()->getLocale()]) }}" method="POST">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <div class="form-row">
@@ -110,9 +110,9 @@
                                         </div>
                                     </form>
                                 </div>
-                                @else 
+                                @else
                                 <div>
-                                    <form action="{{ route('product.userWishListSave', ['id'=> $data['product']->getId()])}}" method="GET">
+                                    <form action="{{ route('product.userWishListSave', [app()->getLocale(), 'id'=> $data['product']['id']]) }}" method="GET">
                                         @csrf
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
@@ -168,7 +168,7 @@
                                     {{ $comment->getRanking() }} <i class="fa fa-star" aria-hidden="true"></i><br />
 
                                     @if($comment->getCustomerId() == Auth::user()->id)
-                                    <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $comment->getId()]) }}">
+                                    <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $comment->getId(), app()->getLocale()]) }}">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button type="input" class="close" aria-label="Close">
@@ -183,7 +183,7 @@
 
                         </div>
                     </div>
-                    <form class="mt-5" method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId()]) }}">
+                    <form class="mt-5" method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId(), app()->getLocale()]) }}">
                         @csrf
 
 

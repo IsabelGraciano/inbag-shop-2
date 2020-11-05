@@ -17,13 +17,13 @@
 
         <!--Buttons-->
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userCreate') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userCreate', app()->getLocale()) }}">
                 <i class="fas fa-hand-holding-heart"></i>
                 {{__('donation.options.give')}}
             </a>
         </div>
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userList') }}">
+            <a class="btn btn-xl btn-outline-dark" href="{{ route('donation.userList', app()->getLocale()) }}">
                 <i class="far fa-laugh-beam"></i>
                 {{__('donation.options.view')}}
             </a>
