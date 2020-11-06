@@ -260,9 +260,6 @@ class UserProductController extends Controller
     }
 
     public function pdf($language, Request $request){
-        //global $precioTotal1, $shippingCost1, $discount1;
-        //dd($language);
-        
         $this->cart($request, $language);
 
         $data["shipping-cost"] = $this->shippingCost1;
@@ -270,11 +267,6 @@ class UserProductController extends Controller
         $data["discount"] = $this->discount1;
         
         $generatePdf = app(Pdf::class);
-        $generatePdf->generate($data);
-        return back();
-        //$pdf = \PDF::loadView('product.pdf_cart_View', compact('data'));
-        //return $pdf->stream('new.pdf');
-
-        //return back();
+        return $generatePdf->generate($data);
     }
 }

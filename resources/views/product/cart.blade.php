@@ -30,9 +30,9 @@
             <b> {{ __('product.cart.total') }} {{ $data["total1"] }} <br />
             <b> {{ __('product.cart.with') }} {{ $data["discount"] }} {{ __('product.cart.discount') }}<br />
             <div class="col text-center">
-                <form action="{{ route('view.pdf', app()->getLocale()) }}" method="GET"> </br>
+                <form action="{{ route('view.pdf', app()->getLocale()) }}" method="GET" target="_blank"> </br>
                     @csrf
-                    <button type="submit" class="btn btn-outline-success mt-2">download a pdf</button>
+                    <button type="submit" class="btn btn-outline-success mt-2">{{ __('product.cart.pdf') }}</button>
                 </form>
             </div>
             <div class="col text-center">

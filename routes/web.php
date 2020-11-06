@@ -72,16 +72,12 @@ Route::group(['prefix' => '{language}'], function() {
     Route::delete('/userProduct/wishListDelete/{id?}', 'UserProductController@delete')->name("product.wishListDelete");
 
 
-
     Route::get('/pdf', 'UserProductController@pdf')->name("view.pdf");
     Route::get('/edit/profile', 'Auth\EditProfileController@edit')->name("auth.register");
-    
-
 });
 
 Route::get('/auth/redirect/{provider}', 'GoogleLoginController@redirect');
 Route::get('/callback/{provider}', 'GoogleLoginController@callback');
-
 
 /**Routes for dependency injection */
 //Route::get('/image/index', 'ImageController@index')->name("image.index");

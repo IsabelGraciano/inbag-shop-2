@@ -84,6 +84,7 @@ return [
         'total'=>'Total price: ',
         'text' => 'Do you want to buy this cart?',
         'confirm'=>'Confirm',
+        'pdf' => 'Download PDF',
     ],
 
     'orders'=>[
