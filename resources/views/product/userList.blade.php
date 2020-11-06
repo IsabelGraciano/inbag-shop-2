@@ -26,7 +26,7 @@
                         <h5 class="mt-0 font-weight-bold mb-2">{{ $product->getName() }}</h5>
                         @endif
                         <div class="d-flex align-items-center justify-content-between mt-1">
-                            <h6 class="font-weight-bold my-2">{{ $product->getPrice() }}</h6>
+                            <h6 class="font-weight-bold my-2">${{ $product->getPrice() }}</h6>
                             <ul class="list-inline small">
                                 <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
                                 <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>

@@ -7,5 +7,6 @@ return [
     'insert'=>'Insertar comentario',
     'ranking'=>'Ranking',
     'send'=>'Enviar',
-    'WishlistBtn' => '¿Quieres añadir este producto a tu lista de deseos?'
+    'WishlistBtn' => '¿Quieres añadir este producto a tu lista de deseos?',
+    'noWishlist' => 'No tienes nada aquí',
 ];

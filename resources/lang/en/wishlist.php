@@ -7,5 +7,6 @@ return [
     'insert'=>'Insert your review here',
     'ranking'=>'Ranking',
     'send'=>'Send',
-    'WishlistBtn' => 'Do you want to add this item to your wishlist?'
+    'WishlistBtn' => 'Do you want to add this item to your wishlist?',
+    'noWishlist' => "You don't have anything",
 ];

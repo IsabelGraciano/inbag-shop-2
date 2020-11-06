@@ -43,7 +43,8 @@ return [
         'image'=>'Imágen:',
         'delete'=>'Eliminar esta donación',
         'deleteBtn'=>'¿Quieres eliminar este producto de tus donaciones?',
-        'nameCustomer'=>'Nombre del usuario'
+        'nameCustomer'=>'Nombre del usuario',
+        'nodonation' => 'No tienes nada aquí',
         
     ],
 

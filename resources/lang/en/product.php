@@ -85,6 +85,7 @@ return [
         'text' => 'Do you want to buy this cart?',
         'confirm'=>'Confirm',
         'pdf' => 'Download PDF',
+        'nocart' => "You don't have anything",
     ],
 
     'orders'=>[

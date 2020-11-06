@@ -85,6 +85,7 @@ return [
         'text' => '¿Deseas comprar este carrito?',
         'confirm' => 'Confirmar',
         'pdf' => 'Descargar PDF',
+        'nocart' => 'No tienes nada aquí',
     ],
 
     'orders'=>[

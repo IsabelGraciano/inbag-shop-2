@@ -10420,3 +10420,13 @@ p {
 .nextnext {
     display: inline-block;
 }
+
+.img-my-img {
+    width:9rem ;
+    height: 10rem;
+}
+
+.my-logo {
+    width:7rem ;
+    height:4rem;
+}
