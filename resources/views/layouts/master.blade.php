@@ -36,7 +36,7 @@
                     @guest
                     <li class="nav-item mx-5 mx-lg-4">
                         <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList', app()->getLocale()) }}"> {{ __('master.user.Products') }} </a></li>
-
+                        
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('login', app()->getLocale()) }}">{{ __('Login') }}</a>
                     </li>
@@ -45,6 +45,8 @@
                         <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('register', app()->getLocale()) }}">{{ __('Register') }}</a>
                     </li>
                     @endif
+                        <li class="nav-item mt-2 ml-5"><a href="{{ route(Route::currentRouteName(), 'en') }}" class="nav-link">EN </a> </li>
+                        <li class="nav-item mt-2"><a href="{{ route(Route::currentRouteName(), 'es') }}" class="nav-link">ES </a> </li>
                     @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

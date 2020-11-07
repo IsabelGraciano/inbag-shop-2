@@ -8,12 +8,7 @@
 <div class="space-column">
     <div class="col-lg-8 mx-auto">
         <!-- List group-->
-        @if (count($data)==0)
-            <h2>pruebita</h2>
-            <center class="mt-5">
-                <a href="{{ route('product.cartlist', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success">{{ __('product.orders.orders') }}</button></a>               
-            </center>
-        @else
+        
             <ul class="mt-0 font-weight-bold mb-2 ml-5">
                 @for($i=1; $i<= count($data["orders"]); $i++)
                 <!-- list group item-->
@@ -33,7 +28,6 @@
                 </li> <!-- End -->
                 @endfor
             </ul> <!-- End -->
-        @endif      
     </div>
 </div>
 

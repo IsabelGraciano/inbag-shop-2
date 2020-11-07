@@ -9,12 +9,12 @@
 <section class="page-section donation" id="donation">
 
     @if (count($data)==0)
-    <center>
-        <div class="col-lg-8 mx-auto mt-5 mb-0">
-            <h2>{{ __('wishlist.noWishlist') }}</h2>
-            <img class="img-my-img" src="{{ asset('img/static-img/empty-wishlist.png') }}" alt="" />
-        </div>
-    </center>
+        <center>
+            <div class="col-lg-8 mx-auto mt-5 mb-0">
+                <h2>{{ __('wishlist.noWishlist') }}</h2>
+                <img class="img-my-img" src="{{ asset('img/static-img/empty-wishlist.png') }}" alt="" />
+            </div>
+        </center>
     @else
         <div class="row space-column">
             <div class="col-lg-8 mx-auto">

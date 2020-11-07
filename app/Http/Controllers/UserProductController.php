@@ -68,9 +68,10 @@ class UserProductController extends Controller
             $data["title"] = "WishList";
             $productsModels = Product::find($keys);
             $data["products"] = $productsModels;
-            return view('product.userWishListShowAll')->with("data",$data);
+            
         }
-        return redirect()->route('product.userList', ['language' => $language]);
+        //return redirect()->route('product.userList', ['language' => $language]);
+        return view('product.userWishListShowAll')->with("data",$data);
     }
 
     public function saveWishList($language, $id)
@@ -145,9 +146,8 @@ class UserProductController extends Controller
             $data["shipping-cost"] = $this->shippingCost1;
             $data["total1"] = $this->shippingCost1 + $this->precioTotal1; 
             $data["discount"] = $this->discount1;
-            return view('product.cart')->with("data",$data);
         }
-        return back();
+        return view('product.cart')->with("data",$data);
     }
 
     public function cartList($language){
@@ -167,7 +167,7 @@ class UserProductController extends Controller
             array_push($dates,substr($date,0,10));
         }
         $data["dates"] = $dates;
-    return view('product.cartlist')->with("data", $data);
+        return view('product.cartlist')->with("data", $data);
     }
 
     public function orderView($language, $id){
