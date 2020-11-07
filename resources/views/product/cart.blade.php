@@ -36,6 +36,10 @@
                     <b> {{ __('product.cart.shipping') }} {{ $data["shipping-cost"] }} <br />
                     <b> {{ __('product.cart.total') }} {{ $data["total1"] }} <br />
                     <b> {{ __('product.cart.with') }} {{ $data["discount"] }} {{ __('product.cart.discount') }}<br />
+                    
+                </div>
+        
+                <div>
                     <div class="col text-center">
                         <form action="{{ route('view.pdf', app()->getLocale()) }}" method="GET" target="_blank"> </br>
                             @csrf
@@ -65,10 +69,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-        
-                <div>
-                
                 <div class="col text-center">
                     <form action="{{ route('product.removeCart', app()->getLocale()) }}" method="POST"> </br>
                         @csrf
@@ -88,7 +88,7 @@
                                     <h2 class="mr-5 ml-5 mt-5 text-center">{{ __('product.view.cartDeleteBtn') }}</h2>
         
                                     <div class="modal-footer">
-                                        <button class="btn btn-outline-success mt-5" class="col text-center" type="submit">{{ __('product.view.confirm') }}</button>
+                                        <button class="btn btn-outline-success mt-5" class="col text-center" type="submit"z>{{ __('product.view.confirm') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                 </div>
                 
         @endif
-        <center class="mt-5">
+        <center class="mt-4 ">
         <a href="{{ route('product.cartlist', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success">{{ __('product.orders.orders') }}</button></a>               
         </center>
         </div>

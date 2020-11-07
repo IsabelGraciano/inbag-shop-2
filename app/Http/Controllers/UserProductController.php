@@ -24,7 +24,6 @@ class UserProductController extends Controller
     {
         $data = [];
         $data["products"] = Product::all();
-
         return view('product.userList')->with("data", $data);
     }
 
@@ -34,7 +33,6 @@ class UserProductController extends Controller
 
         $userId=Auth::user()->id;
         $wishlist = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
-
         
         try{
             $product = Product::findOrFail($id);
@@ -162,7 +160,7 @@ class UserProductController extends Controller
             array_push($dates,substr($date,0,10));
         }
         $data["dates"] = $dates;
-    return view('product.cartlist')->with("data", $data);
+        return view('product.cartlist')->with("data", $data);
     }
 
     public function orderView($language, $id){
