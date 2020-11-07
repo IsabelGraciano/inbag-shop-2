@@ -30,7 +30,7 @@ class ProductCollection extends ResourceCollection
 
             'collection-data' => [
 
-                'link' => 'http://localhost/inbag-shop/public/',
+                'link' => 'http://ec2-3-89-29-196.compute-1.amazonaws.com/public/index',
 
             ],
 

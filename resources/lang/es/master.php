@@ -8,7 +8,8 @@ return [
         'title'=>'Ir a las opciones de producto',
         'Products'=>'Productos',
         'Donations'=>'Donaciones',
-        'login'=>'Ingresar / Registrarse'
+        'login'=>'Ingresar / Registrarse',
+        'registerLogin'=>'¿No tienes cuenta aún? Registrate',
     ],
 
     'user' => [

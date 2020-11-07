@@ -45,7 +45,9 @@
                                             </div>
 
                                             <div class="form-group col-md-12">
-
+                                                @if(Auth::guest())
+                                                <a class="btn btn-outline-success mt-5" href="{{ route('login', app()->getLocale()) }}">{{ __('product.view.CartAdd') }}</a>
+                                                @else
                                                 <button type="button" class="btn btn-outline-success mt-5" data-toggle="modal" data-target="#myModal">{{ __('product.view.CartAdd') }}</button>
 
 
@@ -68,15 +70,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            
-                                            
-                                            
-                                            
+
+
+
+                                                @endif
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-
+                                @if(!Auth::guest())
                                 @if(!$data['wishlist']->isEmpty())
                                 <div>
                                     <form action="{{ route('product.wishListDelete', ['id'=> $data['product']['id'], app()->getLocale()]) }}" method="POST">
@@ -84,8 +86,8 @@
                                         {{ method_field('DELETE') }}
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
-        
-        
+
+
                                                 <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal2">{{ __('product.view.deleteWishlist') }}</button>
                                                 <div class="modal" tabindex="-1" role="dialog" id="myModal2">
                                                     <div class="modal-dialog" role="document">
@@ -96,16 +98,16 @@
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
-         
+
                                                             <h2 class="mr-5 ml-5 mt-5 text-center">{{ __('product.view.whishlistDelete') }}</h2>
-        
+
                                                             <div class="modal-footer">
                                                                 <button type="submit" class="btn btn-outline-success mt-5">{{ __('product.view.confirm') }}</button>
-        
+
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>        
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -144,7 +146,7 @@
                                     </form>
                                 </div>
                                 @endif
-
+                                @endif
 
                             </div>
 
@@ -167,6 +169,8 @@
                                     <b> {{ $comment->getDescription() }} </b></br>
                                     {{ $comment->getRanking() }} <i class="fa fa-star" aria-hidden="true"></i><br />
 
+                                    @if(!Auth::guest())
+
                                     @if($comment->getCustomerId() == Auth::user()->id)
                                     <form method="POST" action="{{ route('product.userDeleteReview', ['id'=> $comment->getId(), app()->getLocale()]) }}">
                                         @csrf
@@ -175,6 +179,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </form>
+                                    @endif
                                     @endif
                                 </li>
                             </ul>
@@ -186,12 +191,12 @@
                     <form class="mt-5" method="POST" action="{{ route('product.userSaveReview', ['id'=>$data['product']->getId(), app()->getLocale()]) }}">
                         @csrf
 
-
+                        @if(!Auth::guest())
                         <div class="form-group">
                             <label for="inputPhone">{{ __('product.view.Review') }}</label>
                             <input type="text" class="form-control" id="inputPhone" placeholder="Enter your review" name="review"><br /><br />
                         </div>
-                        <h3 class ="mt-3">{{ __('product.view.Star') }}</h3>
+                        <h3 class="mt-3">{{ __('product.view.Star') }}</h3>
                         <div class="rating">
                             <input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label>
                             <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
@@ -203,6 +208,7 @@
                         <div class="col text-center">
                             <button type="submit" class="btn btn-outline-success">{{ __('product.view.sendComment') }}</button>
                         </div>
+                        @endif
                     </form>
                 </li> <!-- End -->
             </ul> <!-- End -->

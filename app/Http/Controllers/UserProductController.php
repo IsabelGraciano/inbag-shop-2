@@ -24,6 +24,7 @@ class UserProductController extends Controller
     {
         $data = [];
         $data["products"] = Product::all();
+
         return view('product.userList')->with("data", $data);
     }
 
@@ -31,8 +32,12 @@ class UserProductController extends Controller
     {
         $data = []; //to be sent to the view
 
-        $userId=Auth::user()->id;
-        $wishlist = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
+        if(!Auth::guest()){
+            $userId=Auth::user()->id;
+            $wishlist = WishList::all()->where('product_id',$id)->where('customer_id',$userId);
+            $data["wishlist"] = $wishlist;
+        }
+      
         
         try{
             $product = Product::findOrFail($id);
@@ -40,7 +45,7 @@ class UserProductController extends Controller
             return redirect()->route('product.userList', ['language' => $language]);
         }
 
-        $data["wishlist"] = $wishlist;
+        
         $data["product"] = $product;
         $data["title"] = $product->getName();
         
@@ -63,10 +68,9 @@ class UserProductController extends Controller
             $data["title"] = "WishList";
             $productsModels = Product::find($keys);
             $data["products"] = $productsModels;
-            
+            return view('product.userWishListShowAll')->with("data",$data);
         }
-        //return redirect()->route('product.userList', ['language' => $language]);
-        return view('product.userWishListShowAll')->with("data",$data);
+        return redirect()->route('product.userList', ['language' => $language]);
     }
 
     public function saveWishList($language, $id)
@@ -110,6 +114,8 @@ class UserProductController extends Controller
 
     public function cart(Request $request, $language)
     {
+        //global $precioTotal1, $shippingCost1, $discount1;
+
         $data = [];
         $products = $request->session()->get("products");
         $this->precioTotal1 = 0;
@@ -139,8 +145,9 @@ class UserProductController extends Controller
             $data["shipping-cost"] = $this->shippingCost1;
             $data["total1"] = $this->shippingCost1 + $this->precioTotal1; 
             $data["discount"] = $this->discount1;
+            return view('product.cart')->with("data",$data);
         }
-        return view('product.cart')->with("data",$data);
+        return back();
     }
 
     public function cartList($language){
@@ -160,7 +167,7 @@ class UserProductController extends Controller
             array_push($dates,substr($date,0,10));
         }
         $data["dates"] = $dates;
-        return view('product.cartlist')->with("data", $data);
+    return view('product.cartlist')->with("data", $data);
     }
 
     public function orderView($language, $id){
