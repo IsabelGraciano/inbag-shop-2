@@ -19,6 +19,14 @@ use Illuminate\Support\Facades\Auth;
 Route::redirect('/','/en');
 
 Route::group(['prefix' => '{language}'], function() {
+
+    /*Routes for login/register of User */
+    Route::get('/', 'HomeController@index')->name("home.index");
+    Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index"); //ADMIN
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    
     /* Route for top 5 best sellers */
     Route::get('/userProduct/bestSellers','UserProductController@bestSellers')->name("product.userBestSellers");
 
@@ -46,12 +54,6 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/admin/product/adminList', 'Admin\AdminProductController@list')->name("admin.product.adminList");
     Route::get('/admin/product/adminView/{id?}', 'Admin\AdminProductController@view')->name("admin.product.adminView");
     Route::delete('/admin/product/adminDelete/{id?}', 'Admin\AdminProductController@delete')->name("admin.product.adminDelete");
-
-    /*Routes for login/register of User */
-    Route::get('/', 'HomeController@index')->name("home.index");
-    Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index"); //ADMIN
-    Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('home');
 
     /*Routes for reviews*/
     Route::post('/userProduct/userSave/{id?}', 'UserReviewController@saveReview')->name("product.userSaveReview");  
