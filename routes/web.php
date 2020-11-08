@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 /**Routes for langs */
-//Route::redirect('/','/en');
 Route::redirect('/','en');
 
 Route::group(['prefix' => '{language}'], function() {

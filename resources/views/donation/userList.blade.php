@@ -7,14 +7,9 @@
     <div class="row space-column-style2">
         <div class="col-lg-8 mx-auto">
 
-            @if(!$data['donations']->isEmpty())
-            <center>
-                <h2>{{ __('donation.view.nodonation') }}</h2>
-                <img class="img-my-img" src="{{ asset('img/static-img/empty-donation.jpeg') }}" alt="" />
-            </center>
-            @else
                 <!-- List group-->
                 <ul class="list-group shadow">
+                    <div style="color: white">{{ $cont = 0 }}</div>
                     
                     @foreach($data["donations"] as $donation)
                     @if($donation->getCustomerId() == Auth::user()->id)
@@ -31,10 +26,19 @@
                                 </div><img src="{{ asset('/img/' . $donation->getImage()) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                             </div> <!-- End -->
                         </li> <!-- End -->
+                        @else 
+                            @if ($cont==0 && $loop->last)
+                                <center>
+                                    <h2>{{ __('donation.view.nodonation') }}</h2>
+                                    <img class="img-my-img" src="{{ asset('img/static-img/empty-donation.jpeg') }}" alt="" />
+                                </center>
+                                <div style="color: white">{{ $cont = $cont + 1 }}</div>
+                            @endif
                         @endif
+
                         @endforeach
                     </ul> <!-- End -->
-            @endif
+            
             
         </div>
     </div>
