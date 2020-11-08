@@ -39,6 +39,102 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getId(){
+        return $this->attributes['id'];
+    }
+    
+    public function getName(){
+        return $this->attributes['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getLastName(){
+        return $this->attributes['lastName'];
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->attributes['lastName'] = $lastName;
+    }
+
+    
+    public function getCountry(){
+        return $this->attributes['country'];
+    }
+
+    public function setCountry($country)
+    {
+        $this->attributes['country'] = $country;
+    }
+
+    public function getPhone(){
+        return $this->attributes['phone'];
+    }
+
+    public function setPhone($phone)
+    {
+        $this->attributes['phone'] = $phone;
+    }
+
+
+    public function getEmail(){
+        return $this->attributes['email'];
+    }
+
+    public function setEmail($email)
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getCity(){
+        return $this->attributes['city'];
+    }
+
+    public function setCity($city)
+    {
+        $this->attributes['city'] = $city;
+    }
+    
+    public function getState(){
+        return $this->attributes['state'];
+    }
+
+    public function setState($state)
+    {
+        $this->attributes['state'] = $state;
+    }
+
+    public function getNeighborhood(){
+        return $this->attributes['neighborhood'];
+    }
+
+    public function setNeighborhood($neighborhood)
+    {
+        $this->attributes['neighborhood'] = $neighborhood;
+    }
+
+    public function getAdress(){
+        return $this->attributes['adress'];
+    }
+
+    public function setAdress($adress)
+    {
+        $this->attributes['adress'] = $adress;
+    }
+
+    public function getAdressDetails(){
+        return $this->attributes['adressDetails'];
+    }
+
+    public function setAdressDetails($adressDetails)
+    {
+        $this->attributes['adressDetails'] = $adressDetails;
+    }
+
     public function getRole()
     {
         return $this->attributes['role'];
@@ -56,11 +152,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Review::class);
     }
 
-    public function getName(){
-        return $this->attributes['name'];
-    }
-
-    public function getLastName(){
-        return $this->attributes['lastName'];
-    }
 }
