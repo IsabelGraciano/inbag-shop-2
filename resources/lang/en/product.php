@@ -87,6 +87,12 @@ return [
         'pdf' => 'Download PDF',
         'nocart' => "You don't have anything",
     ],
+    
+    'api'=>[
+        'allies'=>'Our Allies',
+        'interest'=> "I'm interested"
+        
+    ],
 
     'orders'=>[
         'orders' =>'My orders',

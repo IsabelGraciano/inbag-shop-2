@@ -71,6 +71,20 @@
         </div>
     </div>
 </section>
+</section>
+<section class="page-section text-white mb-0" id="about">
+<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0 mt-5">{{ __('product.api.allies') }}</h2>
+<div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+<div class="container">
+<a href="{{ route('product.productsApi',app()->getLocale()) }}">
+<img class="img-fluid"  src="{{ asset('img/static-img/Logo-Agricolae.png') }} " />
+</a>
+</div>
+</section>
 <!-- About Section-->
 <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">

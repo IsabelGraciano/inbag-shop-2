@@ -88,6 +88,12 @@ return [
         'nocart' => 'No tienes nada aquí',
     ],
 
+    'api'=>[
+        'allies'=>'Nuestros aliados',
+        'interest'=> 'Me interesa'
+        
+    ],
+
     'orders'=>[
         'orders' =>'Mis ordenes',
         'order' =>'Ordenes',

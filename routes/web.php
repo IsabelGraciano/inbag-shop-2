@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 /**Routes for langs */
-Route::redirect('/','/en');
+//Route::redirect('/','/en');
+Route::redirect('/','public/en');
 
 Route::group(['prefix' => '{language}'], function() {
 
@@ -76,6 +77,7 @@ Route::group(['prefix' => '{language}'], function() {
 
     Route::get('/pdf', 'UserProductController@pdf')->name("view.pdf");
     Route::get('/edit/profile', 'Auth\EditProfileController@edit')->name("auth.register");
+    Route::get('/productsApi', 'ProductsApi@appi_rest_consum')->name("product.productsApi");
 });
 
 Route::get('/auth/redirect/{provider}', 'GoogleLoginController@redirect');
