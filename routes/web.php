@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**Routes for langs */
 //Route::redirect('/','/en');
-Route::redirect('/','public/en');
+Route::redirect('/','en');
 
 Route::group(['prefix' => '{language}'], function() {
 
@@ -82,7 +82,3 @@ Route::group(['prefix' => '{language}'], function() {
 
 Route::get('/auth/redirect/{provider}', 'GoogleLoginController@redirect');
 Route::get('/callback/{provider}', 'GoogleLoginController@callback');
-
-/**Routes for dependency injection */
-//Route::get('/image/index', 'ImageController@index')->name("image.index");
-//Route::post('/image/save', 'ImageController@save')->name("image.save");
