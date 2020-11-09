@@ -244,16 +244,17 @@ class UserProductController extends Controller
     {
         $data = [];
         $productsModels = [];
-        $item = Item::groupBy('product_id')->selectRaw('sum(quantity) as sum, product_id')->orderBy('sum', 'desc')->pluck('sum', 'product_id')->take(5);
+        $item = Item::groupBy('product_id')->selectRaw('sum(quantity) as sum, product_id')->orderBy('sum', 'desc')->pluck('sum', 'product_id')->take(6);
 
         $key = $item->keys();
         
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             array_push($productsModels,Product::findOrFail($key[$i]));
         }    
         
         $data["products"] = $productsModels;
-        return view('product.userBestSellers')->with("data", $data);
+        
+        return view('home.index')->with("data", $data);
     }
 
     public function something(){

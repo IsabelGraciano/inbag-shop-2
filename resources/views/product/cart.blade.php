@@ -41,16 +41,16 @@
         
                 <div>
                     <div class="col text-center">
-                        <form action="{{ route('view.pdf', app()->getLocale()) }}" method="GET" target="_blank"> </br>
+                        <form action="{{ route('product.buy', app()->getLocale()) }}" method="GET" target="_blank"> </br>
                             @csrf
-                            <button type="submit" class="btn btn-outline-success mt-2">{{ __('product.cart.pdf') }}</button>
+                            <button type="submit" class="btn btn-outline-success mt-5">{{ __('product.cart.pdf') }}</button>
                         </form>
                     </div>
                     <div class="col text-center">
                         <form action="{{ route('product.buy', app()->getLocale()) }}" method="POST"> </br>
                             @csrf
             
-                            <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal1">{{ __('product.cart.buy') }}</button>                
+                            <button type="button" class="btn btn-outline-success mt-5" data-toggle="modal" data-target="#myModal1">{{ __('product.cart.buy') }}</button>                
                             <div class="modal" tabindex="-1" role="dialog" id="myModal1">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -98,7 +98,7 @@
                 
         @endif
         <center class="mt-4 ">
-            <a href="{{ route('product.cartlist', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success">{{ __('product.orders.orders') }}</button></a>               
+            <a href="{{ route('product.cartlist', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success ">{{ __('product.orders.orders') }}</button></a>               
         </center>
         </div>
     </div>

@@ -24,16 +24,16 @@
 
                                 <div class="ml-5">
                                     <b>
-                                        <h6 class="font-weight-bold my-2">{{__('product.view.size')}} {{ $data["product"]->getSize() }}</h6> <br />
+                                        <h6 class="font-weight-bold my-2">{{__('product.view.size')}}</h6><h6 class="font-weight-normal">{{ $data["product"]->getSize() }}</h6> <br />
                                         <b>
                                             <b>
-                                                <h6 class="font-weight my-2 mr-5 mt-5">{{__('product.view.description')}} {{ $data["product"]->getDescription() }}</h6> <br />
+                                                <h6 class="font-weight my-2 mr-5 mt-5">{{__('product.view.description')}} </h6><h6 class="font-weight-normal">{{ $data["product"]->getDescription() }}</h6>  <br />
                                                 <b>
-                                                    <h6 class="font-weight-bold my-2">{{__('product.view.category')}} {{ $data["product"]->getCategory() }}</h6> <br />
+                                                    <h6 class="font-weight-bold my-2">{{__('product.view.category')}} </h6><h6 class="font-weight-normal">{{ $data["product"]->getCategory() }}</h6> <br />
                                                     <b>
-                                                        <h6 class="font-weight-bold my-2">{{__('product.view.color')}} {{ $data["product"]->getColor() }}</h6> <br />
+                                                        <h6 class="font-weight-bold my-2">{{__('product.view.color')}}</h6> <h6 class="font-weight-normal"> {{ $data["product"]->getColor() }}</h6> <br />
                                                         <b>
-                                                            <h6 class="font-weight-bold my-2">{{__('product.view.price')}} ${{ $data["product"]->getPrice() }}</h6> <br />
+                                                            <h6 class="font-weight-bold my-2">{{__('product.view.price')}} </h6> <h6 class="font-weight-normal"> ${{ $data["product"]->getPrice() }}</h6><br />
                                 </div>
 
                                 <div>
@@ -41,7 +41,7 @@
                                         @csrf
                                         <div class="form-row">
                                             <div class="col-md-12">{{ __('product.view.Quantity') }}
-                                                <input type="number" class="form-control" name="quantity" value="1" min="1" required style="width: 80px; ">
+                                                <input type="number" class="form-control" name="quantity" value="1" min="1" max="15" required style="width: 80px; ">
                                             </div>
 
                                             <div class="form-group col-md-12">
@@ -166,7 +166,8 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     <b> {{ $comment->customer->getName() }} {{ $comment->customer->getLastName() }} </b> </br>
-                                    <b> {{ $comment->getDescription() }} </b></br>
+                                    
+                                    <b class="font-weight-normal"> {{ $comment->getDescription() }} </b></br>
                                     {{ $comment->getRanking() }} <i class="fa fa-star" aria-hidden="true"></i><br />
 
                                     @if(!Auth::guest())
@@ -193,16 +194,16 @@
 
                         @if(!Auth::guest())
                         <div class="form-group">
-                            <label for="inputPhone">{{ __('product.view.Review') }}</label>
-                            <input type="text" class="form-control" id="inputPhone" placeholder="Enter your review" name="review"><br /><br />
+                            <label for="review">{{ __('product.view.Review') }}</label>
+                            <input id="review" type="text" class="form-control" id="review" placeholder="Enter your review" name="review" required autocomplete="review"><br /><br />
                         </div>
                         <h3 class="mt-3">{{ __('product.view.Star') }}</h3>
                         <div class="rating">
                             <input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label>
-                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                            <input type="radio" name="rating" value="4" id="4"required><label for="4">☆</label>
+                            <input type="radio" name="rating" value="3" id="3"required><label for="3">☆</label>
+                            <input type="radio" name="rating" value="2" id="2"required><label for="2">☆</label>
+                            <input type="radio" name="rating" value="1" id="1"required><label for="1">☆</label>
                         </div>
 
                         <div class="col text-center">

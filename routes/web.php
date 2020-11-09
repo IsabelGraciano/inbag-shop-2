@@ -25,10 +25,10 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/admin/index', 'Admin\AdminHomeController@index')->name("admin.home.index"); //ADMIN
     Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/','UserProductController@bestSellers')->name("home.index");
 
     
     /* Route for top 5 best sellers */
-    Route::get('/userProduct/bestSellers','UserProductController@bestSellers')->name("product.userBestSellers");
 
     /* Routes for donation user */
     Route::get('/donation', 'UserDonationController@options')->name("donation.userOptions");
@@ -74,7 +74,9 @@ Route::group(['prefix' => '{language}'], function() {
     Route::delete('/userProduct/wishListDelete/{id?}', 'UserProductController@delete')->name("product.wishListDelete");
 
 
-    Route::get('/pdf', 'UserProductController@pdf')->name("view.pdf");
+    Route::get('/cart/buy', 'UserProductController@pdf')->name("product.buy");
+
+
     Route::get('/edit/profile', 'Auth\EditProfileController@edit')->name("auth.register");
     Route::post('/editProfile/userSave/{id}', 'Auth\EditProfileController@update')->name("auth.userUpdate");
     Route::get('/productsApi', 'ProductsApi@appi_rest_consum')->name("product.productsApi");

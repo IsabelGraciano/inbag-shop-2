@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index', app()->getLocale()) }}">
-                <img class="my-logo mt-0 mb-0" src="{{ asset('img/logoinbag.png') }}" alt="" />
+                <img class="my-logo mt-0 mb-0" src="{{ asset('img/blanco.png') }}" alt="" />
             </a>
 
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,11 +38,11 @@
                         <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('product.userList', app()->getLocale()) }}"> {{ __('master.user.Products') }} </a></li>
                         
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('login', app()->getLocale()) }}">{{ __('Login') }}</a>
+                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('login', app()->getLocale()) }}">{{ __('auth.login') }}</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('register', app()->getLocale()) }}">{{ __('Register') }}</a>
+                        <a class="nav-link py-3 px-0 px-lg-1 rounded js-scroll-trigger" href="{{ route('register', app()->getLocale()) }}">{{ __('auth.register.register') }}</a>
                     </li>
                     @endif
                         <li class="nav-item mt-2 ml-5"><a href="{{ route(Route::currentRouteName(), 'en') }}" class="nav-link">EN </a> </li>
@@ -122,11 +122,9 @@
                 </div>
                 <!-- Footer About Text-->
                 <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                    <h4 class="text-uppercase mb-4">{{ __('master.user.about') }}</h4>
                     <p class="lead mb-0">
-                        Freelance is a free to use, MIT licensed Bootstrap theme created by
-                        <a href="http://startbootstrap.com">Inbag shop</a>
-                        .
+                    {{ __('master.user.cont') }}
                     </p>
                 </div>
             </div>
@@ -134,7 +132,7 @@
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright ©️ Your Website 2020</small></div>
+        <div class="container"><small>{{ __('master.user.copy') }}</small></div>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
     <div class="scroll-to-top d-lg-none position-fixed">

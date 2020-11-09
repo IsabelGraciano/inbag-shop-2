@@ -39,7 +39,7 @@
                             {{ method_field('DELETE') }}
                             <div class="form-row">
                             <div class="form-group col-md-12">
-                            <button type="submit" class="btn btn-xl btn-outline-dark mt-0"><i class="far fa-trash-alt"></i> {{__('product.view.delete')}} </button>
+                            <button type="submit" class="btn btn-outline-success mt-5"><i class="far fa-trash-alt"></i> {{__('product.view.delete')}} </button>
                             </div>
                             </div>
                         </form>

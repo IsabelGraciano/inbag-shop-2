@@ -32,7 +32,7 @@
                             {{ method_field('DELETE') }}
                             <div class="text-center mt-4">
 
-                                <button type="button" class="btn btn-outline-success mt-2" data-toggle="modal" data-target="#myModal1">{{__('donation.view.delete')}}</button>
+                                <button type="button" class="btn btn-outline-success mt-5" data-toggle="modal" data-target="#myModal1">{{__('donation.view.delete')}}</button>
                                 <div class="modal" tabindex="-1" role="dialog" id="myModal1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">

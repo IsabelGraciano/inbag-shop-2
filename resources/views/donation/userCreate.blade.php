@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group"><input class="btn btn-primary btn-xl" id="sendMessageButton" type="submit" value="{{__('donation.submit')}}"></button></div>
+                        <div class="form-group"><input class="btn btn-outline-success mt-5" id="sendMessageButton" type="submit" value="{{__('donation.submit')}}"></button></div>
                     </form>
                 </div>
             </div>
