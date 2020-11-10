@@ -24,7 +24,7 @@ public function callback($provider)
  
     auth()->login($user);
  
-    return redirect()->to('/home');
+    return redirect()->route('home.index')
  
 }
 
