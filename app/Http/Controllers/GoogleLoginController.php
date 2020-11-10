@@ -21,10 +21,10 @@ public function callback($provider)
     $getInfo = Socialite::driver($provider)->stateless()->user();
      
     $user = $this->createUser($getInfo,$provider);
- 
+    //dd($provider);
     auth()->login($user);
  
-    return redirect()->route('home.index')
+    return redirect()->route('home.index');
  
 }
 
