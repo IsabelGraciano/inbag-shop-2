@@ -79,5 +79,5 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/productsApi', 'ProductsApi@appi_rest_consum')->name("product.productsApi");
 });
 
-Route::get('/auth/google', 'GoogleLoginController@redirect')->name('login.google');
-Route::get('/auth/google/callback', 'GoogleLoginController@callback');
+Route::get('/auth/redirect/{provider}', 'GoogleLoginController@redirect');
+Route::get('/callback/{provider}', 'GoogleLoginController@callback');
