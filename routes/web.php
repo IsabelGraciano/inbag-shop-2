@@ -64,7 +64,7 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/cart/cart', 'UserProductController@cart')->name("product.cart");
     Route::post('/cart/buy', 'UserProductController@buy')->name("product.buy");
     Route::get('/cart/list', 'UserProductController@cartlist')->name("product.cartlist");
-    Route::get('/cart/orders', 'UserProductController@cartList')->name("product.cartlist");
+    Route::get('/cart/orders', 'UserProductController@cartlist')->name("product.cartlist");
     Route::get('/cart/order/{id?}', 'UserProductController@orderView')->name("product.orderView");
 
     /**Routes for wishlist */

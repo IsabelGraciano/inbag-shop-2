@@ -20,7 +20,7 @@ class EditProfileController extends Controller
         try{
             $user = User::findOrFail($customer_id);
         }catch(ModelNotFoundException $e){
-            return back();
+            return redirect()->route('home.index');
         }
         $item_aux = json_decode($user,true);
         //dd ($item_aux);
@@ -43,7 +43,6 @@ class EditProfileController extends Controller
         $user->setAdress($request->input('adress'));
         $user->setAdressDetails($request->input('adressDetails'));
         $user->save();
-        return redirect()->route('home', ['language' => $language]);
-    
+        return back();
 }
 }
