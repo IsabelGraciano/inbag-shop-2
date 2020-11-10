@@ -18,7 +18,7 @@ public function redirect($provider)
 public function callback($provider)
 {
            
-    $getInfo = Socialite::driver($provider)->user();
+    $getInfo = Socialite::driver($provider)->stateless()->user();
      
     $user = $this->createUser($getInfo,$provider);
  
@@ -27,6 +27,7 @@ public function callback($provider)
     return redirect()->to('/home');
  
 }
+
 function createUser($getInfo,$provider){
  
  $user = User::where('provider_id', $getInfo->id)->first();
