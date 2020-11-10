@@ -27,7 +27,6 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/','UserProductController@bestSellers')->name("home.index");
 
-    
     /* Route for top 5 best sellers */
 
     /* Routes for donation user */
@@ -73,9 +72,7 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/userProduct/wishListShowAll', 'UserProductController@userWishListShowAll')->name("product.userWishListShowAll");
     Route::delete('/userProduct/wishListDelete/{id?}', 'UserProductController@delete')->name("product.wishListDelete");
 
-
-    Route::get('/cart/buy', 'UserProductController@pdf')->name("product.buy");
-
+    Route::get('/pdf', 'UserProductController@pdf')->name("view.pdf");
 
     Route::get('/edit/profile', 'Auth\EditProfileController@edit')->name("auth.register");
     Route::post('/editProfile/userSave/{id}', 'Auth\EditProfileController@update')->name("auth.userUpdate");
