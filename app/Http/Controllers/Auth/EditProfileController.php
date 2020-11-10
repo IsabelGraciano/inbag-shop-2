@@ -20,7 +20,7 @@ class EditProfileController extends Controller
         try{
             $user = User::findOrFail($customer_id);
         }catch(ModelNotFoundException $e){
-            return redirect()->route('home.index');
+            return back();
         }
         $item_aux = json_decode($user,true);
         //dd ($item_aux);

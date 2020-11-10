@@ -167,7 +167,7 @@ class UserProductController extends Controller
             array_push($dates,substr($date,0,10));
         }
         $data["dates"] = $dates;
-        return view('product.cartlist')->with("data", $data);
+        return view('product.cartList')->with("data", $data);
     }
 
     public function orderView($language, $id){

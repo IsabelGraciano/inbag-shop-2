@@ -98,7 +98,7 @@
                 
         @endif
         <center class="mt-4 ">
-            <a href="{{ route('product.cartlist', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success ">{{ __('product.orders.orders') }}</button></a>               
+            <a href="{{ route('product.cartList', app()->getLocale()) }}"><button type="button" class="btn btn-outline-success ">{{ __('product.orders.orders') }}</button></a>               
         </center>
         </div>
     </div>
