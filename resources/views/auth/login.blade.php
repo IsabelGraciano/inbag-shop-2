@@ -59,7 +59,7 @@
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('auth.login') }}
                                         </button>
-                                        <a class="btn btn-primary" href="{{ url('/auth/redirect/google') }}">{{ __('auth.login_google') }}</a>
+                                        <a class="btn btn-primary" href="{{ route('login.google') }}">{{ __('auth.login_google') }}</a>
                                         <hr>                                        
                                         @if (Route::has('password.request'))
 

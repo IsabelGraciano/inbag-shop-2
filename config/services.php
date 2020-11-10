@@ -31,9 +31,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => '427463621227-l1mo2th0grutj565qlf3pst6l45qe6d3.apps.googleusercontent.com',
-        'client_secret' => 'cs_-PRsjQWvZQfK9Orgx7ae5',
-        'redirect' => 'http://www.inbagshop.tk/callback/google',
+        'client_id' => '427463621227-9f58lddfnnd28j5tefhjo1qn4j2n9eh5.apps.googleusercontent.com',
+        'client_secret' => 'ZjtQ6ow86o2jkSxAev1Y47Ao',
+        'redirect' => 'http://www.inbagshop.tk/auth/google/callback',
     ], 
 
 ];

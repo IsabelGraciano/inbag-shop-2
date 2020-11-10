@@ -7,14 +7,46 @@ use Validator,Redirect,Response,File;
 use Socialite;
 use App\User;
  
-class GoogleLoginController extends Controller
+class GoogleLoginController extends Controller{
+
+public function redirect()
 {
- 
-public function redirect($provider)
-{
-    return Socialite::driver($provider)->redirect();
+    return Socialite::driver('google')->redirect();
 }
+
+public function callback()
+    {
+        try {
+  
+            $user = Socialite::driver('google')->user();
+            $finduser = User::where('provider_id', $user->id)->first();
+   
+            if($finduser){
+   
+                Auth::login($finduser);
+                return redirect()->route('home.index');
+   
+            }else{
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id'=> $user->id,
+                    'provider' => 'google',
+                    'provider_id' => $user->id
+                ]);
+
+                Auth::login($newUser);
+   
+                return redirect()->back();
+            }
+  
+        } catch (Exception $e) {
+            return redirect('auth/google');
+        }
+    }
  
+
+/*
 public function callback($provider)
 {
            
@@ -41,5 +73,5 @@ function createUser($getInfo,$provider){
     ]);
   }
   return $user;
-}
+}*/
 }
