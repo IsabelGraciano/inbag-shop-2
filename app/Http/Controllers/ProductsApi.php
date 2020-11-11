@@ -19,7 +19,6 @@ class ProductsApi extends Controller
       }
       $data["products"]= $bestProductsApi;
       
-      echo($asw["data"][1]["image"]);
       return view('product.productsApi')->with("data", $data);
     }
 
