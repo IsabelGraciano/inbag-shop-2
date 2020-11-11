@@ -8,6 +8,6 @@ class PdfGenerate implements Pdf {
 
     public function generate($data){
         $pdf = \PDF::loadView('product.pdf_cart_View', compact('data'));
-        return $pdf->download('purchase.pdf');
+        return $pdf->stream('purchase.pdf');
     }
 }
