@@ -41,7 +41,7 @@
         
                 <div>
                     <div class="col text-center">
-                        <form action="{{ route('product.buy', app()->getLocale()) }}" method="GET" target="_blank"> </br>
+                        <form action="{{ route('product.buy', app()->getLocale()) }}" method="POST" target="_blank"> </br>
                             @csrf
                             <button type="submit" class="btn btn-outline-success mt-5">{{ __('product.cart.pdf') }}</button>
                         </form>

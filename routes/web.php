@@ -72,7 +72,7 @@ Route::group(['prefix' => '{language}'], function() {
     Route::get('/userProduct/wishListShowAll', 'UserProductController@userWishListShowAll')->name("product.userWishListShowAll");
     Route::delete('/userProduct/wishListDelete/{id?}', 'UserProductController@delete')->name("product.wishListDelete");
 
-    Route::get('/pdf', 'UserProductController@pdf')->name("view.pdf");
+    Route::post('/pdf', 'UserProductController@pdf')->name("view.pdf");
 
     Route::get('/edit/profile', 'Auth\EditProfileController@edit')->name("auth.register");
     Route::post('/editProfile/userSave/{id}', 'Auth\EditProfileController@update')->name("auth.userUpdate");

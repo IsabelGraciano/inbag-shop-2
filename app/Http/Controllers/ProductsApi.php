@@ -12,7 +12,7 @@ class ProductsApi extends Controller
       $asw = Http::get('http://www.agricolae.tk/public/api/products');
       
 
-      for($i=0; $i<20; $i++){
+      for($i=0; $i<5; $i++){
         array_push($bestProductsApi,$asw["data"][$i]);
       
     
